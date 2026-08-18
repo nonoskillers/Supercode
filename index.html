@@ -525,6 +525,93 @@ details.save>summary{font-size:13px;padding:var(--s2) 0;min-height:40px}
   .hero .btn{padding:11px 18px;min-height:44px;width:auto;margin-left:auto}
   .badge{width:29px;height:29px;font-size:13px}
 }
+
+/* ---------- gros titre de matière ---------- */
+.hero{display:block;padding:var(--s4) var(--s5) var(--s4);border-left:5px solid var(--tc);
+  border-radius:var(--r2);margin-bottom:var(--s3)}
+.hero-top{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.hero h1{font-size:clamp(25px,5.2vw,34px);font-weight:800;letter-spacing:-.03em;
+  line-height:1.1;margin:0}
+.hero .he{font-size:18px;font-weight:600;color:var(--ink-2);opacity:.9}
+.hero .ring{margin-left:auto;width:52px;height:52px}
+.hero .ring .lab b{font-size:14px;font-weight:750}
+.hero .ring .lab b small{font-size:9px}
+.hero-go{display:flex;align-items:center;gap:var(--s4);margin-top:var(--s3);flex-wrap:wrap}
+.hero-go p{margin:0;flex:1;min-width:140px;font-size:var(--fs-sm);color:var(--ink-2)}
+.hero-go .btn{background:var(--tc);box-shadow:0 3px 0 rgba(0,0,0,.22)}
+.tab.on{color:var(--tc)}
+.tab.on em{color:var(--tc)}
+@media(max-width:560px){
+  .hero{padding:var(--s3) var(--s4)}
+  .hero .he{font-size:15px}
+  .hero-go{margin-top:var(--s2)}
+  .hero-go .btn{width:100%}
+}
+
+/* ============================================================
+   CONFORT D'ÉTUDE — lecture, code coloré, respiration
+   ============================================================ */
+.c-kw{color:#93c5fd;font-weight:600}
+.c-fn{color:#f0abfc}
+.c-str{color:#86efac}
+.c-num{color:#fcd34d}
+.c-com{color:#8296ad;font-style:italic}
+pre.formule code{color:#e8eaf0}
+pre{line-height:1.75;font-size:14px;padding:var(--s4) var(--s5);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+
+/* --- page de cours : lecture longue --- */
+.course{background:#fffefc;padding:var(--s7) var(--s6) var(--s6)}
+[data-theme="dark"] .course{background:var(--surface)}
+.course h2{font-size:clamp(26px,5vw,33px);letter-spacing:-.03em;line-height:1.15;
+  border-left:5px solid var(--tc,var(--p));padding-left:var(--s4);margin-left:calc(var(--s4) * -1)}
+.course .lead{font-size:15px;margin-bottom:var(--s4);padding-left:var(--s4);
+  margin-left:calc(var(--s4) * -1)}
+.course p{font-size:17px;line-height:1.8;max-width:66ch;margin:var(--s4) 0}
+.course li{font-size:17px;line-height:1.75}
+.course h3{font-size:21px;margin:var(--s7) 0 var(--s3);padding-top:var(--s5);font-weight:700}
+.course h3:first-of-type{margin-top:var(--s5)}
+.course table{margin:var(--s5) 0;font-size:15px;border:1px solid var(--line);
+  border-radius:var(--r2);overflow:hidden}
+.course th{background:var(--surface-3);font-weight:650;font-size:13.5px;
+  text-transform:uppercase;letter-spacing:.04em}
+.course tbody tr:nth-child(even){background:var(--surface-2)}
+.course td,.course th{padding:11px 14px}
+.callout{padding:var(--s4);border-radius:0 var(--r2) var(--r2) 0;font-size:16px;line-height:1.7}
+.heb{font-size:15px;line-height:1.9;padding:var(--s4)}
+.heb i{color:var(--ink-2);font-size:.95em}
+
+/* --- sommaire du cours --- */
+.coursnav{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r2);
+  padding:var(--s4) var(--s5);margin:var(--s5) 0 var(--s6)}
+.coursnav .lecture{display:inline-block;font-size:12px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-2);font-weight:700;margin-bottom:var(--s2)}
+.coursnav ol{margin:0;padding-left:20px;columns:2;column-gap:var(--s6)}
+.coursnav li{font-size:14.5px;margin:5px 0;break-inside:avoid}
+.coursnav a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent}
+.coursnav a:hover{color:var(--tc,var(--p));border-bottom-color:currentColor}
+@media(max-width:560px){ .coursnav ol{columns:1} .course{padding:var(--s5) var(--s4)} }
+
+/* --- page d'exercice : plus d'air --- */
+.qcard{padding:var(--s6) var(--s5) var(--s5)}
+.qtext{font-size:21px;line-height:1.45;font-weight:680}
+.qtype{margin-bottom:var(--s3);letter-spacing:.1em}
+.choices{gap:var(--s2);margin-top:var(--s5)}
+.choice{padding:15px 17px;font-size:16px;min-height:56px}
+.seqbox{font-size:23px;padding:var(--s5);letter-spacing:.18em}
+.fb p{font-size:16px;line-height:1.7}
+.fb h4{font-size:18px}
+@media(max-width:560px){
+  .qcard{padding:var(--s5) var(--s4)}
+  .qtext{font-size:19px}
+  .choice{font-size:15.5px;padding:13px 15px;min-height:52px}
+}
+
+/* --- fond de lecture, adapte aux deux themes --- */
+:root{--paper:#fffefc}
+[data-theme="dark"]{--paper:#171a21}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){--paper:#171a21} }
+.course{background:var(--paper)}
 </style>
 </head>
 <body>
@@ -1763,10 +1850,10 @@ const RANG = {info:0, math:1, phys:2, heb:3};
 UNITS.sort((a,b)=> RANG[a.sub] - RANG[b.sub]);
 (function(){ const c={}; UNITS.forEach(u=>{ c[u.sub]=(c[u.sub]||0)+1; u.num=c[u.sub]; }); })();
 const MATIERES = [
-  {k:'info', court:'Informatique', nom:'Informatique',       he:'מדעי המחשב'},
-  {k:'math', court:'Maths',        nom:'Mathématiques',      he:'מתמטיקה'},
-  {k:'phys', court:'Physique',     nom:'Physique',           he:'פיזיקה'},
-  {k:'heb',  court:'Hébreu',       nom:'Vocabulaire hébreu', he:''}
+  {k:'info', court:'Informatique', nom:'Informatique',       he:'מדעי המחשב', c:'#6366f1'},
+  {k:'math', court:'Maths',        nom:'Mathématiques',      he:'מתמטיקה',    c:'#2563eb'},
+  {k:'phys', court:'Physique',     nom:'Physique',           he:'פיזיקה',     c:'#0d9488'},
+  {k:'heb',  court:'Hébreu',       nom:'Vocabulaire hébreu', he:'אוצר מילים', c:'#9333ea'}
 ];
 
 
@@ -1900,11 +1987,12 @@ function toast(msg){
   clearTimeout(toastT);
   toastT = setTimeout(()=>t.remove(), 2600);
 }
-function ring(pct,size){
+function ring(pct,size,col){
   const r = size/2 - 5, c = 2*Math.PI*r;
+  col = col || "var(--p)";
   return `<svg width="${size}" height="${size}" aria-hidden="true">
     <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line-strong)" stroke-width="6"/>
-    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--p)" stroke-width="6"
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="${col}" stroke-width="6"
       stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct/100)}"/>
   </svg>`;
 }
@@ -1951,17 +2039,20 @@ function home(){
   MATIERES.forEach(m=>{
     const s = stats[m.k];
     h += `<button class="tab ${m.k===S.tab?'on':''}" role="tab" aria-selected="${m.k===S.tab}"
-      onclick="setTab('${m.k}')">${m.court}<em>${s.fait}/${s.tot}</em></button>`;
+      style="--tc:${m.c}" onclick="setTab('${m.k}')">${m.court}<em>${s.fait}/${s.tot}</em></button>`;
   });
   h += `</nav>
 
-  <section class="hero">
-    <div class="ring">${ring(matPct,54)}<div class="lab"><b>${matPct}<small>%</small></b></div></div>
-    <div class="hero-txt">
-      <h1>${mat.nom}${mat.he?` <span dir="rtl" lang="he">${mat.he}</span>`:''}</h1>
-      <p>${nx ? nx.label : 'Matière terminée — reprenez les leçons sous 100 %'}</p>
+  <section class="hero" style="--tc:${mat.c}">
+    <div class="hero-top">
+      <h1>${mat.nom}</h1>
+      ${mat.he?`<span class="he" dir="rtl" lang="he">${mat.he}</span>`:''}
+      <div class="ring">${ring(matPct,52,mat.c)}<div class="lab"><b>${matPct}<small>%</small></b></div></div>
     </div>
-    ${nx ? `<button class="btn btn-p" onclick="${action}">${nx.type==='cours'?'Lire le cours':'Continuer'}</button>` : ''}
+    <div class="hero-go">
+      <p>${nx ? nx.label : 'Matière terminée — reprenez les leçons sous 100 %'}</p>
+      ${nx ? `<button class="btn btn-p" onclick="${action}">${nx.type==='cours'?'Lire le cours':'Continuer'}</button>` : ''}
+    </div>
   </section>`;
 
   if(S.wrong.length){
@@ -2039,7 +2130,9 @@ function openCourse(id, ui){
   const prev = UNITS[ui-1], next = UNITS[ui+1];
 
   app().setAttribute('data-view','course');
-  app().innerHTML = `<div class="readbar" id="rb"></div>
+  const mc = (MATIERES.find(m=>m.k===u.sub)||{}).c || 'var(--p)';
+  app().style.setProperty('--tc', mc);
+  app().innerHTML = `<div class="readbar" id="rb" style="background:${mc}"></div>
     <header class="topbar">
       <button class="btn btn-ghost" onclick="home()">← Parcours</button>
       <div class="spacer"></div>
@@ -2058,12 +2151,79 @@ function openCourse(id, ui){
       ${next?`<button class="node" onclick="openCourse('${next.id}',${ui+1})">${next.name} →</button>`:''}
     </nav></main>`;
 
+  habillerCours();
   window.scrollTo(0,0);
   window.onscroll = ()=>{
     const rb = document.getElementById('rb'); if(!rb) return;
     const max = document.body.scrollHeight - window.innerHeight;
     rb.style.width = (max>0 ? Math.min(100, window.scrollY/max*100) : 0) + '%';
   };
+}
+
+
+/* ================== CONFORT DE LECTURE ================== */
+
+/* Coloration syntaxique legere, appliquee uniquement aux blocs de vrai code
+   (les formules de maths et de physique sont laissees intactes). */
+const MOTS_CLES = ['def','return','if','elif','else','while','for','in','and','or','not',
+  'True','False','None','import','from','break','continue','class','pass','lambda','global'];
+const NATIFS = ['print','input','int','float','str','len','range','append','insert','remove',
+  'round','abs','max','min','sum','sorted','type','list','bool'];
+
+function estFormule(txt){ return /[←√²³₀₁₂₃Δ≈°·×÷≥≤]/.test(txt); }
+
+function colorer(txt){
+  /* Les chaines et commentaires sont mis de cote derriere un marqueur
+     purement alphabetique, pour qu'aucune autre regle ne les abime. */
+  const jetons = [];
+  const marque = i => '@@z' + String.fromCharCode(97 + Math.floor(i/26))
+                            + String.fromCharCode(97 + (i % 26)) + 'z@@';
+  const garde = s => { jetons.push(s); return marque(jetons.length - 1); };
+
+  let out = txt
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/#[^\n]*/g,             m => garde('<span class="c-com">'+m+'</span>'))
+    .replace(/"[^"\n]*"|'[^'\n]*'/g, m => garde('<span class="c-str">'+m+'</span>'));
+
+  out = out
+    .replace(new RegExp('\\b('+MOTS_CLES.join('|')+')\\b','g'), '<span class="c-kw">$1</span>')
+    .replace(new RegExp('\\b('+NATIFS.join('|')+')\\b(?=\\s*\\()','g'), '<span class="c-fn">$1</span>')
+    .replace(/\b\d+(\.\d+)?\b/g, '<span class="c-num">$&</span>');
+
+  return out.replace(/@@z([a-z])([a-z])z@@/g,
+    (m,a,c) => jetons[(a.charCodeAt(0)-97)*26 + (c.charCodeAt(0)-97)]);
+}
+
+function habillerCode(racine){
+  racine.querySelectorAll('pre > code').forEach(c=>{
+    if(c.dataset.fait) return;
+    const txt = c.textContent;
+    c.dataset.fait = '1';
+    if(!estFormule(txt)) c.innerHTML = colorer(txt);
+    else c.parentElement.classList.add('formule');
+  });
+}
+
+/* Sommaire cliquable et temps de lecture, ajoutes en tete de chaque cours */
+function habillerCours(){
+  const art = document.querySelector('.course');
+  if(!art) return;
+  habillerCode(art);
+
+  const mots = art.textContent.trim().split(/\s+/).length;
+  const min = Math.max(2, Math.round(mots/190));
+
+  const titres = [...art.querySelectorAll('h3')];
+  titres.forEach((t,i)=>{ t.id = 'sec'+i; });
+
+  const lead = art.querySelector('.lead');
+  if(!lead) return;
+  const box = document.createElement('div');
+  box.className = 'coursnav';
+  box.innerHTML = '<span class="lecture">' + min + ' min de lecture</span>' +
+    (titres.length ? '<ol>' + titres.map((t,i)=>
+      '<li><a href="#sec'+i+'">' + t.textContent.replace(/^\d+\.\s*/,'') + '</a></li>').join('') + '</ol>' : '');
+  lead.insertAdjacentElement('afterend', box);
 }
 
 /* ================== LEÇON ================== */
@@ -2139,6 +2299,7 @@ function render(){
 
   app().setAttribute('data-view','lesson');
   app().innerHTML = h;
+  habillerCode(app());
   const inp = document.getElementById('inp'); if(inp) inp.focus();
 
   document.onkeydown = e=>{
@@ -2224,6 +2385,7 @@ function judge(good, sol){
       ${gain?'<span class="xpgain">+'+gain+' XP</span>':''}
     </div>
   </div>`);
+  habillerCode(fb);
   document.getElementById('fbz').appendChild(fb);
   fb.scrollIntoView({behavior:'smooth',block:'end'});
   document.getElementById('cont').focus({preventScroll:true});
