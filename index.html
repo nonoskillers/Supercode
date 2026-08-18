@@ -1946,12 +1946,64 @@ function filterLex(q){
 }
 
 /* ================== ÉTAT ================== */
-let S = {xp:0, done:{}, read:{}, wrong:[], theme:null, tab:'info'};
+let S = {xp:0, done:{}, read:{}, wrong:[], theme:null, tab:'info', serie:0, dernier:null};
+let stockageOK = true;
+
+/* --- Sauvegarde automatique dans le navigateur --- */
+const CLE = 'supercode-v1';
+function sauver(){
+  if(!stockageOK) return;
+  try { localStorage.setItem(CLE, JSON.stringify(S)); }
+  catch(e){ stockageOK = false; }
+}
+function charger(){
+  try {
+    const brut = localStorage.getItem(CLE);
+    if(brut){
+      const o = JSON.parse(brut);
+      if(typeof o.xp === 'number') S = Object.assign(S, o);
+    }
+    localStorage.setItem(CLE + '-test', '1');
+    localStorage.removeItem(CLE + '-test');
+  } catch(e){ stockageOK = false; }
+}
+
+/* --- Série de jours consécutifs --- */
+function jourJ(){ const d = new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+function marquerJour(){
+  const j = jourJ();
+  if(S.dernier === j) return;
+  const hier = new Date(); hier.setDate(hier.getDate()-1);
+  const jHier = hier.getFullYear()+'-'+(hier.getMonth()+1)+'-'+hier.getDate();
+  S.serie = (S.dernier === jHier) ? (S.serie||0) + 1 : 1;
+  S.dernier = j;
+  sauver();
+}
 let L = null;
 
 const $ = h => { const d=document.createElement('div'); d.innerHTML=h; return d.firstElementChild; };
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const norm = s => String(s).toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,;!]$/,'');
+/* Compare deux réponses en ignorant tout ce qui ne change pas le sens :
+   espaces, signe de multiplication, exposants unicode, virgule décimale,
+   tiret unicode, préfixe « x = », ponctuation finale. */
+function norm(s){
+  return String(s).toLowerCase().trim()
+    .replace(/\u2212|\u2013/g, '-')
+    .replace(/²/g,'^2').replace(/³/g,'^3').replace(/⁴/g,'^4')
+    .replace(/^[a-z]\s*=\s*/,'')
+    .replace(/\*/g,'')
+    .replace(/(\d),(\d)/g,'$1.$2')
+    .replace(/\s+/g,'')
+    .replace(/[.,;!]$/,'');
+}
+function memeReponse(saisie, attendu){
+  if(norm(saisie) === norm(attendu)) return true;
+  const a = parseFloat(String(saisie).replace(',','.').replace(/[^0-9.\-]/g,''));
+  const b = parseFloat(String(attendu).replace(',','.').replace(/[^0-9.\-]/g,''));
+  if(isFinite(a) && isFinite(b) && /^[\s\-0-9.,]+$/.test(String(saisie)))
+    return Math.abs(a-b) < 1e-9;
+  return false;
+}
 const app = () => document.getElementById('app');
 const lvl = () => Math.floor(S.xp/100)+1;
 const totalLessons = () => UNITS.reduce((n,u)=>n+u.lessons.length,0);
@@ -1966,7 +2018,7 @@ function toggleTheme(){
   const dark = S.theme ? S.theme==='dark'
     : window.matchMedia('(prefers-color-scheme:dark)').matches;
   S.theme = dark ? 'light' : 'dark';
-  applyTheme();
+  applyTheme(); sauver();
   const v = document.querySelector('#app').getAttribute('data-view');
   if(v==='home') home(); else if(v==='course') openCourse(lastCourse[0],lastCourse[1]);
   toast(S.theme==='dark' ? 'Mode sombre activé' : 'Mode clair activé');
@@ -2006,7 +2058,7 @@ function nextStep(sub){
   }
   return null;
 }
-function setTab(k){ S.tab = k; home(); }
+function setTab(k){ S.tab = k; sauver(); home(); }
 
 /* ================== ACCUEIL ================== */
 function home(){
@@ -2031,7 +2083,7 @@ function home(){
   let h = `<header class="topbar">
     <span class="brand">Supercode</span>
     <div class="spacer"></div>
-    <span class="gstat">niveau ${lvl()} · ${S.xp} XP</span>
+    <span class="gstat">${S.serie>1?'série '+S.serie+' j · ':''}niveau ${lvl()} · ${S.xp} XP</span>
     ${themeBtn()}
   </header>
   <main>
@@ -2088,8 +2140,10 @@ function home(){
   });
 
   h += `<details class="save">
-    <summary>Sauvegarder ou restaurer ma progression</summary>
-    <p>La progression ne vit que le temps de la session. Copiez ce code et recollez-le à la prochaine ouverture.</p>
+    <summary>${stockageOK?'Transférer ma progression vers un autre appareil':'⚠ Sauvegarde impossible ici — copiez ce code'}</summary>
+    <p>${stockageOK
+      ? 'La progression est enregistrée automatiquement sur cet appareil. Ce code sert uniquement à la transférer vers un téléphone ou un autre ordinateur.'
+      : 'Ce navigateur bloque l\'enregistrement automatique. Copiez ce code avant de fermer, et rechargez-le à la prochaine ouverture.'}</p>
     <label class="sr" for="code">Code de progression</label>
     <textarea id="code" readonly>${btoa(unescape(encodeURIComponent(JSON.stringify(S))))}</textarea>
     <div class="row">
@@ -2125,7 +2179,7 @@ let lastCourse = [null,0];
 function openCourse(id, ui){
   const tpl = document.getElementById('cours-'+id);
   if(!tpl) return;
-  S.read[id] = 1; lastCourse = [id,ui];
+  S.read[id] = 1; lastCourse = [id,ui]; marquerJour(); sauver();
   const u = UNITS[ui];
   const prev = UNITS[ui-1], next = UNITS[ui+1];
 
@@ -2160,6 +2214,142 @@ function openCourse(id, ui){
   };
 }
 
+
+
+/* ================== QUESTIONS À VALEURS VARIABLES ==================
+   Les exercices purement numériques sont régénérés à chaque tentative :
+   impossible d'apprendre les réponses par cœur. */
+const R = (a,b) => a + Math.floor(Math.random()*(b-a+1));
+const piocher = t => t[Math.floor(Math.random()*t.length)];
+const jolie = n => (Math.round(n*100)/100).toString();
+
+const GENERATEURS = [
+  /* ---------- physique : cinématique ---------- */
+  {u:'p1', l:0, i:0, f:()=>{ const v=piocher([12,15,18,20,24,30]), t=piocher([2,3,4,5,6]);
+    return {q:`Une voiture passe de 0 à ${v} m/s en ${t} s. Quelle est son accélération, en m/s² ?`,
+      a:[jolie(v/t)], e:`a = Δv/Δt = ${v}/${t} = ${jolie(v/t)} m/s².`}; }},
+  {u:'p1', l:0, i:1, f:()=>{ const d=piocher([100,150,200,60,80]), t=piocher([4,5,8,10,20]);
+    return {q:`Un coureur parcourt ${d} m en ${t} s. Quelle est sa vitesse moyenne, en m/s ?`,
+      a:[jolie(d/t)], e:`v = Δx/Δt = ${d}/${t} = ${jolie(d/t)} m/s.`}; }},
+  {u:'p1', l:0, i:2, f:()=>{ const a=piocher([2,3,4,5]), t=piocher([2,3,4]);
+    return {q:`Partant du repos avec a = ${a} m/s², quelle distance parcourt-on en ${t} s ? (en mètres)`,
+      a:[jolie(0.5*a*t*t)], e:`x = ½·a·t² = ½ × ${a} × ${t*t} = ${jolie(0.5*a*t*t)} m. La vitesse initiale étant nulle, le terme v₀·t disparaît.`}; }},
+  {u:'p1', l:0, i:3, f:()=>{ const a=piocher([2,3,4,5,6]), t=piocher([3,4,5,6]);
+    return {q:`Partant du repos avec a = ${a} m/s², quelle vitesse atteint-on après ${t} s ? (en m/s)`,
+      a:[jolie(a*t)], e:`v = v₀ + a·t = 0 + ${a} × ${t} = ${a*t} m/s.`}; }},
+  {u:'p1', l:1, i:0, f:()=>{ const t=piocher([2,3,4,5]);
+    return {q:`Un objet est lâché sans vitesse initiale. Quelle est sa vitesse après ${t} s ? (en m/s, avec g = 10)`,
+      a:[jolie(10*t)], e:`v = g·t = 10 × ${t} = ${10*t} m/s.`}; }},
+  {u:'p1', l:1, i:1, f:()=>{ const t=piocher([2,3,4]);
+    return {q:`De quelle hauteur cet objet tombe-t-il en ${t} s ? (en mètres)`,
+      a:[jolie(5*t*t)], e:`h = ½·g·t² = ½ × 10 × ${t*t} = ${5*t*t} m.`}; }},
+  {u:'p1', l:1, i:3, f:()=>{ const t=piocher([3,4,5,6]);
+    return {q:`Un objet tombe pendant ${t} s. Quelle hauteur a-t-il parcourue ? (en mètres, g = 10)`,
+      a:[jolie(5*t*t)], e:`h = ½ × 10 × ${t*t} = ${5*t*t} m. Le temps est au carré : doubler le temps quadruple la hauteur.`}; }},
+  {u:'p1', l:1, i:5, f:()=>{ const v=piocher([20,30,40,50]);
+    return {q:`Un objet est lancé vers le haut à ${v} m/s. Après combien de secondes s'arrête-t-il en haut ? (g = 10)`,
+      a:[jolie(v/10)], e:`La pesanteur retire 10 m/s par seconde : il faut ${jolie(v/10)} s pour annuler ${v} m/s.`}; }},
+
+  /* ---------- physique : Newton ---------- */
+  {u:'p2', l:0, i:0, f:()=>{ const m=piocher([2,4,5,8]), a=piocher([2,3,4,5]);
+    return {q:`Une force de ${m*a} N s'applique sur une masse de ${m} kg. Quelle est l'accélération, en m/s² ?`,
+      a:[jolie(a)], e:`a = F/m = ${m*a}/${m} = ${a} m/s².`}; }},
+  {u:'p2', l:0, i:1, f:()=>{ const m=piocher([3,5,7,12,20]);
+    return {q:`Quel est le poids d'un objet de ${m} kg ? (en newtons, avec g = 10)`,
+      a:[jolie(m*10)], e:`P = m·g = ${m} × 10 = ${m*10} N. La masse est en kilogrammes, le poids en newtons.`}; }},
+  {u:'p2', l:0, i:2, f:()=>{ const m=piocher([3,4,6,8]), a=piocher([2,3,5]);
+    return {q:`Quelle force faut-il pour accélérer ${m} kg à ${a} m/s² ? (en newtons)`,
+      a:[jolie(m*a)], e:`F = m·a = ${m} × ${a} = ${m*a} N.`}; }},
+  {u:'p2', l:0, i:3, f:()=>{ const g=piocher([12,15,18,20]), p=piocher([4,5,7]);
+    return {q:`Deux forces opposées de ${g} N et ${p} N agissent sur un objet. Quelle est la force résultante, en newtons ?`,
+      a:[jolie(g-p)], e:`Opposées, donc on soustrait : ${g} − ${p} = ${g-p} N, dans le sens de la plus grande.`}; }},
+  {u:'p2', l:0, i:5, f:()=>{ const m=piocher([4,5,8,10]), a=piocher([3,4,6]);
+    return {q:`Une masse de ${m} kg subit une force de ${m*a} N. Quelle est son accélération, en m/s² ?`,
+      a:[jolie(a)], e:`a = ${m*a}/${m} = ${a} m/s².`}; }},
+  {u:'p2', l:1, i:2, f:()=>{ const p=piocher([40,50,60,80]), mu=piocher([0.2,0.25,0.5]);
+    return {q:`Un objet pèse ${p} N et le coefficient de frottement vaut ${mu}. Quelle est la force de frottement sur un sol horizontal ? (en newtons)`,
+      a:[jolie(p*mu)], e:`f = μ·N = ${mu} × ${p} = ${jolie(p*mu)} N. Sur un sol horizontal, la normale égale le poids.`}; }},
+  {u:'p2', l:1, i:4, f:()=>{ const t=piocher([20,25,30,40]), fr=piocher([6,8,10,12]);
+    return {q:`Une caisse est tirée avec ${t} N et le frottement vaut ${fr} N. Quelle est la force résultante, en newtons ?`,
+      a:[jolie(t-fr)], e:`${t} − ${fr} = ${t-fr} N. C'est cette résultante, et non la traction, qu'on met dans ΣF = m·a.`}; }},
+
+  /* ---------- physique : énergie ---------- */
+  {u:'p3', l:0, i:0, f:()=>{ const f=piocher([8,10,12,15]), d=piocher([2,3,4,5]);
+    return {q:`Une force de ${f} N déplace un objet de ${d} m dans son sens. Quel est le travail, en joules ?`,
+      a:[jolie(f*d)], e:`W = F·d = ${f} × ${d} = ${f*d} J, puisque cos(0°) = 1.`}; }},
+  {u:'p3', l:0, i:1, f:()=>{ const m=piocher([2,4,6]), v=piocher([3,4,5]);
+    return {q:`Quelle est l'énergie cinétique d'une masse de ${m} kg allant à ${v} m/s ? (en joules)`,
+      a:[jolie(0.5*m*v*v)], e:`Eₖ = ½·m·v² = ½ × ${m} × ${v*v} = ${jolie(0.5*m*v*v)} J.`}; }},
+  {u:'p3', l:0, i:2, f:()=>{ const m=piocher([1,2,3,5]), hh=piocher([4,5,8,10]);
+    return {q:`Quelle est l'énergie potentielle d'une masse de ${m} kg à ${hh} m de haut ? (en joules, g = 10)`,
+      a:[jolie(m*10*hh)], e:`Eₚ = m·g·h = ${m} × 10 × ${hh} = ${m*10*hh} J.`}; }},
+  {u:'p3', l:0, i:5, f:()=>{ const w=piocher([100,150,200,240]), t=piocher([4,5,8,10]);
+    return {q:`Un travail de ${w} J est fourni en ${t} s. Quelle est la puissance, en watts ?`,
+      a:[jolie(w/t)], e:`P = W/t = ${w}/${t} = ${jolie(w/t)} W.`}; }},
+  {u:'p3', l:1, i:1, f:()=>{ const m=piocher([2,3,4]), hh=piocher([5,8,10]);
+    return {q:`Une masse de ${m} kg tombe de ${hh} m. Quelle est son énergie cinétique en bas ? (en joules, g = 10)`,
+      a:[jolie(m*10*hh)], e:`Toute l'énergie potentielle devient cinétique : m·g·h = ${m} × 10 × ${hh} = ${m*10*hh} J.`}; }},
+  {u:'p3', l:1, i:4, f:()=>{ const m=piocher([1,2,3]), v=piocher([4,6,8]);
+    return {q:`Un objet de ${m} kg va à ${v} m/s. Quelle est son énergie cinétique, en joules ?`,
+      a:[jolie(0.5*m*v*v)], e:`½ × ${m} × ${v*v} = ${jolie(0.5*m*v*v)} J.`}; }},
+
+  /* ---------- maths : géométrie analytique ---------- */
+  {u:'m1', l:0, i:0, f:()=>{ const t=piocher([[3,4,5],[6,8,10],[5,12,13],[8,15,17]]);
+    const x1=R(0,3), y1=R(0,3);
+    return {q:`Quelle est la distance entre A(${x1} ; ${y1}) et B(${x1+t[0]} ; ${y1+t[1]}) ?`,
+      a:[String(t[2])], e:`√(${t[0]}² + ${t[1]}²) = √${t[0]*t[0]+t[1]*t[1]} = ${t[2]}.`}; }},
+  {u:'m1', l:0, i:1, f:()=>{ const x1=piocher([2,4,6]), x2=x1+piocher([4,6,8]),
+      y1=piocher([2,4,10]), y2=y1+piocher([4,6,8]);
+    return {q:`Quelles sont les coordonnées du milieu de A(${x1} ; ${y1}) et B(${x2} ; ${y2}) ? Écrivez sous la forme x;y`,
+      a:[`${(x1+x2)/2};${(y1+y2)/2}`, `(${(x1+x2)/2};${(y1+y2)/2})`],
+      e:`Moyenne des abscisses puis des ordonnées : (${x1}+${x2})/2 = ${(x1+x2)/2} et (${y1}+${y2})/2 = ${(y1+y2)/2}.`}; }},
+  {u:'m1', l:0, i:2, f:()=>{ const m=piocher([2,3,4,5]), x1=R(1,3), y1=R(1,4), dx=piocher([1,2]);
+    return {q:`Quelle est la pente de la droite passant par A(${x1} ; ${y1}) et B(${x1+dx} ; ${y1+m*dx}) ?`,
+      a:[String(m)], e:`m = (${y1+m*dx}−${y1})/(${x1+dx}−${x1}) = ${m*dx}/${dx} = ${m}.`}; }},
+  {u:'m1', l:1, i:3, f:()=>{ const m=piocher([2,3,4,5]), x=piocher([2,3,4]), b=piocher([1,2,5]);
+    return {q:`La droite y = mx + ${b} passe par le point (${x} ; ${m*x+b}). Que vaut m ?`,
+      a:[String(m)], e:`${m*x+b} = ${x}m + ${b}, donc ${x}m = ${m*x} et m = ${m}.`}; }},
+
+  /* ---------- maths : fonctions et dérivée ---------- */
+  {u:'m2', l:1, i:0, f:()=>{ const s=piocher([2,3,4,5]), c=piocher([1,3,5]);
+    return {q:`Quelle est l'abscisse du sommet de f(x) = x² − ${2*s}x + ${c} ?`,
+      a:[String(s)], e:`x = −b/2a = ${2*s}/2 = ${s}.`}; }},
+  {u:'m3', l:0, i:3, f:()=>{ const a=piocher([3,4,5,6]), b=piocher([2,3,7]), c=piocher([1,4,9]);
+    return {q:`Quelle est la dérivée de f(x) = ${a}x² − ${b}x + ${c} ? (écrivez par exemple 10x-3)`,
+      a:[`${2*a}x-${b}`], e:`Terme par terme : ${2*a}x, puis −${b}, puis 0 pour la constante.`}; }},
+  {u:'m3', l:0, i:4, f:()=>{ const x=piocher([2,3,4,5]);
+    return {q:`Que vaut f′(${x}) pour f(x) = x² ?`,
+      a:[String(2*x)], e:`f′(x) = 2x, donc f′(${x}) = ${2*x}. C'est la pente de la tangente en ce point.`}; }},
+  {u:'m3', l:1, i:1, f:()=>{ const s=piocher([2,3,4,5]), c=piocher([1,5,7]);
+    return {q:`Pour f(x) = x² − ${2*s}x + ${c}, quelle est l'abscisse du point extremum ?`,
+      a:[String(s)], e:`f′(x) = 2x − ${2*s}, qui s'annule pour x = ${s}.`}; }},
+
+  /* ---------- informatique : calculs ---------- */
+  {u:'u1', l:2, i:0, f:()=>{ const a=piocher([17,23,29,34,41]), b=piocher([3,4,5,6]);
+    return {q:`Que vaut cette expression ?`, code:`${a} // ${b}`,
+      a:[String(Math.floor(a/b))], e:`// est la division entière : ${b} rentre ${Math.floor(a/b)} fois dans ${a}.`}; }},
+  {u:'u1', l:2, i:1, f:()=>{ const a=piocher([17,23,29,34,41]), b=piocher([3,4,5,6]);
+    return {q:`Que vaut cette expression ?`, code:`${a} % ${b}`,
+      a:[String(a%b)], e:`% est le reste : ${a} = ${b}×${Math.floor(a/b)} + ${a%b}.`}; }},
+  {u:'u1', l:2, i:4, f:()=>{ const n=R(100,999);
+    return {q:`Que vaut ${n} % 10 ?`, a:[String(n%10)],
+      e:`Le modulo 10 donne le chiffre des unités : ${n%10}.`}; }},
+  {u:'u1', l:2, i:5, f:()=>{ const n=R(100,999);
+    return {q:`Que vaut ${n} // 10 ?`, a:[String(Math.floor(n/10))],
+      e:`La division entière par 10 retire le dernier chiffre : ${Math.floor(n/10)}.`}; }}
+];
+
+/* On attache chaque générateur à sa question */
+(function(){
+  let poses = 0;
+  GENERATEURS.forEach(g=>{
+    const u = UNITS.find(x=>x.id===g.u);
+    if(!u || !u.lessons[g.l] || !u.lessons[g.l].qs[g.i]) return;
+    u.lessons[g.l].qs[g.i].gen = g.f;
+    poses++;
+  });
+  if(poses !== GENERATEURS.length) console.warn('générateurs non posés :', GENERATEURS.length - poses);
+})();
 
 /* ================== CONFORT DE LECTURE ================== */
 
@@ -2230,7 +2420,8 @@ function habillerCours(){
 function start(ui,li){
   window.onscroll = null;
   const ls = UNITS[ui].lessons[li];
-  L = {qs:ls.qs.slice(), i:0, hearts:3, ok:0, combo:0, key:ui+'-'+li,
+  const tirees = ls.qs.map(q => q.gen ? Object.assign({}, q, q.gen()) : q);
+  L = {qs:tirees, i:0, hearts:3, ok:0, combo:0, key:ui+'-'+li,
        title:ls.name, unit:UNITS[ui].name, ui:ui, li:li, review:false};
   render();
 }
@@ -2345,7 +2536,7 @@ function answerQcm(i,el){
 function answerIn(){
   const q = L.qs[L.i], inp = document.getElementById('inp');
   if(!inp || inp.disabled || !inp.value.trim()) return;
-  const good = q.a.some(x=>norm(x)===norm(inp.value));
+  const good = q.a.some(x=>memeReponse(inp.value, x));
   inp.disabled = true; inp.classList.add(good?'good':'bad');
   document.getElementById('valid').disabled = true;
   judge(good, q.a[0]);
@@ -2410,6 +2601,7 @@ function result(win){
     if(pct > (S.done[L.key]||0)) S.done[L.key] = pct;
     if(pct===100){ bonus = 20; S.xp += 20; }
   }
+  marquerJour(); sauver();
   const perfect = win && pct===100;
   const conf = perfect ? Array.from({length:16},(_,i)=>
     `<span class="conf" style="left:${6+i*6}%;background:${['#4f46e5','#16a34a','#f59e0b','#ec4899'][i%4]};animation-delay:${i*.09}s"></span>`).join('') : '';
@@ -2433,6 +2625,8 @@ function result(win){
   window.scrollTo(0,0);
 }
 
+/* Démarrage : on restaure la progression avant d'afficher quoi que ce soit. */
+charger();
 applyTheme();
 home();
 
