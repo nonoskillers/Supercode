@@ -612,6 +612,88 @@ pre{line-height:1.75;font-size:14px;padding:var(--s4) var(--s5);
 [data-theme="dark"]{--paper:#171a21}
 @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){--paper:#171a21} }
 .course{background:var(--paper)}
+
+/* ---------- bouton destructif ---------- */
+.btn.danger{color:var(--ko)}
+.btn.danger:hover{background:var(--ko-soft);color:var(--ko)}
+
+/* ---------- impression d'un cours ---------- */
+@media print{
+  .topbar, .readbar, .coursnav, .actions, .tabs, .hero, nav.nodes, details.save{display:none !important}
+  body{background:#fff;color:#000;font-size:11.5pt}
+  #app{max-width:100%;padding:0}
+  .course{border:none;box-shadow:none;background:#fff;padding:0}
+  .course h2{border-left:none;padding-left:0;margin-left:0;font-size:22pt}
+  .course h3{page-break-after:avoid;font-size:14pt}
+  .course p, .course li{font-size:11.5pt;line-height:1.5;max-width:100%}
+  pre{background:#f4f4f4 !important;color:#000 !important;border:1px solid #ccc;
+      page-break-inside:avoid;box-shadow:none}
+  pre .c-kw,pre .c-fn,pre .c-str,pre .c-num,pre .c-com{color:#000 !important}
+  .callout{border-left:3px solid #666;background:#f7f7f7 !important;page-break-inside:avoid}
+  table{page-break-inside:avoid}
+}
+
+/* carte de révision quand tout est à jour */
+.revcard.calme{background:var(--ok-soft);border-color:var(--ok-line)}
+
+/* ---------- programme de pré-rentrée ---------- */
+.plan{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--tc);
+  border-radius:var(--r2);padding:var(--s4) var(--s5);margin-bottom:var(--s4);box-shadow:var(--sh1)}
+.plan-head{display:flex;align-items:flex-start;gap:var(--s4)}
+.plan-head>div{flex:1;min-width:0}
+.plan .k{display:block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--tc);font-weight:750;margin-bottom:2px}
+.plan h2{margin:0;font-size:clamp(19px,3.6vw,23px);letter-spacing:-.02em;line-height:1.2}
+.plan .compte{background:var(--tc);color:#fff;font-size:13px;font-weight:750;
+  padding:5px 11px;border-radius:var(--r-full);white-space:nowrap;flex-shrink:0}
+[data-theme="dark"] .plan .compte{color:#0e1014}
+.plan-n{margin:var(--s2) 0 var(--s3);font-size:14px;color:var(--ink-2);line-height:1.55;max-width:64ch}
+.plan-barre{height:4px;background:var(--line);border-radius:var(--r-full);overflow:hidden;margin-bottom:var(--s3)}
+.plan-barre>i{display:block;height:100%;background:var(--tc);border-radius:var(--r-full);transition:width .6s}
+.plan-go .node.next{border-color:var(--tc);box-shadow:0 0 0 3px color-mix(in srgb, var(--tc) 15%, transparent)}
+.plan-tout{margin-top:var(--s3)}
+.plan-tout>summary{cursor:pointer;font-size:13px;color:var(--ink-2);list-style:none;
+  padding:var(--s2) 0;min-height:40px;display:flex;align-items:center;gap:7px}
+.plan-tout>summary::-webkit-details-marker{display:none}
+.plan-tout>summary::before{content:"+";color:var(--tc);font-weight:700}
+.plan-tout[open]>summary::before{content:"–"}
+.plan-tout ol{margin:0;padding-left:20px;columns:2;column-gap:var(--s6);font-size:13.5px}
+.plan-tout li{margin:4px 0;break-inside:avoid;color:var(--ink-2)}
+.plan-tout li.ok{color:var(--ok);text-decoration:line-through;text-decoration-thickness:1px}
+.plan-tout li.ici{color:var(--ink);font-weight:600}
+.plan-tout li b{font-weight:650}
+@media(max-width:560px){ .plan-tout ol{columns:1} .plan{padding:var(--s3) var(--s4)} }
+
+/* ---------- contrôles ---------- */
+.ctrl{background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--r2);
+  padding:var(--s3) var(--s4);margin:0 0 var(--s2);display:flex;align-items:center;
+  gap:var(--s4);flex-wrap:wrap}
+.ctrl-t{flex:1;min-width:180px}
+.ctrl .k{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:750}
+.ctrl h3{margin:1px 0 0;font-size:14.5px}
+.ctrl p{margin:2px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.ctrl.pret{border-style:solid;border-color:var(--p);background:var(--p-soft)}
+.ctrl.pret .k{color:var(--p)}
+.ctrl.ok{border-style:solid;border-color:var(--ok-line);background:var(--ok-soft)}
+.ctrl.ok .k{color:var(--ok)}
+.verrou{display:inline-flex;align-items:center;font-size:12.5px;color:var(--ink-3);
+  padding:9px 12px;border:1px dashed var(--line-strong);border-radius:var(--r1)}
+.examlab{font-size:14px;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+
+/* ---------- corrigé de fin de contrôle ---------- */
+.result.exam{text-align:left}
+.result.exam .big,.result.exam h2,.result.exam>p,.result.exam .scores,.result.exam .actions{text-align:center}
+.result.exam>p{margin-left:auto;margin-right:auto}
+.corrige{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);
+  padding:var(--s5);margin:0 0 var(--s5);text-align:left}
+.corrige h3{margin:0 0 var(--s4);font-size:17px}
+.cq{padding:var(--s4) 0;border-top:1px solid var(--line)}
+.cq:first-of-type{border-top:none;padding-top:0}
+.cq-q{margin:0;font-weight:650;font-size:15.5px;line-height:1.5}
+.cq-r{margin:var(--s2) 0 0;font-size:15px;color:var(--ok)}
+.cq-e{margin:4px 0 0;font-size:14.5px;color:var(--ink-2);line-height:1.6}
 </style>
 </head>
 <body>
@@ -1886,10 +1968,15 @@ const VOC = {
   Object.keys(VOC).forEach(k => VOC[k].forEach(t => pool.push(t)));
   const he = t => `<span dir="rtl" lang="he">${t[1]}</span> — <i>${t[2]}</i>`;
 
+  /* Les leurres sont choisis de longueur proche du terme correct :
+     impossible de reconnaitre la bonne reponse a sa taille. */
   function leurres(bon, champ){
+    const cible = bon[champ].length;
+    const tries = pool.filter(t => t[champ] !== bon[champ])
+                      .sort((x,y)=> Math.abs(x[champ].length-cible) - Math.abs(y[champ].length-cible));
+    const proches = tries.slice(0, 14).sort(()=>Math.random()-.5);
     const out = [], vus = new Set([bon[champ]]);
-    const melange = pool.slice().sort(()=>Math.random()-.5);
-    for(const t of melange){
+    for(const t of proches){
       if(vus.has(t[champ])) continue;
       vus.add(t[champ]); out.push(t);
       if(out.length === 3) break;
@@ -1901,9 +1988,9 @@ const VOC = {
     const termes = VOC[u.id];
     if(!termes || !termes.length) return;
     u.lessons.forEach((lec, li)=>{
-      for(let n=0; n<2; n++){
+      for(let n=0; n<1; n++){
         const t = termes[(li*2 + n) % termes.length];
-        if(n === 0){
+        if(li % 2 === 0){
           const faux = leurres(t, 1);
           const choix = [he(t), ...faux.map(he)];
           const ordre = choix.map((c,i)=>i).sort(()=>Math.random()-.5);
@@ -1945,8 +2032,59 @@ function filterLex(q){
   const v = document.getElementById('lexvide'); if(v) v.style.display = n ? 'none' : '';
 }
 
+
+/* ================== RÉPÉTITION ESPACÉE ==================
+   Système de boîtes (Leitner). Une question ratée revient le lendemain ;
+   chaque réussite l'éloigne davantage : 1, 2, 4, 8, 16 puis 32 jours.
+   C'est l'espacement croissant qui ancre en mémoire à long terme —
+   revoir dix fois le même jour ne sert presque à rien. */
+
+const INTERVALLES = [1, 2, 4, 8, 16, 32];
+
+/* Index de toutes les questions, pour les retrouver par identifiant.
+   Rempli plus bas, une fois les identifiants attribués. */
+const INDEX = {};
+function construireIndex(){
+  UNITS.forEach((u,ui) => u.lessons.forEach((l,li) => l.qs.forEach((q,qi) => {
+    if(q.qid) INDEX[q.qid] = {q, ui, li, qi, unite:u.name, matiere:u.sub};
+  })));
+}
+
+function dateISO(d){
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0')
+       + '-' + String(d.getDate()).padStart(2,'0');
+}
+function aujourdhui(){ return dateISO(new Date()); }
+function dans(jours){ const d = new Date(); d.setDate(d.getDate()+jours); return dateISO(d); }
+
+/* Place ou replace une question dans une boîte */
+function programmer(qid, boite){
+  if(!INDEX[qid]) return;
+  const b = Math.max(0, Math.min(INTERVALLES.length-1, boite));
+  S.rev = S.rev || {};
+  S.rev[qid] = {b, due: dans(INTERVALLES[b])};
+}
+
+/* Questions dont la date est arrivée */
+function aRevoir(){
+  const j = aujourdhui();
+  return Object.keys(S.rev || {}).filter(qid => INDEX[qid] && S.rev[qid].due <= j);
+}
+function revoirDemain(){
+  const d = dans(1);
+  return Object.keys(S.rev || {}).filter(qid => INDEX[qid] && S.rev[qid].due === d).length;
+}
+
+/* Reprise de l'ancienne liste d'erreurs */
+function migrerErreurs(){
+  if(!S.wrong || !S.wrong.length) return;
+  S.rev = S.rev || {};
+  S.wrong.forEach(q => { if(q && q.qid && !S.rev[q.qid]) S.rev[q.qid] = {b:0, due:aujourdhui()}; });
+  S.wrong = [];
+}
+
 /* ================== ÉTAT ================== */
-let S = {xp:0, done:{}, read:{}, wrong:[], theme:null, tab:'info', serie:0, dernier:null};
+let S = {xp:0, done:{}, read:{}, wrong:[], rev:{}, ctrl:{}, theme:null, tab:'info', serie:0, dernier:null};
 let stockageOK = true;
 
 /* --- Sauvegarde automatique dans le navigateur --- */
@@ -1961,7 +2099,18 @@ function charger(){
     const brut = localStorage.getItem(CLE);
     if(brut){
       const o = JSON.parse(brut);
-      if(typeof o.xp === 'number') S = Object.assign(S, o);
+      if(typeof o.xp === 'number'){
+        S = Object.assign(S, o);
+        /* Ancien format : les lecons etaient enregistrees par position. */
+        const converti = {};
+        Object.keys(S.done || {}).forEach(k=>{
+          const m = k.match(/^(\d+)-(\d+)$/);
+          if(m && UNITS[+m[1]]) converti[UNITS[+m[1]].id + '-' + m[2]] = S.done[k];
+          else converti[k] = S.done[k];
+        });
+        S.done = converti;
+        S.rev = S.rev || {}; S.ctrl = S.ctrl || {};
+      }
     }
     localStorage.setItem(CLE + '-test', '1');
     localStorage.removeItem(CLE + '-test');
@@ -1996,8 +2145,16 @@ function norm(s){
     .replace(/\s+/g,'')
     .replace(/[.,;!]$/,'');
 }
+const SYNONYMES = {
+  'vrai':'true', 'v':'true', 'oui':'true',
+  'faux':'false', 'f':'false', 'non':'false',
+  'entier':'int', 'aucune':'0', 'aucun':'0', 'zero':'0', 'zéro':'0',
+  'nulle':'0', 'nul':'0'
+};
 function memeReponse(saisie, attendu){
-  if(norm(saisie) === norm(attendu)) return true;
+  const a0 = norm(saisie), b0 = norm(attendu);
+  const a1 = SYNONYMES[a0] || a0, b1 = SYNONYMES[b0] || b0;
+  if(a1 === b1) return true;
   const a = parseFloat(String(saisie).replace(',','.').replace(/[^0-9.\-]/g,''));
   const b = parseFloat(String(attendu).replace(',','.').replace(/[^0-9.\-]/g,''));
   if(isFinite(a) && isFinite(b) && /^[\s\-0-9.,]+$/.test(String(saisie)))
@@ -2007,6 +2164,9 @@ function memeReponse(saisie, attendu){
 const app = () => document.getElementById('app');
 const lvl = () => Math.floor(S.xp/100)+1;
 const totalLessons = () => UNITS.reduce((n,u)=>n+u.lessons.length,0);
+/* Cle de progression : identifiant de l'unite, pour survivre a un ajout
+   ou un deplacement d'unite dans le parcours. */
+const cle = (ui,li) => UNITS[ui].id + '-' + li;
 const doneCount = () => Object.keys(S.done).length;
 
 /* ================== THÈME ================== */
@@ -2052,13 +2212,58 @@ function nextStep(sub){
   for(let ui=0; ui<UNITS.length; ui++){
     const u = UNITS[ui];
     if(sub && u.sub !== sub) continue;
+    if(typeof verrou === 'function' && verrou(u.id)) continue;
     if(!S.read[u.id]) return {type:'cours', ui, label:'Cours — '+u.name};
     for(let li=0; li<u.lessons.length; li++)
-      if(!S.done[ui+'-'+li]) return {type:'lecon', ui, li, label:u.name+' · '+u.lessons[li].name};
+      if(!S.done[cle(ui,li)]) return {type:'lecon', ui, li, label:u.name+' · '+u.lessons[li].name};
   }
   return null;
 }
 function setTab(k){ S.tab = k; sauver(); home(); }
+
+
+/* ================== PROGRAMME DE PRÉ-RENTRÉE ==================
+   Quatorze jours, environ une heure par jour, pour arriver le 1er septembre
+   avec les réflexes en place. La première semaine couvre l'informatique —
+   la seule matière réellement nouvelle. La seconde réveille les maths et la
+   physique, déjà connues, donc à un rythme plus soutenu. */
+
+const RENTREE = '2026-09-01';
+
+const PLAN = [
+ {j:1,  u:['u1'],       t:`Variables et types`,        n:`La brique de base : une variable est une boîte, et « = » n'est pas l'égalité.`},
+ {j:2,  u:['u2'],       t:`Les conditions`,            n:`Faire choisir le programme. Attention à l'indentation, elle fait partie du langage.`},
+ {j:3,  u:['u3'],       t:`Les boucles`,               n:`Le cœur du métier. Journée la plus importante de la semaine.`},
+ {j:4,  u:['u4'],       t:`Les fonctions`,             n:`Découper un programme. La distinction print / return est ce qui se retient le moins.`},
+ {j:5,  u:['u5'],       t:`Les listes`,                n:`En hébreu מערך : le chapitre le plus long du programme officiel.`},
+ {j:6,  u:['u6','u7'],  t:`Chaînes, tri et recherche`, n:`Deux unités plus légères. Le tri et la recherche binaire sont à connaître par cœur.`},
+ {j:7,  u:['u11'],      t:`Vocabulaire + révisions`,   n:`Journée de consolidation : le lexique hébreu, puis tout ce que la carte de révision propose.`},
+ {j:8,  u:['m1','m2'],  t:`Géométrie analytique et fonctions`, n:`Retour aux maths. Terrain connu, on avance vite.`},
+ {j:9,  u:['m3'],       t:`La dérivée`,                n:`45 h au programme officiel, soit un tiers de l'année. Une journée entière n'est pas de trop.`},
+ {j:10, u:['m4','m5'],  t:`Cercle et trigonométrie`,   n:`Les angles inscrits et SOH-CAH-TOA. Beaucoup de par-cœur utile.`},
+ {j:11, u:['p1'],       t:`Cinématique`,               n:`Début de la physique. Les trois formules du mouvement uniformément accéléré.`},
+ {j:12, u:['p2'],       t:`Les lois de Newton`,        n:`ΣF = m·a, et le piège de l'action-réaction.`},
+ {j:13, u:['p3'],       t:`Travail et énergie`,        n:`Dernière unité neuve. La conservation permet de résoudre sans passer par le temps.`},
+ {j:14, u:[],           t:`Révisions générales`,       n:`Aucune nouveauté : uniquement ce que la carte de révision propose. C'est la journée qui fixe tout.`}
+];
+
+function joursAvantRentree(){
+  const r = new Date(RENTREE + 'T00:00:00');
+  const d = new Date(); d.setHours(0,0,0,0);
+  return Math.round((r - d) / 86400000);
+}
+function jourPlan(){
+  if(!S.debutPlan){ S.debutPlan = aujourdhui(); sauver(); }
+  const d0 = new Date(S.debutPlan + 'T00:00:00');
+  const d  = new Date(); d.setHours(0,0,0,0);
+  return Math.min(PLAN.length, Math.max(1, Math.round((d - d0)/86400000) + 1));
+}
+function uniteFinie(uid){
+  const ui = UNITS.findIndex(u=>u.id===uid);
+  if(ui < 0) return false;
+  return UNITS[ui].lessons.every((_,li)=>S.done[cle(ui,li)]);
+}
+function jourFini(p){ return p.u.length > 0 && p.u.every(uniteFinie); }
 
 /* ================== ACCUEIL ================== */
 function home(){
@@ -2073,7 +2278,7 @@ function home(){
     const us = UNITS.map((u,i)=>[u,i]).filter(p=>p[0].sub===m.k);
     stats[m.k] = {
       tot: us.reduce((n,p)=>n+p[0].lessons.length,0),
-      fait: us.reduce((n,p)=>n+p[0].lessons.filter((_,li)=>S.done[p[1]+'-'+li]).length,0),
+      fait: us.reduce((n,p)=>n+p[0].lessons.filter((_,li)=>S.done[cle(p[1],li)]).length,0),
       units: us
     };
   });
@@ -2086,8 +2291,55 @@ function home(){
     <span class="gstat">${S.serie>1?'série '+S.serie+' j · ':''}niveau ${lvl()} · ${S.xp} XP</span>
     ${themeBtn()}
   </header>
-  <main>
-  <nav class="tabs" role="tablist" aria-label="Matières">`;
+  <main>`;
+
+  /* ---- programme de pré-rentrée ---- */
+  if(S.plan !== false){
+    const jour = jourPlan(), p = PLAN[jour-1], reste = joursAvantRentree();
+    const faits = PLAN.filter(jourFini).length;
+    const col = p.u.length ? ((MATIERES.find(m=>m.k===(UNITS.find(x=>x.id===p.u[0])||{}).sub)||{}).c || 'var(--p)') : 'var(--p)';
+    h += `<section class="plan" style="--tc:${col}">
+      <div class="plan-head">
+        <div>
+          <span class="k">Programme de rentrée · jour ${jour} sur ${PLAN.length}</span>
+          <h2>${p.t}</h2>
+        </div>
+        ${reste>0?`<span class="compte">J−${reste}</span>`:''}
+      </div>
+      <p class="plan-n">${p.n}</p>
+      <div class="plan-barre"><i style="width:${Math.round(faits/PLAN.length*100)}%"></i></div>
+      <div class="nodes plan-go">`;
+    if(p.u.length){
+      p.u.forEach(uid=>{
+        const ui = UNITS.findIndex(x=>x.id===uid);
+        if(ui < 0) return;
+        const u = UNITS[ui];
+        const vr = verrou(uid);
+        if(vr){
+          /* L'unité du jour est verrouillée : on envoie vers le contrôle qui l'ouvre. */
+          h += `<button class="node ${ctrlPret(vr)?'next':''}" onclick="${ctrlPret(vr)?`startControle('${vr.id}')`:`toast('Terminez d\\'abord les unités précédentes')`}">
+            ${ctrlPret(vr) ? vr.titre : u.name + ' — verrouillé'}</button>`;
+          return;
+        }
+        const fini = uniteFinie(uid);
+        const suivante = u.lessons.findIndex((_,li)=>!S.done[cle(ui,li)]);
+        const cible = !S.read[uid] ? `openCourse('${uid}',${ui})` : `start(${ui}, ${suivante < 0 ? 0 : suivante})`;
+        h += `<button class="node ${fini?'done':'next'}" onclick="${cible}">${u.name}${fini?' ✓':''}</button>`;
+      });
+    }
+    if(aRevoir().length)
+      h += `<button class="node" onclick="startReview()">Révisions du jour (${aRevoir().length})</button>`;
+    h += `</div>
+      <details class="plan-tout"><summary>Voir les 14 jours</summary><ol>` +
+      PLAN.map(x=>`<li class="${jourFini(x)?'ok':''} ${x.j===jour?'ici':''}">
+        <b>Jour ${x.j}</b> — ${x.t}</li>`).join('') +
+      `</ol><p class="hint">Le programme démarre au premier jour d'utilisation.
+        <button class="btn btn-ghost" style="padding:4px 8px;min-height:0" onclick="S.plan=false;sauver();home()">Masquer le programme</button></p>
+      </details>
+    </section>`;
+  }
+
+  h += `<nav class="tabs" role="tablist" aria-label="Matières">`;
   MATIERES.forEach(m=>{
     const s = stats[m.k];
     h += `<button class="tab ${m.k===S.tab?'on':''}" role="tab" aria-selected="${m.k===S.tab}"
@@ -2107,16 +2359,23 @@ function home(){
     </div>
   </section>`;
 
-  if(S.wrong.length){
+  const dues = aRevoir(), demain = revoirDemain();
+  const suivi = Object.keys(S.rev||{}).length;
+  if(dues.length){
     h += `<section class="card revcard">
-      <div class="txt"><h3>Réviser mes erreurs</h3>
-        <p>${S.wrong.length} question${S.wrong.length>1?'s':''} de côté, toutes matières</p></div>
+      <div class="txt"><h3>À revoir aujourd'hui</h3>
+        <p>${dues.length} question${dues.length>1?'s':''} programmée${dues.length>1?'s':''}${demain?` · ${demain} demain`:''}</p></div>
       <button class="btn btn-sec" onclick="startReview()">Réviser</button>
+    </section>`;
+  } else if(suivi){
+    h += `<section class="card revcard calme">
+      <div class="txt"><h3>Révisions à jour</h3>
+        <p>${suivi} question${suivi>1?'s':''} en mémorisation${demain?` · ${demain} à revoir demain`:''}</p></div>
     </section>`;
   }
 
   st.units.forEach(([u,ui])=>{
-    const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
+    const dn = u.lessons.filter((_,li)=>S.done[cle(ui,li)]).length;
     const up = Math.round(dn/u.lessons.length*100);
     const isNext = nx && nx.ui===ui;
     h += `<section class="unit" aria-labelledby="u${ui}t">
@@ -2129,14 +2388,36 @@ function home(){
       <div class="nodes">
         <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
           onclick="openCourse('${u.id}',${ui})">Cours</button>`;
+      const vr = verrou(u.id);
+      if(vr){
+        h += `<span class="verrou">Verrouillé — réussissez « ${vr.titre} »</span></div></section>`;
+        return;
+      }
     u.lessons.forEach((ls,li)=>{
-      const d = S.done[ui+'-'+li];
+      const d = S.done[cle(ui,li)];
       const nxt = isNext && nx.type==='lecon' && nx.li===li;
       h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
         aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
         ${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
     });
     h += `</div></section>`;
+
+    /* Contrôle placé juste après la dernière unité qu'il évalue */
+    CONTROLES.filter(c=>c.sub===mat.k && c.unites[c.unites.length-1]===u.id).forEach(c=>{
+      const e = ctrlEtat(c), pret = ctrlPret(c);
+      h += `<section class="ctrl ${e&&e.passe?'ok':''} ${pret&&!(e&&e.passe)?'pret':''}">
+        <div class="ctrl-t">
+          <span class="k">${e&&e.passe?`Contrôle réussi · ${e.score} %`:`Contrôle · ${c.n} questions`}</span>
+          <h3>${c.titre}</h3>
+          <p>${e&&e.passe?`Réussi le ${e.date.split('-').reverse().join('/')}. Vous pouvez le repasser pour améliorer le score.`
+             : pret ? c.intro
+             : `Terminez les unités ${c.unites.map(x=>(UNITS.find(y=>y.id===x)||{}).name).join(', ')} pour y accéder.`}</p>
+        </div>
+        <button class="btn ${pret?(e&&e.passe?'btn-sec':'btn-p'):'btn-sec'}"
+          ${pret?'':'disabled'} onclick="startControle('${c.id}')">
+          ${e&&e.passe?'Repasser':'Commencer'}</button>
+      </section>`;
+    });
   });
 
   h += `<details class="save">
@@ -2149,12 +2430,19 @@ function home(){
     <div class="row">
       <button class="btn btn-sec" onclick="copyCode()">Copier</button>
       <button class="btn btn-ghost" onclick="loadCode()">Charger un code…</button>
+      <button class="btn btn-ghost danger" onclick="reinit()">Tout effacer</button>
     </div>
   </details></main>`;
 
   app().setAttribute('data-view','home');
   app().innerHTML = h;
   window.scrollTo(0,0);
+}
+
+function reinit(){
+  if(!confirm('Effacer toute la progression : XP, niveaux, leçons terminées et série ?\n\nCette action est définitive.')) return;
+  S = {xp:0, done:{}, read:{}, wrong:[], rev:{}, ctrl:{}, theme:S.theme, tab:S.tab, serie:0, dernier:null};
+  sauver(); home(); toast('Progression effacée');
 }
 
 function copyCode(){
@@ -2174,12 +2462,20 @@ function loadCode(){
   }catch(e){ toast('Code non reconnu'); }
 }
 
+/* Le geste « retour » du telephone ramene au parcours au lieu de quitter. */
+function pousser(){ try { history.pushState({vue:'interne'}, ''); } catch(e){} }
+window.addEventListener('popstate', ()=>{
+  if(app().getAttribute('data-view') !== 'home'){
+    document.onkeydown = null; window.onscroll = null; L = null; home();
+  }
+});
+
 /* ================== VUE COURS ================== */
 let lastCourse = [null,0];
 function openCourse(id, ui){
   const tpl = document.getElementById('cours-'+id);
   if(!tpl) return;
-  S.read[id] = 1; lastCourse = [id,ui]; marquerJour(); sauver();
+  S.read[id] = 1; lastCourse = [id,ui]; marquerJour(); sauver(); pousser();
   const u = UNITS[ui];
   const prev = UNITS[ui-1], next = UNITS[ui+1];
 
@@ -2215,6 +2511,183 @@ function openCourse(id, ui){
 }
 
 
+
+
+/* ================== RENFORT MATHS ET PHYSIQUE ==================
+   Questions ajoutees pour rééquilibrer les trois matieres. */
+(function(){
+  const A = {
+   'p1.0':[
+    {t:'in',q:`Une voiture roule à 72 km/h. Combien cela fait-il en m/s ?`,a:['20'],
+     e:`On divise par 3,6 : 72/3,6 = 20 m/s. Réflexe à avoir, les énoncés mélangent les deux unités.`},
+    {t:'in',q:`Un objet ralentit de 20 m/s à 5 m/s en 3 s. Quelle est son accélération, en m/s² ?`,a:['-5'],
+     e:`a = (5 − 20)/3 = −5 m/s². Une accélération négative signifie un ralentissement, pas une marche arrière.`},
+    {t:'in',q:`Un mobile part à 5 m/s avec a = 2 m/s². Quelle distance parcourt-il en 4 s ? (en mètres)`,a:['36'],
+     e:`x = v₀t + ½at² = 5×4 + ½×2×16 = 20 + 16 = 36 m. Ici le terme v₀·t ne disparaît pas.`},
+    {t:'qcm',q:`Sur un graphique vitesse-temps, que représente l'aire sous la courbe ?`,
+     c:[`L'accélération du mobile à cet instant`,`La distance parcourue par le mobile`,`La vitesse moyenne sur l'intervalle`,`Le temps écoulé depuis le départ`],a:1,
+     e:`La pente donne l'accélération, l'aire donne le déplacement. Deux lectures différentes du même graphique.`}
+   ],
+   'p1.1':[
+    {t:'in',q:`Un objet tombe de 45 m. Combien de temps met-il à toucher le sol ? (en secondes, g = 10)`,a:['3'],
+     e:`45 = ½×10×t², donc t² = 9 et t = 3 s.`},
+    {t:'in',q:`Quelle vitesse a-t-il en touchant le sol ? (en m/s)`,a:['30'],
+     e:`v = g·t = 10 × 3 = 30 m/s.`},
+    {t:'in',q:`Un objet est lancé vers le haut à 30 m/s. Quelle hauteur maximale atteint-il ? (en mètres, g = 10)`,a:['45'],
+     e:`v² = 2gh donne h = 900/20 = 45 m. En haut la vitesse est nulle.`},
+    {t:'qcm',q:`Pourquoi une plume tombe-t-elle moins vite qu'une bille dans l'air ?`,
+     c:[`Parce que son poids est nettement plus faible`,`Parce que la résistance de l'air la freine beaucoup`,`Parce que la pesanteur agit moins sur les objets légers`,`Parce que sa vitesse initiale est différente`],a:1,
+     e:`Dans le vide, les deux tombent exactement pareil. C'est l'air, pas la masse, qui fait la différence.`}
+   ],
+   'p2.0':[
+    {t:'in',q:`Une masse de 6 kg subit deux forces de même sens, 10 N et 14 N. Quelle est son accélération, en m/s² ?`,a:['4'],
+     e:`Même sens, donc on additionne : 24 N. Puis a = 24/6 = 4 m/s².`},
+    {t:'in',q:`Quelle masse accélère de 2 m/s² sous une force de 18 N ? (en kg)`,a:['9'],
+     e:`m = F/a = 18/2 = 9 kg.`},
+    {t:'in',q:`Un objet de 5 kg est en chute libre. Quelle force s'exerce sur lui ? (en newtons, g = 10)`,a:['50'],
+     e:`Son poids : P = m·g = 50 N. C'est la seule force si l'on néglige l'air.`},
+    {t:'qcm',q:`Quelle est l'unité de la force dans le système international ?`,
+     c:[`Le joule, du nom du physicien anglais`,`Le newton, du nom du physicien anglais`,`Le watt, du nom de l'ingénieur écossais`,`Le pascal, du nom du savant français`],a:1,
+     e:`Le joule mesure une énergie, le watt une puissance, le pascal une pression.`}
+   ],
+   'p2.1':[
+    {t:'in',q:`Un livre pèse 12 N et repose sur une table horizontale. Que vaut la force normale, en newtons ?`,a:['12'],
+     e:`Le livre ne bouge pas : la table le pousse exactement autant que son poids l'attire.`},
+    {t:'in',q:`Coefficient de frottement 0,3 et masse 10 kg. Quelle est la force de frottement, en newtons ? (g = 10)`,a:['30'],
+     e:`N = m·g = 100 N, puis f = 0,3 × 100 = 30 N.`},
+    {t:'in',q:`Une caisse de 4 kg est tirée par 20 N, avec 8 N de frottement. Quelle est son accélération, en m/s² ?`,a:['3'],
+     e:`Résultante : 20 − 8 = 12 N. Puis a = 12/4 = 3 m/s².`},
+    {t:'qcm',q:`Un cheval tire une charrette. Si la charrette le tire autant en retour, pourquoi l'ensemble avance-t-il ?`,
+     c:[`Parce que le cheval est plus lourd que la charrette`,`Parce que ces forces agissent sur deux objets différents`,`Parce que la troisième loi ne s'applique pas au vivant`,`Parce que la force du cheval dure plus longtemps`],a:1,
+     e:`Ce qui fait avancer le cheval, c'est la force du sol sur ses sabots. On ne fait la somme que des forces appliquées au même objet.`}
+   ],
+   'p3.0':[
+    {t:'in',q:`Une force de 15 N s'exerce perpendiculairement au déplacement. Quel est son travail, en joules ?`,a:['0'],
+     e:`cos(90°) = 0, donc W = 0. La force ne participe pas au mouvement.`},
+    {t:'in',q:`Quelle masse possède une énergie cinétique de 100 J à 10 m/s ? (en kg)`,a:['2'],
+     e:`100 = ½·m·100, donc m = 2 kg.`},
+    {t:'in',q:`Un moteur fournit 600 J en 30 s. Quelle est sa puissance, en watts ?`,a:['20'],
+     e:`P = 600/30 = 20 W.`},
+    {t:'qcm',q:`Quelle est l'unité du travail et de l'énergie ?`,
+     c:[`Le newton, comme pour toutes les forces`,`Le joule, pour le travail comme pour l'énergie`,`Le watt, qui mesure aussi la puissance`,`Le pascal, utilisé pour les pressions`],a:1,
+     e:`Travail et énergie se mesurent dans la même unité — c'est justement parce qu'un travail transfère de l'énergie.`}
+   ],
+   'p3.1':[
+    {t:'in',q:`Un objet de 2 kg est à 20 m de haut. Quelle est son énergie potentielle, en joules ? (g = 10)`,a:['400'],
+     e:`Eₚ = m·g·h = 2 × 10 × 20 = 400 J.`},
+    {t:'in',q:`Quelle vitesse atteint un objet lâché de 20 m de haut ? (en m/s, g = 10)`,a:['20'],
+     e:`m·g·h = ½·m·v² : la masse se simplifie, v² = 2gh = 400, donc v = 20 m/s.`},
+    {t:'in',q:`Une voiture double sa vitesse. Sa distance de freinage est multipliée par combien ?`,a:['4'],
+     e:`L'énergie cinétique varie comme le carré de la vitesse : 2² = 4. C'est la raison physique des limitations de vitesse.`},
+    {t:'qcm',q:`Un pendule arrivé à son point le plus haut possède :`,
+     c:[`uniquement de l'énergie cinétique, car il bouge encore`,`uniquement de l'énergie potentielle, car il s'arrête`,`autant d'énergie cinétique que potentielle`,`aucune énergie, puisque sa vitesse est nulle`],a:1,
+     e:`En haut la vitesse s'annule un instant : toute l'énergie est stockée sous forme de hauteur, avant d'être reconvertie en vitesse.`}
+   ],
+
+   'm1.0':[
+    {t:'in',q:`Quelle est la distance entre A(0 ; 0) et B(9 ; 12) ?`,a:['15'],
+     e:`√(81 + 144) = √225 = 15. C'est le triangle 3-4-5 multiplié par 3.`},
+    {t:'in',q:`Quelle est la pente de la droite passant par A(2 ; 5) et B(6 ; 5) ?`,a:['0'],
+     e:`Les ordonnées sont identiques : la droite est horizontale, sa pente est nulle.`},
+    {t:'in',q:`Quelles sont les coordonnées du milieu de A(0 ; 0) et B(10 ; 6) ? Écrivez sous la forme x;y`,a:['5;3','(5;3)'],
+     e:`(0+10)/2 = 5 et (0+6)/2 = 3.`}
+   ],
+   'm1.1':[
+    {t:'in',q:`Pour quelle valeur de x la droite y = −2x + 8 coupe-t-elle l'axe des abscisses ?`,a:['4'],
+     e:`On pose y = 0 : −2x + 8 = 0, donc x = 4.`},
+    {t:'qcm',q:`Deux droites de pentes 3 et −1/3 sont :`,
+     c:[`parallèles, car leurs pentes sont opposées`,`perpendiculaires, car le produit des pentes vaut −1`,`confondues, car elles ont le même coefficient`,`sécantes sans former d'angle particulier`],a:1,
+     e:`3 × (−1/3) = −1 : c'est exactement le critère de perpendicularité.`},
+    {t:'in',q:`Quelle est l'ordonnée du point d'abscisse 3 sur la droite y = 4x − 5 ?`,a:['7'],
+     e:`y = 4×3 − 5 = 7.`}
+   ],
+   'm2.0':[
+    {t:'in',q:`Quelle valeur de x est interdite pour f(x) = 1/(x + 5) ?`,a:['-5'],
+     e:`Le dénominateur s'annule pour x = −5.`},
+    {t:'in',q:`Quelle est la racine positive de f(x) = x² − 9 ?`,a:['3'],
+     e:`x² = 9 donne x = 3 ou x = −3.`},
+    {t:'in',q:`Combien de solutions a l'équation x² − 4x + 4 = 0 ?`,a:['1','une'],
+     e:`Δ = 16 − 16 = 0 : une racine double, en x = 2. La parabole touche l'axe sans le traverser.`}
+   ],
+   'm2.1':[
+    {t:'in',q:`Quelle est l'abscisse du sommet de f(x) = −x² + 6x − 5 ?`,a:['3'],
+     e:`x = −b/2a = −6/(−2) = 3. Le signe de a ne change pas la formule.`},
+    {t:'in',q:`Quelle est l'ordonnée du sommet de f(x) = −x² + 6x − 5 ?`,a:['4'],
+     e:`f(3) = −9 + 18 − 5 = 4. Comme a < 0, c'est un maximum.`},
+    {t:'qcm',q:`La parabole y = −x² + 6x − 5 admet en son sommet :`,
+     c:[`un minimum, car le sommet est le point le plus bas`,`un maximum, car la parabole est ouverte vers le bas`,`ni maximum ni minimum, juste un changement`,`deux extremums, un de chaque côté de l'axe`],a:1,
+     e:`Le signe de a décide : positif, la courbe sourit et le sommet est un minimum ; négatif, c'est l'inverse.`}
+   ],
+   'm3.0':[
+    {t:'in',q:`Quelle est la dérivée de f(x) = 7x³ ? (écrivez par exemple 21x^2)`,a:['21x^2'],
+     e:`L'exposant descend : 3 × 7 = 21, et l'exposant devient 2.`},
+    {t:'in',q:`Quelle est la dérivée de f(x) = 2x⁴ ? (écrivez par exemple 8x^3)`,a:['8x^3'],
+     e:`4 × 2 = 8, exposant 4 − 1 = 3.`},
+    {t:'in',q:`Pour f(x) = x² + 3x, que vaut f′(1) ?`,a:['5'],
+     e:`f′(x) = 2x + 3, donc f′(1) = 5.`}
+   ],
+   'm3.1':[
+    {t:'in',q:`Pour f(x) = x³ − 3x, quelle est la valeur positive de x où f′(x) = 0 ?`,a:['1'],
+     e:`f′(x) = 3x² − 3, qui s'annule pour x = 1 et x = −1.`},
+    {t:'qcm',q:`Si f′(x) est positive sur tout un intervalle, la fonction y est :`,
+     c:[`décroissante, car la pente est orientée vers le bas`,`croissante, car la pente est orientée vers le haut`,`constante, car la dérivée ne change pas de signe`,`indéfinie, car il faut connaître f pour conclure`],a:1,
+     e:`Le signe de la dérivée donne directement le sens de variation. C'est ce qui permet de dresser un tableau de variations.`},
+    {t:'in',q:`Quelle est la pente de la tangente à f(x) = x² − 4x au point d'abscisse 3 ?`,a:['2'],
+     e:`f′(x) = 2x − 4, donc f′(3) = 2.`}
+   ],
+   'm4.0':[
+    {t:'in',q:`Un angle au centre mesure 140°. Combien mesure l'angle inscrit correspondant ? (en degrés)`,a:['70','70°'],
+     e:`L'angle inscrit vaut la moitié : 70°.`},
+    {t:'in',q:`Un angle inscrit mesure 25°. Combien mesure l'angle au centre correspondant ? (en degrés)`,a:['50','50°'],
+     e:`On double : 50°.`},
+    {t:'qcm',q:`Dans un cercle, deux angles inscrits qui interceptent le même arc :`,
+     c:[`sont supplémentaires, leur somme vaut 180°`,`sont égaux, quelle que soit leur position`,`sont complémentaires, leur somme vaut 90°`,`n'ont aucune relation particulière entre eux`],a:1,
+     e:`Ils valent tous la moitié du même angle au centre, donc ils sont égaux entre eux.`}
+   ],
+   'm4.1':[
+    {t:'in',q:`Deux triangles semblables ont un rapport de similitude de 4. Quel est le rapport de leurs aires ?`,a:['16'],
+     e:`L'aire fait intervenir deux dimensions : 4² = 16.`},
+    {t:'in',q:`Thalès : AD/DB = 1/2 et AE = 3. Combien vaut EC ?`,a:['6'],
+     e:`AD/DB = AE/EC, donc 1/2 = 3/EC, d'où EC = 6.`},
+    {t:'in',q:`Deux triangles semblables ont un rapport de 3. Le petit a une aire de 5. Quelle est l'aire du grand ?`,a:['45'],
+     e:`Le rapport des aires est 3² = 9, donc 5 × 9 = 45.`}
+   ],
+   'm5.0':[
+    {t:'in',q:`Dans un triangle rectangle, l'hypoténuse mesure 10 et un angle vaut 30°. Combien mesure le côté opposé à cet angle ?`,a:['5'],
+     e:`sin(30°) = 0,5, donc opposé = 0,5 × 10 = 5.`},
+    {t:'in',q:`Que vaut cos(0°) ?`,a:['1'],
+     e:`À 0°, le côté adjacent se confond avec l'hypoténuse : le rapport vaut 1.`},
+    {t:'in',q:`Dans un triangle rectangle, les côtés de l'angle droit mesurent 6 et 8. Combien mesure l'hypoténuse ?`,a:['10'],
+     e:`√(36 + 64) = √100 = 10.`}
+   ],
+   'm5.1':[
+    {t:'in',q:`Un triangle a deux angles de 50° et 60°. Combien mesure le troisième ? (en degrés)`,a:['70','70°'],
+     e:`180 − 50 − 60 = 70°. Toujours vérifier ce total avant d'appliquer une loi trigonométrique.`},
+    {t:'qcm',q:`Dans un triangle, si deux côtés ont la même longueur, alors :`,
+     c:[`les angles adjacents à ces côtés sont égaux`,`les angles opposés à ces côtés sont égaux`,`le troisième angle est nécessairement droit`,`le triangle est forcément équilatéral`],a:1,
+     e:`Conséquence de la loi des sinus : à côtés égaux correspondent des angles opposés égaux.`},
+    {t:'in',q:`Que vaut sin(90°) ?`,a:['1'],
+     e:`À 90°, le côté opposé se confond avec l'hypoténuse.`}
+   ]
+  };
+
+  let n = 0;
+  Object.keys(A).forEach(k=>{
+    const [uid, li] = k.split('.');
+    const u = UNITS.find(x=>x.id===uid);
+    if(!u || !u.lessons[+li]) return;
+    A[k].forEach(q=>{ u.lessons[+li].qs.push(q); n++; });
+  });
+})();
+
+/* Chaque question recoit un identifiant stable : deux questions au libelle
+   identique restent distinctes pour la pile de revision. */
+(function(){
+  UNITS.forEach(u => u.lessons.forEach((l,li) => l.qs.forEach((q,qi) => {
+    q.qid = u.id + '.' + li + '.' + qi;
+  })));
+  construireIndex();
+})();
 
 /* ================== QUESTIONS À VALEURS VARIABLES ==================
    Les exercices purement numériques sont régénérés à chaque tentative :
@@ -2351,6 +2824,60 @@ const GENERATEURS = [
   if(poses !== GENERATEURS.length) console.warn('générateurs non posés :', GENERATEURS.length - poses);
 })();
 
+
+/* ================== QCM RÉÉQUILIBRÉS ==================
+   Sur ces questions, la bonne réponse était nettement plus longue que les
+   leurres : on pouvait la deviner sans rien connaître. Les leurres ont été
+   réécrits pour être aussi développés — et plus plausibles. */
+const REEQ = {
+'u1.0.4':{c:["À multiplier deux nombres entre eux","À écrire une note ignorée par la machine","À créer une variable portant ce nom","À marquer la fin d'une instruction"],a:1},
+'u1.1.2':{c:["La fonction input() n'existe pas en Python","age contient du texte, on ne peut pas y ajouter 1","Il manque une paire de parenthèses autour de age","print() n'accepte pas de calcul entre parenthèses"],a:1},
+'u2.0.0':{c:["Aucune : les deux écritures sont équivalentes","= range une valeur, == compare deux valeurs","= compare deux valeurs, == range une valeur","== ne s'emploie qu'avec du texte, = avec des nombres"],a:1},
+'u2.1.1':{c:["Par convention d'écriture, sans effet réel","Sinon une note de 95 déclencherait « Passable »","Parce que Python réordonne les conditions tout seul","Pour que le programme s'exécute plus rapidement"],a:1},
+'u2.1.5':{c:["Le mot-clé then après la condition","Les deux-points en fin de ligne","Le point-virgule de fin d'instruction","Les accolades autour du bloc indenté"],a:1},
+'u3.0.2':{c:["Utiliser while à la place d'une boucle for","Oublier de modifier la variable de la condition","Mettre trop d'instructions à l'intérieur du bloc","Écrire une condition avec >= au lieu de >"],a:1},
+'u3.0.5':{c:["C'est une habitude d'écriture, sans effet réel","La condition doit pouvoir être testée dès le 1er tour","input() ne fonctionne pas à l'intérieur d'une boucle","Cela évite de demander deux fois la même valeur"],a:1},
+'u3.1.3':{c:["Toujours : for remplace while dans tous les cas","Quand le nombre de répétitions est connu d'avance","Quand la boucle doit afficher quelque chose à l'écran","Quand la boucle contient une condition à l'intérieur"],a:1},
+'u3.2.2':{c:["À effacer la ligne précédemment affichée","À empêcher le saut de ligne automatique","À terminer le programme après l'affichage","À insérer un espace entre deux valeurs"],a:1},
+'u4.0.3':{c:["Une variable globale accessible de partout","Un paramètre, rempli au moment de l'appel","Le nom donné à la fonction elle-même","Un texte fixe écrit dans la fonction"],a:1},
+'u4.0.5':{c:["Pour que le fichier compte davantage de lignes","Pour réutiliser du code et le tester séparément","Parce que Python refuse les programmes trop longs","Pour que le programme s'exécute plus rapidement"],a:1},
+'u4.1.0':{c:["Aucune : les deux produisent le même effet","print affiche, return renvoie une valeur réutilisable","return affiche à l'écran, print effectue le calcul","print est plus rapide, return plus lisible à écrire"],a:1},
+'u4.1.3':{c:["x n'a jamais reçu de valeur avant l'affichage","x est locale : elle n'existe que dans la fonction","Il manque une paire de parenthèses après calcul","La fonction doit être appelée deux fois de suite"],a:1},
+'u5.1.1':{c:["Toujours : parcourir par valeur est déconseillé","Pour modifier un élément ou connaître sa position","Quand la liste dépasse une dizaine d'éléments","Jamais : cette écriture n'est plus utilisée"],a:1},
+'u5.2.1':{c:["Avec 0, le programme serait sensiblement plus lent","Avec 0, une liste de négatifs donnerait un faux résultat","Parce que 0 n'est pas une valeur valide en Python","Aucune raison : les deux écritures se valent"],a:1},
+'u5.2.5':{c:["Dans un else placé à l'intérieur de la boucle","Après la boucle, une fois tous les éléments testés","Avant la boucle, pour initialiser le résultat","Peu importe : la position ne change pas le résultat"],a:1},
+'u6.0.5':{c:["Il faudrait utiliser des guillemets simples","Une chaîne est immuable : impossible à modifier","L'écriture correcte serait mot(0) = « A »","L'indice 0 n'existe pas dans une chaîne"],a:1},
+'u6.1.2':{c:["Le nombre de mots contenus dans la phrase","La liste [\"le\", \"chat\", \"dort\"]","La phrase entière convertie en majuscules","La première lettre de chacun des mots"],a:1},
+'u7.0.1':{c:["Pour rendre l'échange sensiblement plus rapide","Sans elle, la première valeur serait écrasée","Parce que Python interdit la double affectation","Pour rendre le code plus lisible à la relecture"],a:1},
+'u7.0.2':{c:["Comparer chaque paire voisine et les échanger","Chercher le plus petit du reste et le placer","Couper la liste en deux puis fusionner les moitiés","Mélanger la liste jusqu'à ce qu'elle soit triée"],a:1},
+'u7.0.5':{c:["Lancer l'algorithme une seconde fois pour vérifier","S'arrêter dès qu'un passage n'a produit aucun échange","Parcourir la liste à l'envers plutôt qu'à l'endroit","Découper la liste en morceaux plus courts"],a:1},
+'u10.0.4':{c:["Faire traverser le loup vers l'autre rive","Ramener la chèvre sur la rive de départ","Faire traverser le chou vers l'autre rive","Revenir seul, sans rien emmener avec soi"],a:1},
+'m3.1.0':{c:["La valeur prise par la fonction au point a","La pente de la tangente au point d'abscisse a","L'aire comprise sous la courbe jusqu'à a","La racine de la fonction la plus proche de a"],a:1},
+'m4.0.3':{c:["parallèle au rayon qui aboutit au contact","perpendiculaire au rayon au point de contact","de même longueur que le diamètre du cercle","une corde particulière passant par le centre"],a:1},
+'m4.1.3':{c:["la même aire, à défaut du même périmètre","la même forme, pas forcément la même taille","les mêmes longueurs de côtés deux à deux","le même périmètre, mais des aires différentes"],a:1},
+'m5.1.0':{c:["Quand on connaît les trois angles du triangle","Quand on connaît deux côtés et l'angle entre eux","Uniquement lorsque le triangle est rectangle","Quand on cherche l'aire à partir de la hauteur"],a:1},
+'p2.0.4':{c:["Il accélère régulièrement dans un sens donné","Il garde sa vitesse : immobile ou en ligne droite","Il ralentit puis finit par s'immobiliser","Il tombe verticalement vers le sol"],a:1},
+'p2.1.0':{c:["0 N : un mur fixe n'exerce aucune force","50 N exactement, dirigée en sens opposé","25 N : la moitié de la force appliquée","100 N : le double de la force appliquée"],a:1},
+'p2.1.1':{c:["Parce qu'elles n'ont pas la même intensité","Parce qu'elles s'appliquent à deux objets différents","Parce que le mur est fixe et ne peut pas bouger","Parce que le frottement du sol intervient aussi"],a:1},
+'p3.1.3':{c:["Elle augmente au fil du mouvement","Elle diminue, transformée en chaleur","Elle reste rigoureusement constante","Elle devient nulle dès le départ"],a:1},
+'p3.1.5':{c:["le même travail et la même puissance","le même travail, mais des puissances différentes","des travaux différents et des puissances égales","aucun travail, puisque la vitesse est constante"],a:1},
+'u11.0.1':{c:["La sortie — ce que le programme affiche","L'entrée — ce que l'utilisateur fournit","Une erreur signalée par l'interpréteur","Un tableau contenant plusieurs valeurs"],a:1},
+'u11.0.2':{c:["L'entrée — ce que l'utilisateur fournit","La sortie — ce que le programme affiche","Une variable qui garde une valeur","Une boucle qui répète des instructions"],a:1},
+'u11.0.4':{c:["La comparaison entre deux valeurs","L'affectation : ranger une valeur dans une variable","Une erreur détectée à l'exécution","Une fonction définie par le programmeur"],a:1},
+'u11.1.1':{c:["Une boucle qui répète des instructions","Une condition qui oriente le programme","Un tableau contenant plusieurs valeurs","Une note obtenue à un contrôle"],a:1},
+'u11.1.4':{c:["Une table de multiplication à réciter","Une table de suivi : dérouler un algorithme pas à pas","Un tableau de nombres à deux dimensions","Un bulletin de notes remis aux parents"],a:1},
+'u11.2.2':{c:["La correction d'un algorithme, son exactitude","L'efficacité d'un algorithme, son coût en opérations","La difficulté d'un exercice pour l'élève","La longueur du code une fois écrit"],a:1},
+'u11.2.3':{c:["Un examen de fin d'année au lycée","Une filière, la spécialité choisie au lycée","Une note portée sur le bulletin","Un projet mené sur toute l'année"],a:1},
+'u11.2.5':{c:["Un examen écrit passé en fin d'année","Un projet de fin d'études, évalué en externe","Un travail pratique fait en laboratoire","Un contrôle continu réparti sur deux ans"],a:1}
+};
+(function(){
+  let n = 0;
+  UNITS.forEach(u => u.lessons.forEach((l,li) => l.qs.forEach((q,qi) => {
+    const r = REEQ[u.id + '.' + li + '.' + qi];
+    if(r){ q.c = r.c; q.a = r.a; delete q._order; n++; }
+  })));
+})();
+
 /* ================== CONFORT DE LECTURE ================== */
 
 /* Coloration syntaxique legere, appliquee uniquement aux blocs de vrai code
@@ -2416,20 +2943,95 @@ function habillerCours(){
   lead.insertAdjacentElement('afterend', box);
 }
 
+
+/* ================== CONTRÔLES ==================
+   Un contrôle est un mini-examen : questions tirées au sort dans les unités
+   déjà vues, mélangées, SANS correction au fil de l'eau — on répond à tout,
+   puis on découvre son score et ses erreurs. Tant qu'il n'est pas réussi,
+   les unités plus difficiles restent verrouillées. */
+
+const CONTROLES = [
+ {id:'c1', sub:'info', titre:`Contrôle — les bases`,
+  unites:['u1','u2','u3'], n:10, seuil:75, ouvre:['u4','u5','u6','u7'],
+  intro:`Variables, conditions et boucles. Réussite à 75 % pour débloquer les fonctions et les listes.`},
+ {id:'c2', sub:'info', titre:`Contrôle — programmation`,
+  unites:['u4','u5','u6','u7'], n:12, seuil:75, ouvre:[],
+  intro:`Fonctions, listes, chaînes, tri et recherche. Le bilan de la partie informatique.`},
+ {id:'cm1', sub:'math', titre:`Contrôle — droites et fonctions`,
+  unites:['m1','m2'], n:10, seuil:75, ouvre:['m3'],
+  intro:`Géométrie analytique et fonctions. Réussite à 75 % pour aborder la dérivée.`},
+ {id:'cm2', sub:'math', titre:`Contrôle — analyse et géométrie`,
+  unites:['m3','m4','m5'], n:12, seuil:75, ouvre:[],
+  intro:`Dérivée, cercle et trigonométrie. Le bilan des mathématiques.`},
+ {id:'cp1', sub:'phys', titre:`Contrôle — mouvement et forces`,
+  unites:['p1','p2'], n:10, seuil:75, ouvre:['p3'],
+  intro:`Cinématique et lois de Newton. Réussite à 75 % pour passer à l'énergie.`},
+ {id:'cp2', sub:'phys', titre:`Contrôle — mécanique complète`,
+  unites:['p1','p2','p3'], n:12, seuil:75, ouvre:[],
+  intro:`Toute la mécanique de l'année, en questions mélangées.`}
+];
+
+function ctrlEtat(c){ return (S.ctrl || {})[c.id] || null; }
+function ctrlPret(c){
+  return c.unites.every(uid=>{
+    const ui = UNITS.findIndex(u=>u.id===uid);
+    return ui >= 0 && UNITS[ui].lessons.every((_,li)=>S.done[cle(ui,li)]);
+  });
+}
+/* Unité verrouillée tant que le contrôle qui l'ouvre n'est pas réussi */
+function verrou(uid){
+  const c = CONTROLES.find(x=>x.ouvre.includes(uid));
+  if(!c) return null;
+  const e = ctrlEtat(c);
+  return (e && e.passe) ? null : c;
+}
+
+/* Tirage des questions : réparties entre les unités, vocabulaire exclu */
+function tirerControle(c){
+  const paquets = c.unites.map(uid=>{
+    const u = UNITS.find(x=>x.id===uid);
+    if(!u) return [];
+    return u.lessons.flatMap(l=>l.qs.filter(q=>!q.voc));
+  }).filter(p=>p.length);
+  const parUnite = Math.ceil(c.n / paquets.length);
+  let sel = [];
+  paquets.forEach(p=>{
+    sel = sel.concat(p.slice().sort(()=>Math.random()-.5).slice(0, parUnite));
+  });
+  sel = sel.sort(()=>Math.random()-.5).slice(0, c.n);
+  return sel.map(q => q.gen ? Object.assign({}, q, q.gen()) : q);
+}
+
+function startControle(cid){
+  const c = CONTROLES.find(x=>x.id===cid);
+  if(!c) return;
+  window.onscroll = null; pousser();
+  L = {qs:tirerControle(c), i:0, hearts:3, ok:0, combo:0, key:null,
+       title:c.titre, unit:'Contrôle', exam:true, ctrl:c, reponses:[], choixEnCours:null};
+  render();
+}
+
 /* ================== LEÇON ================== */
 function start(ui,li){
   window.onscroll = null;
   const ls = UNITS[ui].lessons[li];
   const tirees = ls.qs.map(q => q.gen ? Object.assign({}, q, q.gen()) : q);
-  L = {qs:tirees, i:0, hearts:3, ok:0, combo:0, key:ui+'-'+li,
+  pousser();
+  L = {qs:tirees, i:0, hearts:3, ok:0, combo:0, key:cle(ui,li),
        title:ls.name, unit:UNITS[ui].name, ui:ui, li:li, review:false};
   render();
 }
 function startReview(){
+  const dues = aRevoir().slice(0, 15);
+  if(!dues.length){ toast('Rien à revoir pour le moment'); return; }
   window.onscroll = null;
-  L = {qs:S.wrong.slice(0,10), i:0, hearts:3, ok:0, combo:0, key:null,
-       title:'Révision', unit:'Mes erreurs', review:true};
-  S.wrong = S.wrong.slice(10);
+  pousser();
+  const tirees = dues.map(qid=>{
+    const src = INDEX[qid].q;
+    return src.gen ? Object.assign({}, src, src.gen()) : src;
+  });
+  L = {qs:tirees, i:0, hearts:5, ok:0, combo:0, key:null,
+       title:'Révision', unit:'Toutes matières', review:true};
   render();
 }
 
@@ -2441,20 +3043,23 @@ function hearts(){
 
 function render(){
   const q = L.qs[L.i];
+  if(!q){ L = null; home(); return; }
   const pct = (L.i / L.qs.length) * 100;
   const labels = {qcm:'Choix multiple', in:'Réponse à saisir', ord:'Remise en ordre'};
 
   let h = `<header class="topbar">
-    <button class="iconbtn" onclick="quit()" aria-label="Quitter la leçon">✕</button>
+    <button class="iconbtn" onclick="quit()" aria-label="Quitter">✕</button>
     <div class="pbar" role="progressbar" aria-valuenow="${Math.round(pct)}"
-      aria-valuemin="0" aria-valuemax="100" aria-label="Progression dans la leçon">
+      aria-valuemin="0" aria-valuemax="100" aria-label="Progression">
       <i style="width:${pct}%"></i></div>
-    <div class="hearts" id="hz">${hearts()}</div>
-    <span class="sr" id="hlab">${L.hearts} vie${L.hearts>1?'s':''} restante${L.hearts>1?'s':''}</span>
+    ${L.exam
+      ? `<span class="examlab">${L.i+1} / ${L.qs.length}</span>`
+      : `<div class="hearts" id="hz">${hearts()}</div>
+         <span class="sr" id="hlab">${L.hearts} vie${L.hearts>1?'s':''} restante${L.hearts>1?'s':''}</span>`}
   </header>
   <main>
   <section class="qcard">
-    <p class="qtype">${q.voc?'Vocabulaire hébreu':labels[q.t]} · question ${L.i+1} sur ${L.qs.length}
+    <p class="qtype">${L.exam?'Contrôle · sans correction immédiate':(q.voc?'Vocabulaire hébreu':labels[q.t])} · question ${L.i+1} sur ${L.qs.length}
       ${L.combo>=3?'<span class="combo">série ×'+L.combo+'</span>':''}</p>
     <h2 class="qtext">${q.q}</h2>`;
   if(q.code) h += `<pre><code>${esc(q.code)}</code></pre>`;
@@ -2464,18 +3069,21 @@ function render(){
     if(!q._order) q._order = q.c.map((_,i)=>i).sort(()=>Math.random()-.5);
     h += `<div class="choices" id="ch">`;
     q._order.forEach((oi,pos)=>{
-      h += `<button class="choice" onclick="answerQcm(${oi},this)">
+      h += `<button class="choice" onclick="${L.exam?`choisir(${oi},this)`:`answerQcm(${oi},this)`}">
         <span class="k" aria-hidden="true">${'ABCD'[pos]}</span><span>${q.c[oi]}</span></button>`;
     });
-    h += `</div><p class="hint">Astuce clavier : touches 1 à ${q.c.length} pour répondre.</p>`;
+    h += `</div>`;
+    h += L.exam
+      ? `<div style="margin-top:var(--s4)"><button class="btn btn-p" id="valid" onclick="validerExam()" disabled>${L.i+1===L.qs.length?'Terminer le contrôle':'Question suivante'}</button></div>`
+      : `<p class="hint">Astuce clavier : touches 1 à ${q.c.length} pour répondre.</p>`;
   } else if(q.t==='in'){
     h += `<div class="field">
       <label for="inp">Votre réponse</label>
       <input class="answer" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false"
         inputmode="text" placeholder="Tapez ici…" onkeydown="if(event.key==='Enter')answerIn()">
-      <p class="hint">Validez avec la touche Entrée.</p>
+      <p class="hint">${L.exam?'La correction sera donnée à la fin du contrôle.':'Validez avec la touche Entrée.'}</p>
     </div>
-    <div style="margin-top:var(--s4)"><button class="btn btn-p" id="valid" onclick="answerIn()">Valider</button></div>`;
+    <div style="margin-top:var(--s4)"><button class="btn btn-p" id="valid" onclick="${L.exam?'validerExam()':'answerIn()'}">${L.exam?(L.i+1===L.qs.length?'Terminer le contrôle':'Question suivante'):'Valider'}</button></div>`;
   } else if(q.t==='ord'){
     if(!q._shuf) q._shuf = q.items.map((v,i)=>i).sort(()=>Math.random()-.5);
     L.built = [];
@@ -2484,7 +3092,7 @@ function render(){
       <div class="chips" id="chips">`;
     q._shuf.forEach(i=>{ h += `<button class="chip" data-i="${i}" onclick="pick(${i},this)">${esc(q.items[i])}</button>`; });
     h += `</div><div style="margin-top:var(--s4)">
-      <button class="btn btn-p" id="valid" onclick="answerOrd()" disabled>Valider</button></div>`;
+      <button class="btn btn-p" id="valid" onclick="${L.exam?'validerExam()':'answerOrd()'}" disabled>${L.exam?'Question suivante':'Valider'}</button></div>`;
   }
   h += `</section></main><div id="fbz" aria-live="polite"></div>`;
 
@@ -2499,6 +3107,35 @@ function render(){
       if(b && !b.disabled) b.click();
     }
   };
+}
+
+/* --- mode contrôle : on enregistre sans rien révéler --- */
+function choisir(i, el){
+  L.choixEnCours = i;
+  document.querySelectorAll('#ch .choice').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('valid').disabled = false;
+}
+function validerExam(){
+  const q = L.qs[L.i];
+  let bon = false;
+  if(q.t === 'qcm'){
+    if(L.choixEnCours === null) return;
+    bon = L.choixEnCours === q.a;
+  } else if(q.t === 'in'){
+    const inp = document.getElementById('inp');
+    if(!inp || !inp.value.trim()) return;
+    bon = q.a.some(x=>memeReponse(inp.value, x));
+    q._saisie = inp.value;
+  } else {
+    bon = L.built.every((v,i)=>v===i);
+  }
+  L.reponses.push({q, bon});
+  if(bon){ L.ok++; } else { programmer(q.qid, 0); }
+  L.choixEnCours = null;
+  L.i++;
+  if(L.i >= L.qs.length) return bilanControle();
+  render(); window.scrollTo(0,0);
 }
 
 function pick(i,el){
@@ -2556,9 +3193,12 @@ function judge(good, sol){
     L.ok++; L.combo++;
     gain = 10 + (L.combo>=5 ? 5 : 0);
     S.xp += gain;
+    /* Question réussie : on l'éloigne d'un cran dans le temps. */
+    const fiche = S.rev && S.rev[q.qid];
+    if(fiche && fiche.due <= aujourdhui()) programmer(q.qid, fiche.b + 1);
   } else {
     L.combo = 0; L.hearts--;
-    if(!S.wrong.some(w=>w.q===q.q)) S.wrong.push(q);
+    programmer(q.qid, 0);   /* ratée : retour à la première boîte, revue demain */
     const hz = document.getElementById('hz');
     if(hz){
       const h = hz.querySelectorAll('.h')[L.hearts];
@@ -2590,6 +3230,65 @@ function next(){
   if(L.i >= L.qs.length) return result(true);
   render(); window.scrollTo(0,0);
 }
+function bilanControle(){
+  const c = L.ctrl;
+  const pct = Math.round(L.ok / L.qs.length * 100);
+  const reussi = pct >= c.seuil;
+  const rates = L.reponses.filter(r=>!r.bon);
+
+  if(reussi){
+    S.ctrl = S.ctrl || {};
+    const ancien = S.ctrl[c.id];
+    S.ctrl[c.id] = {passe:true, score:Math.max(pct, (ancien&&ancien.score)||0), date:aujourdhui()};
+    if(!ancien || !ancien.passe) S.xp += 50;
+  } else {
+    S.ctrl = S.ctrl || {};
+    S.ctrl[c.id] = Object.assign({passe:false}, S.ctrl[c.id], {score:pct, date:aujourdhui()});
+  }
+  marquerJour(); sauver();
+
+  const conf = reussi ? Array.from({length:14},(_,i)=>
+    `<span class="conf" style="left:${8+i*6.5}%;background:${['#4f46e5','#16a34a','#f59e0b','#ec4899'][i%4]};animation-delay:${i*.09}s"></span>`).join('') : '';
+
+  let h = `<main class="result exam">${conf}
+    <div class="big" aria-hidden="true">${reussi?'🏆':'📋'}</div>
+    <h2>${reussi?'Contrôle réussi':'Contrôle non validé'}</h2>
+    <p>${reussi
+      ? (c.ouvre.length ? `Les unités suivantes sont débloquées. Bonus de 50 XP.` : `Bilan validé. Bonus de 50 XP.`)
+      : `Il fallait ${c.seuil} %. Les questions ratées sont programmées en révision : refaites-les, puis retentez le contrôle — les questions seront différentes.`}</p>
+    <div class="scores">
+      <div class="score"><b>${pct}%</b><small>score</small></div>
+      <div class="score"><b>${L.ok}/${L.qs.length}</b><small>bonnes réponses</small></div>
+      <div class="score"><b>${c.seuil}%</b><small>seuil</small></div>
+    </div>`;
+
+  if(rates.length){
+    h += `<section class="corrige"><h3>Ce qui n'est pas passé</h3>`;
+    rates.forEach(r=>{
+      const q = r.q;
+      const bonne = q.t==='qcm' ? q.c[q.a] : (q.t==='ord' ? q.items.join('  →  ') : q.a[0]);
+      h += `<div class="cq">
+        <p class="cq-q">${q.q}</p>
+        ${q.code?`<pre><code>${esc(q.code)}</code></pre>`:''}
+        ${q.seq?`<div class="seqbox">${q.seq}</div>`:''}
+        <p class="cq-r"><b>Réponse :</b> ${q.t==='qcm'?bonne:esc(bonne)}</p>
+        <p class="cq-e">${q.e}</p>
+      </div>`;
+    });
+    h += `</section>`;
+  }
+
+  h += `<div class="actions">
+      <button class="btn btn-p" onclick="home()">Retour au parcours</button>
+      ${reussi?'':`<button class="btn btn-sec" onclick="startControle('${c.id}')">Refaire le contrôle</button>`}
+    </div></main>`;
+
+  app().setAttribute('data-view','result');
+  app().innerHTML = h;
+  habillerCode(app());
+  window.scrollTo(0,0);
+}
+
 function quit(){ document.onkeydown=null; window.onscroll=null;
   if(L && UNITS[L.ui]) S.tab = UNITS[L.ui].sub;
   L=null; home(); }
@@ -2606,13 +3305,16 @@ function result(win){
   const conf = perfect ? Array.from({length:16},(_,i)=>
     `<span class="conf" style="left:${6+i*6}%;background:${['#4f46e5','#16a34a','#f59e0b','#ec4899'][i%4]};animation-delay:${i*.09}s"></span>`).join('') : '';
 
+  const demainApres = revoirDemain();
   app().setAttribute('data-view','result');
   app().innerHTML = `<main class="result">${conf}
     <div class="big" aria-hidden="true">${perfect?'🏆':win?'🎉':'💪'}</div>
     <h2>${perfect?'Sans faute':win?'Leçon terminée':'Plus de vies'}</h2>
-    <p>${perfect ? 'Aucune erreur sur cette série. Bonus de 20 XP.'
-        : win ? 'Les questions ratées ont été mises de côté dans « Réviser mes erreurs ».'
-        : 'Reprenez la leçon — les questions ratées reviendront en révision.'}</p>
+    <p>${L.review
+        ? `Révision terminée. ${demainApres ? demainApres + ' question' + (demainApres>1?'s':'') + ' à revoir demain.' : 'Rien de prévu demain.'}`
+        : perfect ? 'Aucune erreur sur cette série. Bonus de 20 XP.'
+        : win ? 'Les questions ratées reviendront demain, puis à intervalles croissants.'
+        : 'Reprenez la leçon — les questions ratées reviendront demain.'}</p>
     <div class="scores">
       <div class="score"><b>${L.ok}/${L.qs.length}</b><small>bonnes réponses</small></div>
       <div class="score"><b>${pct}%</b><small>réussite</small></div>
@@ -2627,6 +3329,7 @@ function result(win){
 
 /* Démarrage : on restaure la progression avant d'afficher quoi que ce soit. */
 charger();
+migrerErreurs();
 applyTheme();
 home();
 
