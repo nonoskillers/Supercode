@@ -392,6 +392,69 @@ table.lex td{padding:9px 12px}
   text-transform:uppercase;padding:10px 12px}
 .lexhe{font-size:19px;font-weight:600;white-space:nowrap;width:34%}
 .lexph{color:var(--ink-2);font-style:italic;width:30%}
+
+/* ============================================================
+   PASSE DE NETTOYAGE — en-tête sobre, moins d'ornements
+   ============================================================ */
+.brand{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.gstat{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* en-tête : aplat discret au lieu du dégradé */
+.hero{background:var(--surface);border:1px solid var(--line);color:var(--ink);
+  border-radius:var(--r3);padding:var(--s4) var(--s5);margin-bottom:var(--s3);
+  display:flex;align-items:center;gap:var(--s4);box-shadow:var(--sh1);flex-wrap:wrap}
+[data-theme="dark"] .hero{background:var(--surface)}
+.hero h1{margin:0;font-size:var(--fs-lg);letter-spacing:-.01em;line-height:1.25}
+.hero p{margin:2px 0 0;font-size:var(--fs-sm);color:var(--ink-2)}
+.hero-txt{flex:1;min-width:150px}
+.ring{width:68px;height:68px;flex-shrink:0;position:relative}
+.ring .lab{position:absolute;inset:0;display:grid;place-items:center}
+.ring .lab b{font-size:20px;color:var(--ink)}
+
+/* barre de progression globale, fine */
+.gbar{height:5px;background:var(--line);border-radius:var(--r-full);overflow:hidden;
+  margin:0 var(--s1) var(--s5)}
+.gbar>i{display:block;height:100%;background:var(--ok);border-radius:var(--r-full);
+  transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+/* pastille d'unité : le numéro, pas un emoji */
+.badge{color:#1b1b20;font-weight:750;font-size:16px;font-variant-numeric:tabular-nums}
+.ut{flex:1;min-width:0}
+
+/* carte de révision, compacte */
+.revcard{display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap;
+  background:var(--gold-soft);border-color:var(--gold-line)}
+.revcard .txt{flex:1;min-width:150px}
+.revcard h3{margin:0;font-size:var(--fs-md)}
+.revcard p{margin:1px 0 0;font-size:var(--fs-sm);color:var(--ink-2)}
+
+/* leçons : plus de pastilles grises */
+.node{padding:10px 15px;gap:7px}
+.node .pc{font-size:12px;opacity:.75}
+
+/* sauvegarde repliée */
+details.save{background:transparent;border:none;box-shadow:none;padding:0;margin-top:var(--s5)}
+details.save>summary{cursor:pointer;font-size:var(--fs-sm);color:var(--ink-2);
+  padding:var(--s3) 0;list-style:none;display:flex;align-items:center;gap:8px;min-height:44px}
+details.save>summary::-webkit-details-marker{display:none}
+details.save>summary::before{content:"+";font-weight:700;font-size:15px;color:var(--p)}
+details.save[open]>summary::before{content:"–"}
+details.save>summary:hover{color:var(--ink)}
+details.save p{margin:0 0 var(--s3);font-size:var(--fs-sm);color:var(--ink-2);max-width:60ch}
+
+/* correction : marque typographique plutôt qu'emoji */
+.fb-head .em{font-size:17px;font-weight:800;line-height:1}
+.fb.ok .em{color:var(--ok)} .fb.ko .em{color:var(--ko)}
+
+/* ---------- sections par matière ---------- */
+.secttl{display:flex;align-items:baseline;gap:var(--s3);margin:var(--s6) 0 var(--s3);
+  font-size:var(--fs-md);letter-spacing:-.01em;padding-bottom:var(--s2);
+  border-bottom:1px solid var(--line)}
+.secttl:first-of-type{margin-top:var(--s5)}
+.secttl>span{flex:1}
+.secttl b{font-weight:600;color:var(--ink-2);font-size:14px;margin-left:4px}
+.secttl em{font-style:normal;font-size:13px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;font-weight:600}
 </style>
 </head>
 <body>
@@ -832,6 +895,218 @@ tant que X > 0 :
 <p>Conséquence pratique : sur une question ouverte, toujours écrire ses tentatives, ses tableaux, ses cas particuliers. C'est du raisonnement visible, et c'est ce qui est noté.</p>
 </template>
 
+
+<template id="cours-m1">
+<h2>Géométrie analytique</h2>
+<p class="lead">Le plan repéré par des coordonnées · <span dir="rtl" lang="he">הנדסה אנליטית</span> · 10 heures au programme officiel</p>
+<h3>1. Les deux formules de base</h3>
+<p>Entre deux points A(x₁ ; y₁) et B(x₂ ; y₂) :</p>
+<pre><code>Distance :  AB = √((x₂ − x₁)² + (y₂ − y₁)²)
+Milieu :    M = ( (x₁+x₂)/2 ; (y₁+y₂)/2 )</code></pre>
+<div class="callout key"><span class="ci">🔑</span><div>La formule de la distance <b>est</b> le théorème de Pythagore : on construit le triangle rectangle dont AB est l'hypoténuse.</div></div>
+<h3>2. La pente</h3>
+<pre><code>m = (y₂ − y₁) / (x₂ − x₁)</code></pre>
+<p>Une pente positive monte, une pente négative descend, une pente nulle est horizontale. Une droite verticale n'a <b>pas</b> de pente : la division serait par zéro.</p>
+<h3>3. L'équation d'une droite</h3>
+<pre><code>y = mx + b</code></pre>
+<p>m est la pente, b l'ordonnée à l'origine (là où la droite coupe l'axe des y). Connaissant un point et la pente : y − y₁ = m(x − x₁).</p>
+<h3>4. Parallèles et perpendiculaires</h3>
+<table>
+<tr><th>Position</th><th>Condition</th></tr>
+<tr><td>Droites parallèles</td><td>m₁ = m₂</td></tr>
+<tr><td>Droites perpendiculaires</td><td>m₁ × m₂ = −1</td></tr>
+</table>
+<div class="callout warn"><span class="ci">⚠️</span><div>La perpendiculaire ne s'obtient pas en changeant le signe, mais en prenant <b>l'inverse changé de signe</b>. Perpendiculaire à une pente de 2 : −1/2, et non −2.</div></div>
+<div class="heb"><b>Vocabulaire :</b> géométrie analytique = <span dir="rtl" lang="he">הנדסה אנליטית</span> <i>handassa analitit</i> · pente = <span dir="rtl" lang="he">שיפוע</span> <i>chipoua</i> · droite = <span dir="rtl" lang="he">ישר</span> <i>yachar</i> · point = <span dir="rtl" lang="he">נקודה</span> <i>nekouda</i></div>
+</template>
+
+<template id="cours-m2">
+<h2>Les fonctions</h2>
+<p class="lead">Lire et décrire une fonction · <span dir="rtl" lang="he">מבוא לאנליזה של פונקציות</span> · 15 heures</p>
+<h3>1. Domaine de définition</h3>
+<p>L'ensemble des x pour lesquels la fonction existe. Deux interdits à vérifier systématiquement :</p>
+<ul>
+<li><b>Pas de division par zéro</b> : pour 1/(x−2), il faut x ≠ 2.</li>
+<li><b>Pas de racine carrée d'un nombre négatif</b> : pour √(x−3), il faut x ≥ 3.</li>
+</ul>
+<h3>2. Points d'intersection avec les axes</h3>
+<pre><code>Avec l'axe des y : on calcule f(0)
+Avec l'axe des x : on résout f(x) = 0</code></pre>
+<h3>3. La parabole</h3>
+<p>Pour f(x) = ax² + bx + c :</p>
+<table>
+<tr><th>Élément</th><th>Règle</th></tr>
+<tr><td>Ouverture</td><td>a &gt; 0 : vers le haut (sourire) · a &lt; 0 : vers le bas</td></tr>
+<tr><td>Abscisse du sommet</td><td>x = −b / 2a</td></tr>
+<tr><td>Ordonnée du sommet</td><td>on remplace ce x dans f</td></tr>
+<tr><td>Racines</td><td>discriminant Δ = b² − 4ac, puis x = (−b ± √Δ) / 2a</td></tr>
+</table>
+<div class="callout key"><span class="ci">🔑</span><div>Le signe du discriminant suffit à savoir combien de solutions existent : Δ &gt; 0 deux racines, Δ = 0 une seule, Δ &lt; 0 aucune.</div></div>
+<h3>4. Croissance et décroissance</h3>
+<p>Une fonction est croissante (<span dir="rtl" lang="he">עולה</span>) quand la courbe monte de gauche à droite, décroissante (<span dir="rtl" lang="he">יורדת</span>) quand elle descend. Une parabole change de sens exactement à son sommet — c'est la préparation directe au chapitre suivant.</p>
+<div class="heb"><b>Vocabulaire :</b> fonction = <span dir="rtl" lang="he">פונקציה</span> <i>founktsia</i> · domaine de définition = <span dir="rtl" lang="he">תחום הגדרה</span> <i>tehoum hagdara</i> · parabole = <span dir="rtl" lang="he">פרבולה</span> <i>parabola</i> · sommet = <span dir="rtl" lang="he">קודקוד</span> <i>kodkod</i> · croissante = <span dir="rtl" lang="he">עולה</span> <i>ola</i></div>
+</template>
+
+<template id="cours-m3">
+<h2>La dérivée</h2>
+<p class="lead">Le plus gros chapitre de l'année · <span dir="rtl" lang="he">חשבון דיפרנציאלי</span> · 45 heures, soit un tiers du programme</p>
+<h3>1. Ce que c'est</h3>
+<p>La dérivée f′(x) donne <b>la pente de la tangente</b> à la courbe au point d'abscisse x. Autrement dit : à quelle vitesse la fonction monte ou descend à cet endroit précis.</p>
+<h3>2. Les règles à connaître par cœur</h3>
+<table>
+<tr><th>Fonction</th><th>Dérivée</th></tr>
+<tr><td>xⁿ</td><td>n·xⁿ⁻¹</td></tr>
+<tr><td>constante (5, −3…)</td><td>0</td></tr>
+<tr><td>a·f(x)</td><td>a·f′(x)</td></tr>
+<tr><td>f(x) + g(x)</td><td>f′(x) + g′(x)</td></tr>
+</table>
+<pre><code>f(x) = x³        →  f′(x) = 3x²
+f(x) = 5x² − 3x + 7  →  f′(x) = 10x − 3
+f(x) = x          →  f′(x) = 1</code></pre>
+<div class="callout key"><span class="ci">🔑</span><div>La règle unique : <b>l'exposant descend devant, et on lui retire 1</b>. Tout le reste en découle.</div></div>
+<h3>3. Équation de la tangente</h3>
+<pre><code>y − f(a) = f′(a) · (x − a)</code></pre>
+<p>où a est l'abscisse du point de contact. f′(a) donne la pente, f(a) donne le point.</p>
+<h3>4. Extremums</h3>
+<p>Un maximum ou un minimum se trouve là où <b>la tangente est horizontale</b>, donc là où f′(x) = 0.</p>
+<pre><code>1. Calculer f′(x)
+2. Résoudre f′(x) = 0
+3. Étudier le signe de f′ avant et après
+   f′ passe de + à − → maximum
+   f′ passe de − à + → minimum</code></pre>
+<div class="callout warn"><span class="ci">⚠️</span><div>f′(x) = 0 ne garantit pas un extremum : il faut vérifier que le signe change réellement. Sinon, c'est un simple palier.</div></div>
+<div class="heb"><b>Vocabulaire :</b> dérivée = <span dir="rtl" lang="he">נגזרת</span> <i>nigzéret</i> · tangente = <span dir="rtl" lang="he">משיק</span> <i>machik</i> · maximum = <span dir="rtl" lang="he">מקסימום</span> <i>maximoum</i> · point extremum = <span dir="rtl" lang="he">נקודת קיצון</span> <i>nekoudat kitson</i></div>
+</template>
+
+<template id="cours-m4">
+<h2>Géométrie euclidienne</h2>
+<p class="lead">Le cercle et la similitude · <span dir="rtl" lang="he">גאומטריה אוקלידית</span> · 50 heures au total</p>
+<h3>1. Les angles dans le cercle</h3>
+<table>
+<tr><th>Règle</th><th>Énoncé</th></tr>
+<tr><td>Angle inscrit</td><td>Un angle inscrit vaut <b>la moitié</b> de l'angle au centre qui intercepte le même arc</td></tr>
+<tr><td>Angle sur un diamètre</td><td>Tout angle inscrit qui s'appuie sur un diamètre vaut <b>90°</b></td></tr>
+<tr><td>Angles inscrits égaux</td><td>Deux angles inscrits interceptant le même arc sont égaux</td></tr>
+<tr><td>Tangente</td><td>La tangente est <b>perpendiculaire au rayon</b> au point de contact</td></tr>
+</table>
+<div class="callout key"><span class="ci">🔑</span><div>Devant un exercice sur le cercle, chercher d'abord un <b>diamètre</b> : il donne immédiatement un angle droit, donc un triangle rectangle, donc Pythagore.</div></div>
+<h3>2. Le théorème de Thalès</h3>
+<p>Une droite parallèle à un côté d'un triangle découpe les deux autres côtés en segments proportionnels. C'est l'outil pour transformer un parallélisme en égalité de rapports.</p>
+<h3>3. Triangles semblables</h3>
+<p>Deux triangles sont semblables (<span dir="rtl" lang="he">דומים</span>) s'ils ont la même forme mais pas la même taille. Trois critères suffisent :</p>
+<ul>
+<li><b>Deux angles égaux</b> — le critère le plus utilisé, car le troisième suit automatiquement.</li>
+<li>Trois côtés proportionnels.</li>
+<li>Deux côtés proportionnels et l'angle entre eux égal.</li>
+</ul>
+<p>Une fois la similitude établie, tous les côtés correspondants sont dans le même rapport — c'est ce rapport qui donne la longueur cherchée.</p>
+<div class="callout warn"><span class="ci">⚠️</span><div>Attention à l'<b>ordre des sommets</b> : écrire ABC ~ DEF signifie que A correspond à D, B à E, C à F. Une correspondance inversée fausse tous les rapports.</div></div>
+<div class="heb"><b>Vocabulaire :</b> cercle = <span dir="rtl" lang="he">מעגל</span> <i>maagal</i> · rayon = <span dir="rtl" lang="he">רדיוס</span> <i>radious</i> · corde = <span dir="rtl" lang="he">מיתר</span> <i>meïtar</i> · tangente au cercle = <span dir="rtl" lang="he">משיק</span> <i>machik</i> · semblables = <span dir="rtl" lang="he">דומים</span> <i>domim</i> · triangle = <span dir="rtl" lang="he">משולש</span> <i>mechoulach</i></div>
+</template>
+
+<template id="cours-m5">
+<h2>Trigonométrie</h2>
+<p class="lead">Des angles aux longueurs · <span dir="rtl" lang="he">טריגונומטריה</span> · 30 heures</p>
+<h3>1. Dans le triangle rectangle</h3>
+<pre><code>sin(α) = côté opposé / hypoténuse
+cos(α) = côté adjacent / hypoténuse
+tan(α) = côté opposé / côté adjacent</code></pre>
+<div class="callout key"><span class="ci">🔑</span><div>Le moyen mnémotechnique français : <b>SOH-CAH-TOA</b>. Sinus = Opposé/Hypoténuse, Cosinus = Adjacent/Hypoténuse, Tangente = Opposé/Adjacent.</div></div>
+<h3>2. Les valeurs à connaître sans calculatrice</h3>
+<table>
+<tr><th>α</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr>
+<tr><td>sin</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td></tr>
+<tr><td>cos</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td></tr>
+<tr><td>tan</td><td>√3/3</td><td>1</td><td>√3</td><td>—</td></tr>
+</table>
+<h3>3. L'identité fondamentale</h3>
+<pre><code>sin²(α) + cos²(α) = 1</code></pre>
+<p>Elle permet de retrouver l'un à partir de l'autre. C'est encore Pythagore, écrit autrement.</p>
+<h3>4. Dans un triangle quelconque</h3>
+<pre><code>Loi des sinus :    a/sin(A) = b/sin(B) = c/sin(C)
+Loi des cosinus :  a² = b² + c² − 2bc·cos(A)</code></pre>
+<div class="callout warn"><span class="ci">⚠️</span><div>Comment choisir : la <b>loi des cosinus</b> quand on connaît deux côtés et l'angle entre eux, ou les trois côtés. La <b>loi des sinus</b> dans les autres cas. Et remarquez que si A = 90°, cos(A) = 0 et la loi des cosinus redevient exactement Pythagore.</div></div>
+<div class="heb"><b>Vocabulaire :</b> trigonométrie = <span dir="rtl" lang="he">טריגונומטריה</span> <i>trigonométria</i> · angle = <span dir="rtl" lang="he">זווית</span> <i>zavit</i> · hypoténuse = <span dir="rtl" lang="he">יתר</span> <i>yéter</i> · côté = <span dir="rtl" lang="he">צלע</span> <i>tséla</i> · triangle rectangle = <span dir="rtl" lang="he">משולש ישר זווית</span> <i>mechoulach yechar zavit</i></div>
+</template>
+
+
+<template id="cours-p1">
+<h2>Cinématique</h2>
+<p class="lead">Décrire le mouvement sans se demander pourquoi · <span dir="rtl" lang="he">קינמטיקה</span> · début de la mécanique, 5 <span dir="rtl">יח"ל</span></p>
+<h3>1. Les trois grandeurs</h3>
+<table>
+<tr><th>Grandeur</th><th>Définition</th><th>Unité</th></tr>
+<tr><td>Déplacement Δx</td><td>position finale − position initiale</td><td>mètre (m)</td></tr>
+<tr><td>Vitesse v</td><td>Δx / Δt</td><td>m/s</td></tr>
+<tr><td>Accélération a</td><td>Δv / Δt</td><td>m/s²</td></tr>
+</table>
+<div class="callout warn"><span class="ci">⚠️</span><div>Le <b>déplacement</b> n'est pas la <b>distance parcourue</b>. Un aller-retour donne un déplacement nul, alors que la distance parcourue, elle, ne l'est pas. Le déplacement est une grandeur orientée.</div></div>
+<h3>2. Mouvement uniformément accéléré</h3>
+<p>Trois formules couvrent la quasi-totalité des exercices :</p>
+<pre><code>v  = v₀ + a·t
+x  = x₀ + v₀·t + ½·a·t²
+v² = v₀² + 2·a·Δx</code></pre>
+<div class="callout key"><span class="ci">🔑</span><div>Comment choisir : si le <b>temps</b> apparaît dans l'énoncé, on prend l'une des deux premières. Si le temps est absent et qu'on parle de <b>distance</b>, c'est la troisième.</div></div>
+<h3>3. La chute libre</h3>
+<p>Un objet lâché sans vitesse initiale tombe avec l'accélération de la pesanteur, g ≈ 10 m/s² (valeur habituellement retenue dans les exercices israéliens).</p>
+<pre><code>v = g·t          hauteur de chute : h = ½·g·t²</code></pre>
+<p>Point contre-intuitif mais essentiel : <b>la masse n'intervient pas</b>. Une bille et un boulet lâchés ensemble touchent le sol en même temps, si l'on néglige l'air.</p>
+<h3>4. Lire les graphiques</h3>
+<table>
+<tr><th>Graphique</th><th>Ce que donne la pente</th></tr>
+<tr><td>position en fonction du temps</td><td>la vitesse</td></tr>
+<tr><td>vitesse en fonction du temps</td><td>l'accélération</td></tr>
+<tr><td>vitesse en fonction du temps</td><td>l'<b>aire</b> sous la courbe donne le déplacement</td></tr>
+</table>
+<div class="heb"><b>Vocabulaire :</b> vitesse = <span dir="rtl" lang="he">מהירות</span> <i>mehirout</i> · accélération = <span dir="rtl" lang="he">תאוצה</span> <i>teoutsa</i> · déplacement = <span dir="rtl" lang="he">העתק</span> <i>hé'étek</i> · chute libre = <span dir="rtl" lang="he">נפילה חופשית</span> <i>nefila hofchit</i> · mécanique = <span dir="rtl" lang="he">מכניקה</span> <i>mekhanika</i></div>
+</template>
+
+<template id="cours-p2">
+<h2>Les lois de Newton</h2>
+<p class="lead">Pourquoi les choses bougent · <span dir="rtl" lang="he">חוקי ניוטון</span> · le cœur de la mécanique</p>
+<h3>Première loi — l'inertie</h3>
+<p>Un corps sur lequel la <b>somme des forces est nulle</b> garde sa vitesse : il reste immobile, ou continue en ligne droite à vitesse constante.</p>
+<div class="callout key"><span class="ci">🔑</span><div>Conséquence qui surprend toujours : <b>maintenir un mouvement ne demande aucune force</b>. Une force ne sert pas à avancer, elle sert à <b>changer</b> la vitesse. S'il faut pousser une caisse en permanence, c'est uniquement pour compenser les frottements.</div></div>
+<h3>Deuxième loi — la loi fondamentale</h3>
+<pre><code>ΣF = m · a</code></pre>
+<p>La force résultante est égale à la masse multipliée par l'accélération. Unité de force : le newton (N). Un newton accélère un kilogramme d'un mètre par seconde carrée.</p>
+<h3>Troisième loi — action et réaction</h3>
+<p>Si A exerce une force sur B, alors B exerce sur A une force <b>de même intensité et de sens opposé</b>.</p>
+<div class="callout warn"><span class="ci">⚠️</span><div>Ces deux forces ne s'annulent jamais entre elles, car <b>elles ne s'appliquent pas au même objet</b> : l'une agit sur A, l'autre sur B. C'est l'erreur la plus fréquente sur ce chapitre.</div></div>
+<h3>Les forces à connaître</h3>
+<table>
+<tr><th>Force</th><th>Expression</th><th>Direction</th></tr>
+<tr><td>Poids</td><td>P = m·g</td><td>vers le bas, toujours</td></tr>
+<tr><td>Réaction du support (normale)</td><td>N</td><td>perpendiculaire à la surface</td></tr>
+<tr><td>Frottement</td><td>f = μ·N</td><td>opposée au mouvement</td></tr>
+<tr><td>Tension d'un fil</td><td>T</td><td>le long du fil</td></tr>
+</table>
+<p><b>Méthode, toujours la même :</b> dessiner l'objet seul, tracer toutes les forces qui s'y appliquent, choisir un axe, projeter, puis écrire ΣF = m·a sur cet axe.</p>
+<div class="heb"><b>Vocabulaire :</b> force = <span dir="rtl" lang="he">כוח</span> <i>koah</i> · masse = <span dir="rtl" lang="he">מסה</span> <i>massa</i> · poids = <span dir="rtl" lang="he">משקל</span> <i>michkal</i> · frottement = <span dir="rtl" lang="he">חיכוך</span> <i>hikoukh</i> · inertie = <span dir="rtl" lang="he">התמד</span> <i>hetméd</i></div>
+</template>
+
+<template id="cours-p3">
+<h2>Travail et énergie</h2>
+<p class="lead">Une autre façon de résoudre les mêmes problèmes · <span dir="rtl" lang="he">עבודה ואנרגיה</span></p>
+<h3>1. Le travail d'une force</h3>
+<pre><code>W = F · d · cos(α)</code></pre>
+<p>où α est l'angle entre la force et le déplacement. Unité : le joule (J).</p>
+<div class="callout warn"><span class="ci">⚠️</span><div>Une force <b>perpendiculaire</b> au déplacement ne travaille pas : cos(90°) = 0. Porter un sac en marchant horizontalement ne produit aucun travail au sens physique, même si l'on se fatigue.</div></div>
+<h3>2. Les deux énergies</h3>
+<pre><code>Énergie cinétique :   Eₖ = ½ · m · v²
+Énergie potentielle :  Eₚ = m · g · h</code></pre>
+<p>La cinétique est l'énergie du mouvement, la potentielle celle de la hauteur.</p>
+<div class="callout key"><span class="ci">🔑</span><div>La vitesse est <b>au carré</b> dans l'énergie cinétique : doubler la vitesse quadruple l'énergie. C'est exactement pour cela que la distance de freinage d'une voiture explose avec la vitesse.</div></div>
+<h3>3. La conservation de l'énergie</h3>
+<p>En l'absence de frottements, la somme reste constante :</p>
+<pre><code>Eₖ + Eₚ = constante</code></pre>
+<p>Un objet qui tombe convertit sa hauteur en vitesse ; un objet lancé vers le haut fait l'inverse. On peut ainsi trouver une vitesse d'arrivée <b>sans passer par le temps</b> — souvent bien plus rapide que la cinématique.</p>
+<h3>4. La puissance</h3>
+<pre><code>P = W / t</code></pre>
+<p>Unité : le watt (W). C'est la rapidité avec laquelle le travail est fourni : monter un escalier en courant ou en marchant demande le même travail, mais pas la même puissance.</p>
+<div class="heb"><b>Vocabulaire :</b> travail = <span dir="rtl" lang="he">עבודה</span> <i>avoda</i> · énergie = <span dir="rtl" lang="he">אנרגיה</span> <i>energia</i> · énergie cinétique = <span dir="rtl" lang="he">אנרגיה קינטית</span> <i>energia kinétit</i> · conservation = <span dir="rtl" lang="he">שימור</span> <i>chimour</i> · puissance = <span dir="rtl" lang="he">הספק</span> <i>hesspek</i></div>
+</template>
+
 <template id="cours-u11">
 <h2>Le vocabulaire hébreu</h2>
 <p class="lead">90 mots de la filière informatique, avec la prononciation écrite à la française · à consulter au fil des unités</p>
@@ -1249,6 +1524,178 @@ UNITS.push({id:'u11',ic:'א',col:'#e0e7ff',name:'Vocabulaire hébreu',
  ]}
 ]});
 
+
+/* ===== MATHÉMATIQUES — 5 יח"ל, programme officiel de כיתה י' ===== */
+UNITS.push(
+{id:'m1',sub:'math',ic:'',col:'#dbeafe',name:'Géométrie analytique',desc:`Distance, pente, équation de droite`,lessons:[
+ {name:'Distance et pente',qs:[
+  {t:'in',q:`Quelle est la distance entre A(1 ; 2) et B(4 ; 6) ?`,a:['5'],e:`√((4−1)² + (6−2)²) = √(9+16) = √25 = 5. C'est le triangle 3-4-5, à reconnaître d'emblée.`},
+  {t:'in',q:`Quelles sont les coordonnées du milieu de A(2 ; 4) et B(8 ; 10) ? Écrivez sous la forme x;y`,a:['5;7','(5;7)','5 ; 7','5,7'],e:`On fait la moyenne des abscisses et celle des ordonnées : (2+8)/2 = 5 et (4+10)/2 = 7.`},
+  {t:'in',q:`Quelle est la pente de la droite passant par A(1 ; 3) et B(3 ; 9) ?`,a:['3'],e:`m = (9−3)/(3−1) = 6/2 = 3.`},
+  {t:'qcm',q:`Que vaut la pente d'une droite horizontale ?`,c:['0','1','−1',`Elle n'existe pas`],a:0,e:`Horizontale : les y ne changent pas, donc le numérateur est nul. C'est la droite VERTICALE qui n'a pas de pente, car on diviserait par zéro.`},
+  {t:'in',q:`Une droite a pour pente 2. Quelle est la pente d'une droite perpendiculaire ? (écrivez sous la forme -1/2)`,a:['-1/2','−1/2','-0.5','−0,5','-0,5'],e:`Le produit des pentes doit valoir −1, donc m = −1/2. Piège classique : ce n'est pas −2.`},
+  {t:'qcm',q:`Les droites y = 3x + 1 et y = 3x − 4 sont :`,c:['Perpendiculaires','Parallèles','Confondues','Sécantes en un point'],a:1,e:`Même pente, ordonnées à l'origine différentes : elles ne se croisent jamais.`}
+ ]},
+ {name:'Équations de droites',qs:[
+  {t:'in',q:`Dans y = 4x − 7, quelle est l'ordonnée à l'origine ?`,a:['-7','−7'],e:`C'est b, le terme constant : la droite coupe l'axe des y en (0 ; −7).`},
+  {t:'in',q:`Une droite de pente 2 passe par le point (0 ; 5). Quel est son coefficient b ?`,a:['5'],e:`Le point a pour abscisse 0, donc il est exactement l'ordonnée à l'origine.`},
+  {t:'in',q:`En quel point la droite y = 2x − 6 coupe-t-elle l'axe des x ? Donnez la valeur de x.`,a:['3'],e:`Sur l'axe des x, y vaut 0 : 2x − 6 = 0, donc x = 3.`},
+  {t:'in',q:`La droite y = mx + 1 passe par le point (2 ; 7). Que vaut m ?`,a:['3'],e:`On remplace : 7 = 2m + 1, donc 2m = 6 et m = 3.`},
+  {t:'qcm',q:`Quelle droite est perpendiculaire à y = −x + 4 ?`,c:['y = −x − 2','y = x + 5','y = −2x','y = 4x'],a:1,e:`La pente de départ est −1. Il faut m telle que −1 × m = −1, donc m = 1.`},
+  {t:'in',q:`Quelle est l'abscisse du point d'intersection de y = 2x et y = x + 3 ?`,a:['3'],e:`On égalise : 2x = x + 3, donc x = 3 (et y = 6).`}
+ ]}
+]},
+
+{id:'m2',sub:'math',ic:'',col:'#e0f2fe',name:'Les fonctions',desc:`Domaine, paraboles, variations`,lessons:[
+ {name:'Domaine et intersections',qs:[
+  {t:'in',q:`Quelle valeur de x est interdite pour f(x) = 1/(x − 2) ?`,a:['2'],e:`En x = 2 le dénominateur s'annule : division par zéro impossible.`},
+  {t:'qcm',q:`Quel est le domaine de définition de f(x) = √(x − 3) ?`,c:['x > 0','x ≥ 3','x ≤ 3','tous les réels'],a:1,e:`Sous une racine carrée, l'expression doit être positive ou nulle : x − 3 ≥ 0.`},
+  {t:'in',q:`Pour f(x) = x² − 5, en quel point la courbe coupe-t-elle l'axe des y ? Donnez l'ordonnée.`,a:['-5','−5'],e:`On calcule f(0) = 0 − 5 = −5.`},
+  {t:'in',q:`Quelle est la plus grande racine de f(x) = x² − 4 ?`,a:['2'],e:`x² − 4 = 0 donne x = 2 ou x = −2. La plus grande est 2.`},
+  {t:'qcm',q:`La parabole y = −2x² + 3x + 1 est ouverte :`,c:['vers le haut','vers le bas','vers la droite','on ne peut pas savoir'],a:1,e:`Le coefficient a vaut −2, donc négatif : la parabole est tournée vers le bas.`},
+  {t:'in',q:`Combien de solutions a l'équation x² + 2x + 5 = 0 ?`,a:['0','aucune','zéro'],e:`Δ = 4 − 20 = −16, négatif : aucune solution réelle. La parabole ne touche jamais l'axe des x.`}
+ ]},
+ {name:'Sommet et variations',qs:[
+  {t:'in',q:`Quelle est l'abscisse du sommet de f(x) = x² − 4x + 3 ?`,a:['2'],e:`x = −b/2a = 4/2 = 2.`},
+  {t:'in',q:`Quelle est l'ordonnée du sommet de f(x) = x² − 4x + 3 ?`,a:['-1','−1'],e:`On remplace x = 2 : 4 − 8 + 3 = −1. Le sommet est (2 ; −1).`},
+  {t:'in',q:`Quelle est l'abscisse du sommet de f(x) = 2x² − 8x + 1 ?`,a:['2'],e:`x = −b/2a = 8/4 = 2.`},
+  {t:'qcm',q:`Pour f(x) = x² − 6x, la fonction est décroissante :`,c:['pour x < 3','pour x > 3','partout','nulle part'],a:0,e:`Le sommet est en x = 3. La parabole est ouverte vers le haut : elle descend avant le sommet, puis remonte.`},
+  {t:'in',q:`Quel est le discriminant de x² − 6x + 9 ?`,a:['0'],e:`Δ = 36 − 36 = 0 : une seule racine double, en x = 3. La parabole touche l'axe sans le traverser.`},
+  {t:'qcm',q:`Le sommet d'une parabole ouverte vers le haut est :`,c:['un maximum','un minimum','un point d\'inflexion','sans intérêt'],a:1,e:`Ouverte vers le haut, la courbe descend puis remonte : le sommet est le point le plus bas.`}
+ ]}
+]},
+
+{id:'m3',sub:'math',ic:'',col:'#ede9fe',name:'La dérivée',desc:`45 h au programme — le chapitre central`,lessons:[
+ {name:'Calculer une dérivée',qs:[
+  {t:'in',q:`Quelle est la dérivée de f(x) = x³ ? (écrivez par exemple 3x^2)`,a:['3x^2','3x²','3x2'],e:`L'exposant descend devant et on lui retire 1 : 3x².`},
+  {t:'in',q:`Quelle est la dérivée de f(x) = 5 ?`,a:['0'],e:`Une constante ne varie pas : sa pente est nulle partout.`},
+  {t:'in',q:`Quelle est la dérivée de f(x) = 4x ?`,a:['4'],e:`4x est une droite de pente 4 : sa dérivée est 4, quel que soit x.`},
+  {t:'in',q:`Quelle est la dérivée de f(x) = 5x² − 3x + 7 ? (écrivez par exemple 10x-3)`,a:['10x-3','10x−3','10x - 3'],e:`Terme par terme : 10x, puis −3, puis 0 pour la constante.`},
+  {t:'in',q:`Que vaut f′(2) pour f(x) = x² ?`,a:['4'],e:`f′(x) = 2x, donc f′(2) = 4. C'est la pente de la tangente au point d'abscisse 2.`},
+  {t:'in',q:`Quelle est la dérivée de f(x) = x⁴ ? (écrivez par exemple 4x^3)`,a:['4x^3','4x³','4x3'],e:`Toujours la même règle : l'exposant devant, puis diminué de 1.`}
+ ]},
+ {name:'Tangentes et extremums',qs:[
+  {t:'qcm',q:`Que représente f′(a) ?`,c:['La valeur de la fonction en a',`La pente de la tangente au point d'abscisse a`,`L'aire sous la courbe`,`La racine de la fonction`],a:1,e:`C'est toute la signification de la dérivée : une pente locale, à un endroit précis.`},
+  {t:'in',q:`Pour f(x) = x² − 6x + 5, quelle est l'abscisse du point extremum ?`,a:['3'],e:`f′(x) = 2x − 6, qui s'annule pour x = 3.`},
+  {t:'qcm',q:`Cet extremum de f(x) = x² − 6x + 5 est :`,c:['un maximum','un minimum','ni l\'un ni l\'autre','impossible à déterminer'],a:1,e:`f′ passe de négatif à positif : la courbe descend puis remonte, c'est un minimum. Cohérent avec a > 0.`},
+  {t:'in',q:`Quelle est la pente de la tangente à f(x) = x³ au point d'abscisse 1 ?`,a:['3'],e:`f′(x) = 3x², donc f′(1) = 3.`},
+  {t:'qcm',q:`En un point où la tangente est horizontale :`,c:['f(x) = 0','f′(x) = 0','f′(x) = 1','la fonction n\'existe pas'],a:1,e:`Tangente horizontale signifie pente nulle, donc dérivée nulle. C'est le point de départ de toute recherche d'extremum.`},
+  {t:'in',q:`Pour f(x) = x² − 4x, que vaut f′(0) ?`,a:['-4','−4'],e:`f′(x) = 2x − 4, donc f′(0) = −4 : en ce point la courbe descend.`}
+ ]}
+]},
+
+{id:'m4',sub:'math',ic:'',col:'#fef3c7',name:'Géométrie euclidienne',desc:`Le cercle, Thalès, triangles semblables`,lessons:[
+ {name:'Le cercle',qs:[
+  {t:'in',q:`Un angle au centre mesure 80°. Combien mesure l'angle inscrit qui intercepte le même arc ? (en degrés)`,a:['40','40°'],e:`L'angle inscrit vaut la moitié de l'angle au centre.`},
+  {t:'in',q:`Un angle inscrit mesure 35°. Combien mesure l'angle au centre correspondant ? (en degrés)`,a:['70','70°'],e:`La relation dans l'autre sens : on double.`},
+  {t:'in',q:`Un triangle est inscrit dans un cercle et l'un de ses côtés est un diamètre. Combien mesure l'angle opposé à ce diamètre ? (en degrés)`,a:['90','90°'],e:`C'est la règle la plus rentable de tout le chapitre : un diamètre donne toujours un angle droit.`},
+  {t:'qcm',q:`La tangente à un cercle est :`,c:['parallèle au rayon','perpendiculaire au rayon au point de contact','égale au diamètre','une corde particulière'],a:1,e:`D'où un angle droit exploitable dès qu'une tangente apparaît dans un énoncé.`},
+  {t:'in',q:`Deux angles inscrits interceptent le même arc. Le premier mesure 48°. Combien mesure le second ? (en degrés)`,a:['48','48°'],e:`Ils sont égaux : même arc, même mesure.`},
+  {t:'in',q:`Le rayon d'un cercle vaut 7. Combien vaut le diamètre ?`,a:['14'],e:`Le diamètre est le double du rayon.`}
+ ]},
+ {name:'Thalès et similitude',qs:[
+  {t:'qcm',q:`Quel est le critère de similitude le plus utilisé ?`,c:['Trois côtés égaux','Deux angles égaux','Deux côtés égaux','Un angle droit'],a:1,e:`Deux angles suffisent, puisque le troisième s'en déduit : la somme fait toujours 180°.`},
+  {t:'in',q:`Deux triangles sont semblables. Les côtés du premier mesurent 3 et 4 ; le côté correspondant à 3 mesure 6 dans le second. Combien mesure le côté correspondant à 4 ?`,a:['8'],e:`Le rapport est 6/3 = 2, donc 4 × 2 = 8.`},
+  {t:'in',q:`Dans un triangle, une droite parallèle à un côté coupe les deux autres. Si AD/DB = 2/3 et AE = 4, combien vaut EC ?`,a:['6'],e:`Thalès : AD/DB = AE/EC, donc 2/3 = 4/EC, d'où EC = 6.`},
+  {t:'qcm',q:`Deux triangles semblables ont toujours :`,c:['la même aire','la même forme, mais pas forcément la même taille','les mêmes longueurs','le même périmètre'],a:1,e:`Semblable veut dire proportionnel, pas identique. Identique se dit « superposable ».`},
+  {t:'in',q:`Le rapport de similitude entre deux triangles est 3. Le petit a un périmètre de 12. Quel est le périmètre du grand ?`,a:['36'],e:`Toutes les longueurs sont multipliées par 3, donc le périmètre aussi.`},
+  {t:'qcm',q:`Si le rapport des côtés est k, le rapport des aires est :`,c:['k','2k','k²','k/2'],a:2,e:`L'aire fait intervenir deux dimensions : doubler les côtés quadruple l'aire.`}
+ ]}
+]},
+
+{id:'m5',sub:'math',ic:'',col:'#fce7f3',name:'Trigonométrie',desc:`Triangle rectangle, lois des sinus et cosinus`,lessons:[
+ {name:'Dans le triangle rectangle',qs:[
+  {t:'qcm',q:`Comment se calcule le sinus d'un angle dans un triangle rectangle ?`,c:['adjacent / hypoténuse','opposé / hypoténuse','opposé / adjacent','hypoténuse / opposé'],a:1,e:`SOH : Sinus = Opposé sur Hypoténuse.`},
+  {t:'in',q:`Que vaut sin(30°) ? (écrivez 0.5 ou 1/2)`,a:['0.5','1/2','0,5'],e:`Valeur à connaître sans calculatrice.`},
+  {t:'in',q:`Que vaut cos(60°) ? (écrivez 0.5 ou 1/2)`,a:['0.5','1/2','0,5'],e:`cos(60°) = sin(30°) : les angles 30 et 60 sont complémentaires, ce qui échange sinus et cosinus.`},
+  {t:'in',q:`Que vaut tan(45°) ?`,a:['1'],e:`Dans un triangle rectangle isocèle, opposé et adjacent sont égaux, donc le rapport vaut 1.`},
+  {t:'in',q:`Dans un triangle rectangle, le côté opposé mesure 3 et l'hypoténuse 5. Que vaut le sinus de l'angle ? (écrivez 0.6)`,a:['0.6','3/5','0,6'],e:`sin = opposé / hypoténuse = 3/5.`},
+  {t:'in',q:`Si sin(α) = 0.6, que vaut sin²(α) + cos²(α) ?`,a:['1'],e:`L'identité fondamentale vaut 1 pour tout angle, quelle que soit la valeur du sinus.`}
+ ]},
+ {name:'Triangle quelconque',qs:[
+  {t:'qcm',q:`Quand utilise-t-on la loi des cosinus ?`,c:['Quand on connaît deux côtés et l\'angle entre eux','Quand on connaît trois angles','Uniquement dans un triangle rectangle','Jamais en classe de י\''],a:0,e:`Elle sert aussi quand on connaît les trois côtés et qu'on cherche un angle.`},
+  {t:'qcm',q:`Si A = 90°, la loi des cosinus a² = b² + c² − 2bc·cos(A) devient :`,c:['a² = b² + c²','a = b + c','a² = 2bc','elle ne s\'applique plus'],a:0,e:`cos(90°) = 0, donc le dernier terme disparaît : c'est exactement le théorème de Pythagore. La loi des cosinus en est la généralisation.`},
+  {t:'in',q:`Dans un triangle, a = 3, b = 4 et l'angle entre eux vaut 90°. Combien vaut le troisième côté ?`,a:['5'],e:`Angle droit, donc Pythagore : √(9+16) = 5.`},
+  {t:'qcm',q:`La loi des sinus s'écrit :`,c:['a·sin(A) = b·sin(B)','a/sin(A) = b/sin(B)','sin(A)/sin(B) = b/a','a + sin(A) = b + sin(B)'],a:1,e:`Chaque côté divisé par le sinus de l'angle opposé donne toujours le même résultat.`},
+  {t:'in',q:`Combien font 180° − 45° − 60° ? (l'angle restant d'un triangle, en degrés)`,a:['75','75°'],e:`La somme des angles d'un triangle vaut toujours 180° — le premier réflexe avant toute loi trigonométrique.`},
+  {t:'qcm',q:`Dans un triangle quelconque, le plus grand côté est opposé :`,c:['au plus petit angle','au plus grand angle','à l\'angle droit','à aucun angle en particulier'],a:1,e:`Conséquence directe de la loi des sinus : plus l'angle est grand, plus le côté opposé est long.`}
+ ]}
+]}
+);
+
+
+/* ===== PHYSIQUE — mécanique, 5 יח"ל, כיתה י' (g = 10 m/s²) ===== */
+UNITS.push(
+{id:'p1',sub:'phys',ic:'',col:'#ccfbf1',name:'Cinématique',desc:`Vitesse, accélération, chute libre`,lessons:[
+ {name:'Vitesse et accélération',qs:[
+  {t:'in',q:`Une voiture passe de 0 à 20 m/s en 5 s. Quelle est son accélération, en m/s² ?`,a:['4'],e:`a = Δv/Δt = 20/5 = 4 m/s².`},
+  {t:'in',q:`Un coureur parcourt 100 m en 10 s. Quelle est sa vitesse moyenne, en m/s ?`,a:['10'],e:`v = Δx/Δt = 100/10 = 10 m/s.`},
+  {t:'in',q:`Partant du repos avec a = 2 m/s², quelle distance parcourt-on en 3 s ? (en mètres)`,a:['9'],e:`x = ½·a·t² = ½ × 2 × 9 = 9 m. La vitesse initiale étant nulle, le terme v₀·t disparaît.`},
+  {t:'in',q:`Partant du repos avec a = 3 m/s², quelle vitesse atteint-on après 4 s ? (en m/s)`,a:['12'],e:`v = v₀ + a·t = 0 + 3 × 4 = 12 m/s.`},
+  {t:'qcm',q:`Une voiture roule à vitesse constante. Que vaut son accélération ?`,c:['Elle est constante et positive','Elle est nulle','Elle est négative','On ne peut pas savoir'],a:1,e:`L'accélération mesure le CHANGEMENT de vitesse. Vitesse constante signifie changement nul.`},
+  {t:'qcm',q:`Sur un graphique position-temps, que représente la pente ?`,c:['L\'accélération','La vitesse','La distance','Le temps'],a:1,e:`La pente est Δx/Δt, c'est-à-dire la vitesse. Sur un graphique vitesse-temps, la pente donnerait l'accélération.`}
+ ]},
+ {name:'Chute libre',qs:[
+  {t:'in',q:`Un objet est lâché sans vitesse initiale. Quelle est sa vitesse après 2 s ? (en m/s, avec g = 10)`,a:['20'],e:`v = g·t = 10 × 2 = 20 m/s.`},
+  {t:'in',q:`De quelle hauteur tombe-t-il en 2 s ? (en mètres)`,a:['20'],e:`h = ½·g·t² = ½ × 10 × 4 = 20 m.`},
+  {t:'qcm',q:`Une bille de 1 kg et une de 5 kg sont lâchées ensemble, sans air. Laquelle arrive en premier ?`,c:['La plus lourde','La plus légère','Elles arrivent ensemble','Cela dépend de la hauteur'],a:2,e:`L'accélération de la pesanteur est la même pour tous les corps : la masse n'intervient pas dans la chute.`},
+  {t:'in',q:`Un objet tombe pendant 3 s. Quelle hauteur a-t-il parcourue ? (en mètres, g = 10)`,a:['45'],e:`h = ½ × 10 × 9 = 45 m. Remarquez que le temps est au carré : le triple de temps donne neuf fois la hauteur, pas trois fois.`},
+  {t:'qcm',q:`Pendant une chute libre, la vitesse :`,c:['reste constante','augmente régulièrement','diminue','augmente puis diminue'],a:1,e:`Elle augmente de 10 m/s à chaque seconde, puisque l'accélération est constante.`},
+  {t:'in',q:`Un objet est lancé vers le haut à 20 m/s. Après combien de secondes s'arrête-t-il en haut ? (g = 10)`,a:['2'],e:`La pesanteur retire 10 m/s par seconde : il faut 2 s pour annuler 20 m/s.`}
+ ]}
+]},
+
+{id:'p2',sub:'phys',ic:'',col:'#dbeafe',name:'Les lois de Newton',desc:`Forces, masse, frottements`,lessons:[
+ {name:'La loi fondamentale',qs:[
+  {t:'in',q:`Une force de 10 N s'applique sur une masse de 2 kg. Quelle est l'accélération, en m/s² ?`,a:['5'],e:`a = F/m = 10/2 = 5 m/s².`},
+  {t:'in',q:`Quel est le poids d'un objet de 3 kg ? (en newtons, avec g = 10)`,a:['30'],e:`P = m·g = 3 × 10 = 30 N. Attention : la masse est en kilogrammes, le poids en newtons — ce sont deux grandeurs différentes.`},
+  {t:'in',q:`Quelle force faut-il pour accélérer 4 kg à 3 m/s² ? (en newtons)`,a:['12'],e:`F = m·a = 4 × 3 = 12 N.`},
+  {t:'in',q:`Deux forces opposées de 12 N et 5 N agissent sur un objet. Quelle est la force résultante, en newtons ?`,a:['7'],e:`Opposées, donc on soustrait : 12 − 5 = 7 N, dans le sens de la plus grande.`},
+  {t:'qcm',q:`Un objet de 2 kg subit une force résultante nulle. Que fait-il ?`,c:['Il accélère','Il garde sa vitesse (immobile ou en ligne droite)','Il ralentit','Il tombe'],a:1,e:`C'est la première loi. Force nulle ne veut pas dire immobile, mais vitesse inchangée.`},
+  {t:'in',q:`Une masse de 5 kg subit une force de 20 N. Quelle est son accélération, en m/s² ?`,a:['4'],e:`a = 20/5 = 4 m/s².`}
+ ]},
+ {name:'Action, réaction, frottements',qs:[
+  {t:'qcm',q:`Vous poussez un mur avec 50 N. Quelle force le mur exerce-t-il sur vous ?`,c:['0 N','25 N','50 N en sens opposé','100 N'],a:2,e:`Troisième loi : même intensité, sens opposé. Le mur vous repousse exactement autant que vous le poussez.`},
+  {t:'qcm',q:`Pourquoi ces deux forces ne s'annulent-elles pas ?`,c:['Parce qu\'elles n\'ont pas la même valeur','Parce qu\'elles s\'appliquent à deux objets différents','Parce que le mur est fixe','Parce que le frottement intervient'],a:1,e:`C'est LE point du chapitre : on n'additionne que les forces appliquées au MÊME objet.`},
+  {t:'in',q:`Un objet pèse 40 N et le coefficient de frottement vaut 0.2. Quelle est la force de frottement sur un sol horizontal ? (en newtons)`,a:['8'],e:`f = μ·N = 0.2 × 40 = 8 N. Sur un sol horizontal, la normale est égale au poids.`},
+  {t:'qcm',q:`Dans quel sens agit la force de frottement ?`,c:['Dans le sens du mouvement','En sens opposé au mouvement','Vers le bas','Vers le haut'],a:1,e:`Elle s'oppose toujours au mouvement — c'est ce qui fait qu'une caisse poussée s'arrête dès qu'on cesse de pousser.`},
+  {t:'in',q:`Une caisse est tirée avec 20 N et le frottement vaut 8 N. Quelle est la force résultante, en newtons ?`,a:['12'],e:`20 − 8 = 12 N. C'est cette résultante, et non la force de traction, qu'on met dans ΣF = m·a.`},
+  {t:'qcm',q:`Sur un objet posé sur une table, la force normale :`,c:['est parallèle à la table','est perpendiculaire à la table','vaut toujours zéro','est égale au frottement'],a:1,e:`« Normale » signifie perpendiculaire à la surface. Sur une table horizontale, elle est verticale.`}
+ ]}
+]},
+
+{id:'p3',sub:'phys',ic:'',col:'#fae8ff',name:'Travail et énergie',desc:`Énergie cinétique, potentielle, conservation`,lessons:[
+ {name:'Travail et énergies',qs:[
+  {t:'in',q:`Une force de 10 N déplace un objet de 3 m dans son sens. Quel est le travail, en joules ?`,a:['30'],e:`W = F·d = 10 × 3 = 30 J, puisque cos(0°) = 1.`},
+  {t:'in',q:`Quelle est l'énergie cinétique d'une masse de 2 kg allant à 3 m/s ? (en joules)`,a:['9'],e:`Eₖ = ½·m·v² = ½ × 2 × 9 = 9 J.`},
+  {t:'in',q:`Quelle est l'énergie potentielle d'une masse de 1 kg à 5 m de haut ? (en joules, g = 10)`,a:['50'],e:`Eₚ = m·g·h = 1 × 10 × 5 = 50 J.`},
+  {t:'qcm',q:`Une force perpendiculaire au déplacement effectue un travail :`,c:['maximal','nul','négatif','impossible à calculer'],a:1,e:`cos(90°) = 0, donc W = 0. Porter un sac en marchant à plat ne produit aucun travail au sens physique.`},
+  {t:'in',q:`Si la vitesse d'un objet double, son énergie cinétique est multipliée par combien ?`,a:['4'],e:`La vitesse est au carré : 2² = 4. C'est la raison physique pour laquelle la vitesse est si dangereuse au volant.`},
+  {t:'in',q:`Un travail de 100 J est fourni en 5 s. Quelle est la puissance, en watts ?`,a:['20'],e:`P = W/t = 100/5 = 20 W.`}
+ ]},
+ {name:'Conservation de l\'énergie',qs:[
+  {t:'qcm',q:`Un objet tombe. Que devient son énergie ?`,c:['Elle disparaît','La potentielle se transforme en cinétique','La cinétique se transforme en potentielle','Elle double'],a:1,e:`Il perd de la hauteur et gagne de la vitesse : la somme des deux reste constante s'il n'y a pas de frottement.`},
+  {t:'in',q:`Une masse de 2 kg tombe de 5 m. Quelle est son énergie cinétique en bas ? (en joules, g = 10)`,a:['100'],e:`Toute l'énergie potentielle initiale devient cinétique : m·g·h = 2 × 10 × 5 = 100 J.`},
+  {t:'in',q:`Quelle est alors sa vitesse en bas ? (en m/s)`,a:['10'],e:`½·m·v² = 100 → v² = 100 → v = 10 m/s. On obtient la vitesse sans jamais calculer le temps : c'est tout l'intérêt de la méthode énergétique.`},
+  {t:'qcm',q:`Avec des frottements, l'énergie mécanique totale :`,c:['augmente','reste constante','diminue, transformée en chaleur','devient nulle'],a:2,e:`Elle n'est pas détruite mais dissipée sous forme de chaleur. L'énergie totale, elle, se conserve toujours.`},
+  {t:'in',q:`Un objet de 1 kg va à 4 m/s. Quelle est son énergie cinétique, en joules ?`,a:['8'],e:`½ × 1 × 16 = 8 J.`},
+  {t:'qcm',q:`Deux personnes montent le même escalier, l'une en courant, l'autre en marchant. Elles fournissent :`,c:['le même travail et la même puissance','le même travail mais des puissances différentes','des travaux différents','aucun travail'],a:1,e:`Même masse, même hauteur, donc même travail. Mais celle qui court le fournit en moins de temps : sa puissance est plus grande.`}
+ ]}
+]}
+);
+
+/* ===== Regroupement par matière ===== */
+UNITS.forEach(u=>{ if(!u.sub) u.sub = (u.id==='u11') ? 'heb' : 'info'; });
+const RANG = {info:0, math:1, phys:2, heb:3};
+UNITS.sort((a,b)=> RANG[a.sub] - RANG[b.sub]);
+(function(){ const c={}; UNITS.forEach(u=>{ c[u.sub]=(c[u.sub]||0)+1; u.num=c[u.sub]; }); })();
+const MATIERES = [
+  {k:'info', nom:'Informatique',        he:'מדעי המחשב'},
+  {k:'math', nom:'Mathématiques',       he:'מתמטיקה'},
+  {k:'phys', nom:'Physique',            he:'פיזיקה'},
+  {k:'heb',  nom:'Vocabulaire hébreu',  he:''}
+];
+
 /* ================== LEXIQUE ================== */
 function filterLex(q){
   q = (q||'').toLowerCase().trim();
@@ -1312,8 +1759,8 @@ function toast(msg){
 function ring(pct,size){
   const r = size/2 - 5, c = 2*Math.PI*r;
   return `<svg width="${size}" height="${size}" aria-hidden="true">
-    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="7"/>
-    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#fff" stroke-width="7"
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line-strong)" stroke-width="6"/>
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--p)" stroke-width="6"
       stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct/100)}"/>
   </svg>`;
 }
@@ -1332,90 +1779,78 @@ function home(){
   const pct = S.xp % 100;
   const globalPct = Math.round(doneCount()/totalLessons()*100);
   const nx = nextStep();
+  const action = nx ? (nx.type==='cours'
+      ? `openCourse('${UNITS[nx.ui].id}',${nx.ui})` : `start(${nx.ui},${nx.li})`) : '';
 
   let h = `<header class="topbar">
-    <div class="stat"><span aria-hidden="true">⚡</span><span class="n">${S.xp}</span><small>XP</small></div>
-    <div class="stat"><span aria-hidden="true">🏅</span><span class="n">${lvl()}</span><small>niveau</small></div>
-    <div class="stat"><span aria-hidden="true">✅</span><span class="n">${doneCount()}/${totalLessons()}</span></div>
-    <div class="spacer"></div>${themeBtn()}
+    <span class="brand">Supercode</span>
+    <div class="spacer"></div>
+    <span class="gstat">${doneCount()} / ${totalLessons()} leçons</span>
+    ${themeBtn()}
   </header>
   <main>
   <section class="hero">
+    <div class="ring">${ring(pct,68)}<div class="lab"><b>${lvl()}</b></div></div>
     <div class="hero-txt">
       <h1>CodeTrainer</h1>
-      <p>Cours et exercices — informatique et logique, préparation à l'entrée en filière</p>
+      <p>${nx ? nx.label : 'Parcours terminé — reprenez les leçons sous 100 %'}</p>
     </div>
-    <div class="ring">${ring(pct,82)}
-      <div class="lab"><b>${lvl()}</b><small>niveau</small></div>
-    </div>
-    <p class="sr">Progression globale : ${globalPct} %, ${doneCount()} leçons terminées sur ${totalLessons()}. ${pct} XP sur 100 avant le niveau suivant.</p>
-  </section>`;
-
-  if(nx){
-    h += `<section class="card resume">
-      <div class="txt">
-        <div class="k">${doneCount()||Object.keys(S.read).length ? 'Reprendre' : 'Commencer ici'}</div>
-        <h3>${nx.label}</h3>
-        <p>${nx.type==='cours' ? 'Lisez la leçon avant les exercices de l\'unité.' : 'Six questions, environ cinq minutes.'}</p>
-      </div>
-      <button class="btn btn-p" onclick="${nx.type==='cours' ? `openCourse('${UNITS[nx.ui].id}',${nx.ui})` : `start(${nx.ui},${nx.li})`}">
-        ${nx.type==='cours' ? 'Lire le cours' : 'Continuer'}</button>
-    </section>`;
-  } else {
-    h += `<section class="card resume">
-      <div class="txt"><div class="k">Parcours terminé</div>
-        <h3>Les 24 leçons sont validées</h3>
-        <p>Reprenez les unités où le score est inférieur à 100 %, ou passez aux gros exercices du document de cours.</p></div>
-    </section>`;
-  }
+    ${nx ? `<button class="btn btn-p" onclick="${action}">${nx.type==='cours'?'Lire le cours':'Continuer'}</button>` : ''}
+  </section>
+  <div class="gbar" role="progressbar" aria-valuenow="${globalPct}" aria-valuemin="0"
+    aria-valuemax="100" aria-label="Progression globale"><i style="width:${globalPct}%"></i></div>`;
 
   if(S.wrong.length){
-    h += `<section class="card review">
-      <div class="unit-head">
-        <div class="badge" style="background:var(--gold-soft)" aria-hidden="true">🔁</div>
-        <div><h3>Réviser mes erreurs</h3>
-          <p class="desc">${S.wrong.length} question${S.wrong.length>1?'s':''} mise${S.wrong.length>1?'s':''} de côté</p></div>
-      </div>
-      <div class="nodes"><button class="node" onclick="startReview()">
-        <span class="dot" aria-hidden="true"></span>Lancer la révision</button></div>
+    h += `<section class="card revcard">
+      <div class="txt"><h3>Réviser mes erreurs</h3>
+        <p>${S.wrong.length} question${S.wrong.length>1?'s':''} mise${S.wrong.length>1?'s':''} de côté</p></div>
+      <button class="btn btn-sec" onclick="startReview()">Réviser</button>
     </section>`;
   }
 
-  UNITS.forEach((u,ui)=>{
-    const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
-    const up = Math.round(dn/u.lessons.length*100);
-    const isNext = nx && nx.ui===ui;
-    h += `<section class="unit" aria-labelledby="u${ui}t">
-      <div class="unit-head">
-        <div class="badge" style="background:${u.col}" aria-hidden="true">${u.ic}</div>
-        <div><h3 id="u${ui}t">${u.name}</h3><p class="desc">${u.desc}</p></div>
-        <div class="uprog"><div class="track"><i style="width:${up}%"></i></div>
-          <span>${dn}/${u.lessons.length}</span></div>
-      </div>
-      <div class="nodes">
-        <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
-          onclick="openCourse('${u.id}',${ui})">
-          <span class="dot" aria-hidden="true"></span>📖 Cours${S.read[u.id]?' · lu':''}</button>`;
-    u.lessons.forEach((ls,li)=>{
-      const d = S.done[ui+'-'+li];
-      const nxt = isNext && nx.type==='lecon' && nx.li===li;
-      h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
-        aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
-        <span class="dot" aria-hidden="true"></span>${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
+  MATIERES.forEach(mat=>{
+    const idx = UNITS.map((u,i)=>[u,i]).filter(p=>p[0].sub===mat.k);
+    if(!idx.length) return;
+    const tot = idx.reduce((n,p)=>n+p[0].lessons.length,0);
+    const fait = idx.reduce((n,p)=>n+p[0].lessons.filter((_,li)=>S.done[p[1]+'-'+li]).length,0);
+    h += `<h2 class="secttl"><span>${mat.nom}${mat.he?' <b dir="rtl" lang="he">'+mat.he+'</b>':''}</span>
+      <em>${fait}/${tot}</em></h2>`;
+
+    idx.forEach(([u,ui])=>{
+      const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
+      const up = Math.round(dn/u.lessons.length*100);
+      const isNext = nx && nx.ui===ui;
+      h += `<section class="unit" aria-labelledby="u${ui}t">
+        <div class="unit-head">
+          <div class="badge" style="background:${u.col}" aria-hidden="true">${u.num}</div>
+          <div class="ut"><h3 id="u${ui}t">${u.name}</h3><p class="desc">${u.desc}</p></div>
+          <div class="uprog"><div class="track"><i style="width:${up}%"></i></div>
+            <span>${dn}/${u.lessons.length}</span></div>
+        </div>
+        <div class="nodes">
+          <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
+            onclick="openCourse('${u.id}',${ui})">Cours</button>`;
+      u.lessons.forEach((ls,li)=>{
+        const d = S.done[ui+'-'+li];
+        const nxt = isNext && nx.type==='lecon' && nx.li===li;
+        h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
+          aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
+          ${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
+      });
+      h += `</div></section>`;
     });
-    h += `</div></section>`;
   });
 
-  h += `<section class="card save">
-    <h4>Sauvegarder ma progression</h4>
-    <p>La progression n'est conservée que le temps de la session. Copiez ce code et collez-le à la prochaine ouverture pour la retrouver.</p>
+  h += `<details class="save">
+    <summary>Sauvegarder ou restaurer ma progression</summary>
+    <p>La progression ne vit que le temps de la session. Copiez ce code et recollez-le à la prochaine ouverture.</p>
     <label class="sr" for="code">Code de progression</label>
     <textarea id="code" readonly>${btoa(unescape(encodeURIComponent(JSON.stringify(S))))}</textarea>
     <div class="row">
-      <button class="btn btn-sec" onclick="copyCode()">Copier le code</button>
+      <button class="btn btn-sec" onclick="copyCode()">Copier</button>
       <button class="btn btn-ghost" onclick="loadCode()">Charger un code…</button>
     </div>
-  </section></main>`;
+  </details></main>`;
 
   app().setAttribute('data-view','home');
   app().innerHTML = h;
@@ -1453,7 +1888,7 @@ function openCourse(id, ui){
     <header class="topbar">
       <button class="btn btn-ghost" onclick="home()">← Parcours</button>
       <div class="spacer"></div>
-      <div class="stat"><span aria-hidden="true">📖</span><small>Unité ${ui+1} sur ${UNITS.length}</small></div>
+      <span class="gstat">Unité ${ui+1} / ${UNITS.length}</span>
       ${themeBtn()}
     </header>
     <main><article class="course">${tpl.innerHTML}</article>
@@ -1626,7 +2061,7 @@ function judge(good, sol){
     }
   }
   const fb = $(`<div class="fb ${good?'ok':'ko'}" role="status">
-    <div class="fb-head"><span class="em" aria-hidden="true">${good?'✅':'❌'}</span>
+    <div class="fb-head"><span class="em" aria-hidden="true">${good?'✓':'✕'}</span>
       <h4>${good ? (L.combo>=5 ? 'Excellent — série de '+L.combo : 'Bonne réponse') : 'Réponse incorrecte'}</h4></div>
     <p>${good?'':'<b>La bonne réponse était : <span class="sol">'+esc(sol)+'</span></b><br>'}${q.e}</p>
     <div class="row">
