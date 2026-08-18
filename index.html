@@ -383,6 +383,15 @@ input,textarea{font-size:16px}   /* empêche le zoom automatique de Safari iOS *
 @media (display-mode:standalone){
   .topbar{padding-top:max(var(--s5),env(safe-area-inset-top))}
 }
+
+/* ---------- lexique hébreu ---------- */
+.lexsearch{margin:var(--s3) 0 var(--s2);max-width:100%}
+table.lex{font-size:15px}
+table.lex td{padding:9px 12px}
+.lexgrp th{background:var(--p-soft);color:var(--p-ink);font-size:13px;letter-spacing:.05em;
+  text-transform:uppercase;padding:10px 12px}
+.lexhe{font-size:19px;font-weight:600;white-space:nowrap;width:34%}
+.lexph{color:var(--ink-2);font-style:italic;width:30%}
 </style>
 </head>
 <body>
@@ -442,7 +451,7 @@ print("L'an prochain tu auras", age + 1, "ans")</code></pre>
 
 <h3>6. Lire une erreur</h3>
 <p>Un message d'erreur n'est pas une punition, c'est une indication. Toujours lire la dernière ligne et le numéro de ligne signalé. <code>TypeError: can only concatenate str…</code> signifie « tu essaies de coller un nombre à du texte ».</p>
-<div class="heb"><b>Vocabulaire :</b> variable = <span dir="rtl">משתנה</span> · type = <span dir="rtl">טיפוס</span> · chaîne de caractères = <span dir="rtl">מחרוזת</span></div>
+<div class="heb"><b>Vocabulaire :</b> variable = <span dir="rtl" lang="he">משתנה</span> <i>michtané</i> · valeur = <span dir="rtl" lang="he">ערך</span> <i>érekh</i> · type = <span dir="rtl" lang="he">טיפוס</span> <i>tipouss</i> · entrée = <span dir="rtl" lang="he">קלט</span> <i>klat</i> · sortie = <span dir="rtl" lang="he">פלט</span> <i>pélet</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u2">
@@ -494,7 +503,7 @@ else:
 
 <h3>5. La méthode, avant de coder</h3>
 <p>Avant d'écrire la moindre ligne, répondre par écrit à trois questions : <b>quelles sont les entrées ?</b> <b>quelle est la sortie ?</b> <b>quels sont tous les cas possibles ?</b> Cette étape sur papier est ce qui distingue un élève qui réussit d'un élève qui bloque — et les examinateurs évaluent la logique autant que le code.</p>
-<div class="heb"><b>Vocabulaire :</b> condition = <span dir="rtl">תנאי</span> · booléen = <span dir="rtl">בוליאני</span></div>
+<div class="heb"><b>Vocabulaire :</b> condition = <span dir="rtl" lang="he">תנאי</span> <i>tnaï</i> · exécution conditionnelle = <span dir="rtl" lang="he">ביצוע מותנה</span> <i>bitsoua moutné</i> · vrai / faux = <span dir="rtl" lang="he">אמת / שקר</span> <i>émet / chéker</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u3">
@@ -549,7 +558,7 @@ while nombre != 0:
         print(ligne * colonne, end="  ")
     print()</code></pre>
 <p>Affiche une grille de 3 lignes. <code>end="  "</code> remplace le saut de ligne automatique de <code>print</code>, ce qui permet de rester sur la même ligne. Et <code>"*" * 4</code> répète un texte — pratique pour dessiner des figures.</p>
-<div class="heb"><b>Vocabulaire :</b> boucle = <span dir="rtl">לולאה</span> · répétition = <span dir="rtl">ביצוע חוזר</span></div>
+<div class="heb"><b>Vocabulaire :</b> boucle = <span dir="rtl" lang="he">לולאה</span> <i>loula'a</i> · exécution répétée = <span dir="rtl" lang="he">ביצוע חוזר</span> <i>bitsoua hozer</i> · compteur = <span dir="rtl" lang="he">מונה</span> <i>moné</i> · condition d'arrêt = <span dir="rtl" lang="he">תנאי עצירה</span> <i>tnaï atsira</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u4">
@@ -593,7 +602,7 @@ calcul()
 print(x)          # NameError : x n'existe pas ici</code></pre>
 <p>Une variable créée dans une fonction disparaît quand celle-ci se termine. C'est une bonne chose : cela évite que les parties d'un programme s'abîment mutuellement.</p>
 <div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Une fonction qui répond par oui ou non renvoie un <b>booléen</b> : <code>return True</code> / <code>return False</code>. On peut alors écrire directement <code>if est_premier(n):</code>.</div></div>
-<div class="heb"><b>Vocabulaire :</b> fonction = <span dir="rtl">פונקציה</span> · paramètre = <span dir="rtl">פרמטר</span></div>
+<div class="heb"><b>Vocabulaire :</b> fonction = <span dir="rtl" lang="he">פונקציה</span> <i>founktsia</i> · paramètre = <span dir="rtl" lang="he">פרמטר</span> <i>parametr</i> · renvoyer = <span dir="rtl" lang="he">להחזיר</span> <i>lehahzir</i> · variable locale = <span dir="rtl" lang="he">משתנה מקומי</span> <i>michtané mekomi</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u5">
@@ -639,7 +648,7 @@ for i in range(len(liste)):
     return -1</code></pre>
 <div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Où placer le return final ?</b> Après la boucle, jamais dans un <code>else</code> à l'intérieur. On ne peut conclure « aucun élément ne convient » qu'après avoir tout examiné. Erreur très courante.</div></div>
 <p>La convention −1 est universelle, car ce n'est jamais un indice valide. Elle s'utilise telle quelle en Java.</p>
-<div class="heb"><b>Vocabulaire :</b> tableau / liste = <span dir="rtl">מערך</span> · indice = <span dir="rtl">אינדקס</span> · recherche = <span dir="rtl">חיפוש</span></div>
+<div class="heb"><b>Vocabulaire :</b> tableau = <span dir="rtl" lang="he">מערך</span> <i>maarakh</i> · indice = <span dir="rtl" lang="he">אינדקס</span> <i>indeks</i> · longueur = <span dir="rtl" lang="he">אורך</span> <i>orekh</i> · élément = <span dir="rtl" lang="he">איבר</span> <i>évèr</i> · recherche = <span dir="rtl" lang="he">חיפוש</span> <i>hipouss</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u6">
@@ -730,7 +739,7 @@ return -1</code></pre>
 
 <h3>5. L'efficacité</h3>
 <div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Chercher dans un million d'éléments demande jusqu'à un million de comparaisons en recherche linéaire, contre 20 en recherche binaire. Ordres de grandeur à retenir : <b>boucle simple = n</b>, <b>double boucle = n²</b>, <b>division par deux répétée = log n</b>. Cette intuition suffit pour la première année, et c'est un objectif explicite du programme israélien.</div></div>
-<div class="heb"><b>Vocabulaire :</b> tri = <span dir="rtl">מיון</span> · efficacité = <span dir="rtl">יעילות</span> · algorithme = <span dir="rtl">אלגוריתם</span></div>
+<div class="heb"><b>Vocabulaire :</b> tri = <span dir="rtl" lang="he">מיון</span> <i>miyoun</i> · échanger = <span dir="rtl" lang="he">להחליף</span> <i>lehahlif</i> · recherche binaire = <span dir="rtl" lang="he">חיפוש בינארי</span> <i>hipouss binari</i> · efficacité = <span dir="rtl" lang="he">יעילות</span> <i>yeïlout</i><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u8">
@@ -761,7 +770,7 @@ return -1</code></pre>
 
 <h3>Les suites de lettres</h3>
 <p>Écrire l'alphabet en marge de la copie et <b>numéroter les lettres</b> (A=1, B=2…). La suite redevient alors numérique. A, C, E, G → 1, 3, 5, 7 → une lettre sur deux → I.</p>
-<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>Discipline de temps.</b> Ces examens laissent environ une minute et demie par question. Si une suite résiste après une minute, la marquer et passer à la suivante — on y revient à la fin. Rester bloqué coûte plus cher que sauter.</div></div>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>Discipline de temps.</b> Ces examens laissent environ une minute et demie par question. Si une suite résiste après une minute, la marquer et passer à la suivante — on y revient à la fin. Rester bloqué coûte plus cher que sauter.</div><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
 </template>
 
 <template id="cours-u9">
@@ -821,6 +830,124 @@ tant que X > 0 :
 <h3>5. Ce qui est réellement évalué</h3>
 <div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Les lycées le disent eux-mêmes. Hadarim publie une « question de ténacité » et son corrigé précise : <i>celui qui arrive à expliquer jusque-là est en bonne position</i>. Autrement dit, <b>repérer le motif expérimentalement suffit souvent</b> — la démonstration complète est un bonus. Un candidat qui remplit sa copie d'essais organisés vaut mieux qu'un candidat qui rend une feuille blanche parce qu'il n'était pas certain.</div></div>
 <p>Conséquence pratique : sur une question ouverte, toujours écrire ses tentatives, ses tableaux, ses cas particuliers. C'est du raisonnement visible, et c'est ce qui est noté.</p>
+</template>
+
+<template id="cours-u11">
+<h2>Le vocabulaire hébreu</h2>
+<p class="lead">90 mots de la filière informatique, avec la prononciation écrite à la française · à consulter au fil des unités</p>
+
+<h3>Comment s'en servir</h3>
+<p>Ce lexique n'est pas à apprendre d'un bloc. La bonne méthode : après chaque unité du cours, revenir ici et ne travailler que les mots du thème correspondant — une dizaine à la fois.</p>
+<div class="callout key"><span class="ci">🔑</span><div>La colonne de droite indique <b>comment le mot se prononce</b>, écrit à la française. <span dir="rtl" lang="he">לולאה</span> se lit « loula'a ». Prononcez à voix haute : c'est ce qui fait entrer le mot en mémoire, bien plus que de le relire.</div></div>
+<div class="callout warn"><span class="ci">⚠️</span><div>L'hébreu se lit <b>de droite à gauche</b>. Les mots de la colonne du milieu sont affichés dans le bon sens ; ne les lisez pas à l'envers.</div></div>
+
+<h3>Rechercher un mot</h3>
+<input class="answer lexsearch" type="search" placeholder="Tapez un mot en français ou sa prononciation…"
+  oninput="filterLex(this.value)" aria-label="Rechercher dans le lexique">
+<p class="hint" id="lexcount">90 termes affichés</p>
+
+<table class="lex">
+<thead><tr><th>Français</th><th>עברית</th><th>Prononciation</th></tr></thead>
+<tbody id="lexbody">
+<tr class="lexgrp"><th colspan="3">La filière et les examens</th></tr>
+<tr class="lexrow" data-k="informatique / sciences de l'ordinateur mada'ei ha-mahchev"><td>informatique / sciences de l'ordinateur</td><td dir="rtl" lang="he" class="lexhe">מדעי המחשב</td><td class="lexph">mada'ei ha-mahchev</td></tr>
+<tr class="lexrow" data-k="filière (spécialité du lycée) megama"><td>filière (spécialité du lycée)</td><td dir="rtl" lang="he" class="lexhe">מגמה</td><td class="lexph">megama</td></tr>
+<tr class="lexrow" data-k="génie logiciel handassat tokhna"><td>génie logiciel</td><td dir="rtl" lang="he" class="lexhe">הנדסת תוכנה</td><td class="lexph">handassat tokhna</td></tr>
+<tr class="lexrow" data-k="cybersécurité saïber / haganat saïber"><td>cybersécurité</td><td dir="rtl" lang="he" class="lexhe">סייבר / הגנת סייבר</td><td class="lexph">saïber / haganat saïber</td></tr>
+<tr class="lexrow" data-k="intelligence artificielle bina melakhoutit"><td>intelligence artificielle</td><td dir="rtl" lang="he" class="lexhe">בינה מלאכותית</td><td class="lexph">bina melakhoutit</td></tr>
+<tr class="lexrow" data-k="baccalauréat israélien bagrout"><td>baccalauréat israélien</td><td dir="rtl" lang="he" class="lexhe">בגרות</td><td class="lexph">bagrout</td></tr>
+<tr class="lexrow" data-k="unités de valeur (יח"ל) yehidot limoud"><td>unités de valeur (יח"ל)</td><td dir="rtl" lang="he" class="lexhe">יחידות לימוד</td><td class="lexph">yehidot limoud</td></tr>
+<tr class="lexrow" data-k="sujet d'examen chealon"><td>sujet d'examen</td><td dir="rtl" lang="he" class="lexhe">שאלון</td><td class="lexph">chealon</td></tr>
+<tr class="lexrow" data-k="note tsioun"><td>note</td><td dir="rtl" lang="he" class="lexhe">ציון</td><td class="lexph">tsioun</td></tr>
+<tr class="lexrow" data-k="examen d'entrée / de sélection mivhan miyoun"><td>examen d'entrée / de sélection</td><td dir="rtl" lang="he" class="lexhe">מבחן מיון</td><td class="lexph">mivhan miyoun</td></tr>
+<tr class="lexrow" data-k="matière principale miktsoa movil"><td>matière principale</td><td dir="rtl" lang="he" class="lexhe">מקצוע מוביל</td><td class="lexph">miktsoa movil</td></tr>
+<tr class="lexrow" data-k="matière de spécialisation miktsoa hitmahout"><td>matière de spécialisation</td><td dir="rtl" lang="he" class="lexhe">מקצוע התמחות</td><td class="lexph">miktsoa hitmahout</td></tr>
+<tr class="lexrow" data-k="projet de fin d'études proyekt gmar"><td>projet de fin d'études</td><td dir="rtl" lang="he" class="lexhe">פרויקט גמר</td><td class="lexph">proyekt gmar</td></tr>
+<tr class="lexrow" data-k="travail de recherche avodat heker"><td>travail de recherche</td><td dir="rtl" lang="he" class="lexhe">עבודת חקר</td><td class="lexph">avodat heker</td></tr>
+<tr class="lexrow" data-k="laboratoire maabada"><td>laboratoire</td><td dir="rtl" lang="he" class="lexhe">מעבדה</td><td class="lexph">maabada</td></tr>
+<tr class="lexrow" data-k="devoirs chiourei bayit"><td>devoirs</td><td dir="rtl" lang="he" class="lexhe">שיעורי בית</td><td class="lexph">chiourei bayit</td></tr>
+<tr class="lexgrp"><th colspan="3">Les bases</th></tr>
+<tr class="lexrow" data-k="programme tokhnit"><td>programme</td><td dir="rtl" lang="he" class="lexhe">תוכנית</td><td class="lexph">tokhnit</td></tr>
+<tr class="lexrow" data-k="code kod"><td>code</td><td dir="rtl" lang="he" class="lexhe">קוד</td><td class="lexph">kod</td></tr>
+<tr class="lexrow" data-k="exécution / lancement haratsa"><td>exécution / lancement</td><td dir="rtl" lang="he" class="lexhe">הרצה</td><td class="lexph">haratsa</td></tr>
+<tr class="lexrow" data-k="instruction hora'a"><td>instruction</td><td dir="rtl" lang="he" class="lexhe">הוראה</td><td class="lexph">hora'a</td></tr>
+<tr class="lexrow" data-k="variable michtané"><td>variable</td><td dir="rtl" lang="he" class="lexhe">משתנה</td><td class="lexph">michtané</td></tr>
+<tr class="lexrow" data-k="valeur érekh"><td>valeur</td><td dir="rtl" lang="he" class="lexhe">ערך</td><td class="lexph">érekh</td></tr>
+<tr class="lexrow" data-k="affectation (le signe =) hassama"><td>affectation (le signe =)</td><td dir="rtl" lang="he" class="lexhe">השמה</td><td class="lexph">hassama</td></tr>
+<tr class="lexrow" data-k="type tipouss"><td>type</td><td dir="rtl" lang="he" class="lexhe">טיפוס</td><td class="lexph">tipouss</td></tr>
+<tr class="lexrow" data-k="nombre entier mispar chalem"><td>nombre entier</td><td dir="rtl" lang="he" class="lexhe">מספר שלם</td><td class="lexph">mispar chalem</td></tr>
+<tr class="lexrow" data-k="nombre réel / décimal mispar mamachi"><td>nombre réel / décimal</td><td dir="rtl" lang="he" class="lexhe">מספר ממשי</td><td class="lexph">mispar mamachi</td></tr>
+<tr class="lexrow" data-k="chaîne de caractères mahrozet"><td>chaîne de caractères</td><td dir="rtl" lang="he" class="lexhe">מחרוזת</td><td class="lexph">mahrozet</td></tr>
+<tr class="lexrow" data-k="caractère tav"><td>caractère</td><td dir="rtl" lang="he" class="lexhe">תו</td><td class="lexph">tav</td></tr>
+<tr class="lexrow" data-k="booléen boulyani"><td>booléen</td><td dir="rtl" lang="he" class="lexhe">בוליאני</td><td class="lexph">boulyani</td></tr>
+<tr class="lexrow" data-k="vrai émet"><td>vrai</td><td dir="rtl" lang="he" class="lexhe">אמת</td><td class="lexph">émet</td></tr>
+<tr class="lexrow" data-k="faux chéker"><td>faux</td><td dir="rtl" lang="he" class="lexhe">שקר</td><td class="lexph">chéker</td></tr>
+<tr class="lexrow" data-k="entrée (input) klat"><td>entrée (input)</td><td dir="rtl" lang="he" class="lexhe">קלט</td><td class="lexph">klat</td></tr>
+<tr class="lexrow" data-k="sortie (output) pélet"><td>sortie (output)</td><td dir="rtl" lang="he" class="lexhe">פלט</td><td class="lexph">pélet</td></tr>
+<tr class="lexrow" data-k="commentaire heara"><td>commentaire</td><td dir="rtl" lang="he" class="lexhe">הערה</td><td class="lexph">heara</td></tr>
+<tr class="lexrow" data-k="erreur chgia"><td>erreur</td><td dir="rtl" lang="he" class="lexhe">שגיאה</td><td class="lexph">chgia</td></tr>
+<tr class="lexrow" data-k="correction des erreurs (débogage) nipouy chgiot"><td>correction des erreurs (débogage)</td><td dir="rtl" lang="he" class="lexhe">ניפוי שגיאות</td><td class="lexph">nipouy chgiot</td></tr>
+<tr class="lexrow" data-k="environnement de développement svivat pitouah"><td>environnement de développement</td><td dir="rtl" lang="he" class="lexhe">סביבת פיתוח</td><td class="lexph">svivat pitouah</td></tr>
+<tr class="lexgrp"><th colspan="3">Conditions et boucles</th></tr>
+<tr class="lexrow" data-k="condition tnaï"><td>condition</td><td dir="rtl" lang="he" class="lexhe">תנאי</td><td class="lexph">tnaï</td></tr>
+<tr class="lexrow" data-k="exécution conditionnelle bitsoua moutné"><td>exécution conditionnelle</td><td dir="rtl" lang="he" class="lexhe">ביצוע מותנה</td><td class="lexph">bitsoua moutné</td></tr>
+<tr class="lexrow" data-k="condition composée tnaï mourkav"><td>condition composée</td><td dir="rtl" lang="he" class="lexhe">תנאי מורכב</td><td class="lexph">tnaï mourkav</td></tr>
+<tr class="lexrow" data-k="et / ou / non ve-gam / o / lo"><td>et / ou / non</td><td dir="rtl" lang="he" class="lexhe">וגם / או / לא</td><td class="lexph">ve-gam / o / lo</td></tr>
+<tr class="lexrow" data-k="boucle loula'a"><td>boucle</td><td dir="rtl" lang="he" class="lexhe">לולאה</td><td class="lexph">loula'a</td></tr>
+<tr class="lexrow" data-k="exécution répétée bitsoua hozer"><td>exécution répétée</td><td dir="rtl" lang="he" class="lexhe">ביצוע חוזר</td><td class="lexph">bitsoua hozer</td></tr>
+<tr class="lexrow" data-k="boucle « tant que » loulaat while"><td>boucle « tant que »</td><td dir="rtl" lang="he" class="lexhe">לולאת while</td><td class="lexph">loulaat while</td></tr>
+<tr class="lexrow" data-k="compteur moné"><td>compteur</td><td dir="rtl" lang="he" class="lexhe">מונה</td><td class="lexph">moné</td></tr>
+<tr class="lexrow" data-k="accumulateur / somme sokhem"><td>accumulateur / somme</td><td dir="rtl" lang="he" class="lexhe">סוכם</td><td class="lexph">sokhem</td></tr>
+<tr class="lexrow" data-k="condition d'arrêt tnaï atsira"><td>condition d'arrêt</td><td dir="rtl" lang="he" class="lexhe">תנאי עצירה</td><td class="lexph">tnaï atsira</td></tr>
+<tr class="lexrow" data-k="boucle infinie loula'a einsofit"><td>boucle infinie</td><td dir="rtl" lang="he" class="lexhe">לולאה אינסופית</td><td class="lexph">loula'a einsofit</td></tr>
+<tr class="lexrow" data-k="boucles imbriquées loulaot mekonanot"><td>boucles imbriquées</td><td dir="rtl" lang="he" class="lexhe">לולאות מקוננות</td><td class="lexph">loulaot mekonanot</td></tr>
+<tr class="lexrow" data-k="table de suivi tavlat maakav"><td>table de suivi</td><td dir="rtl" lang="he" class="lexhe">טבלת מעקב</td><td class="lexph">tavlat maakav</td></tr>
+<tr class="lexgrp"><th colspan="3">Tableaux et chaînes</th></tr>
+<tr class="lexrow" data-k="tableau / liste maarakh"><td>tableau / liste</td><td dir="rtl" lang="he" class="lexhe">מערך</td><td class="lexph">maarakh</td></tr>
+<tr class="lexrow" data-k="indice indeks"><td>indice</td><td dir="rtl" lang="he" class="lexhe">אינדקס</td><td class="lexph">indeks</td></tr>
+<tr class="lexrow" data-k="cellule / case ta"><td>cellule / case</td><td dir="rtl" lang="he" class="lexhe">תא</td><td class="lexph">ta</td></tr>
+<tr class="lexrow" data-k="longueur orekh"><td>longueur</td><td dir="rtl" lang="he" class="lexhe">אורך</td><td class="lexph">orekh</td></tr>
+<tr class="lexrow" data-k="élément évèr"><td>élément</td><td dir="rtl" lang="he" class="lexhe">איבר</td><td class="lexph">évèr</td></tr>
+<tr class="lexrow" data-k="parcourir lisrok / laavor al"><td>parcourir</td><td dir="rtl" lang="he" class="lexhe">לסרוק / לעבור על</td><td class="lexph">lisrok / laavor al</td></tr>
+<tr class="lexrow" data-k="tableau à deux dimensions maarakh dou-memadi"><td>tableau à deux dimensions</td><td dir="rtl" lang="he" class="lexhe">מערך דו-ממדי</td><td class="lexph">maarakh dou-memadi</td></tr>
+<tr class="lexrow" data-k="matrice matritsa"><td>matrice</td><td dir="rtl" lang="he" class="lexhe">מטריצה</td><td class="lexph">matritsa</td></tr>
+<tr class="lexrow" data-k="structures de données mivné netounim"><td>structures de données</td><td dir="rtl" lang="he" class="lexhe">מבני נתונים</td><td class="lexph">mivné netounim</td></tr>
+<tr class="lexgrp"><th colspan="3">Fonctions</th></tr>
+<tr class="lexrow" data-k="fonction founktsia"><td>fonction</td><td dir="rtl" lang="he" class="lexhe">פונקציה</td><td class="lexph">founktsia</td></tr>
+<tr class="lexrow" data-k="paramètre parametr"><td>paramètre</td><td dir="rtl" lang="he" class="lexhe">פרמטר</td><td class="lexph">parametr</td></tr>
+<tr class="lexrow" data-k="argument argoument"><td>argument</td><td dir="rtl" lang="he" class="lexhe">ארגומנט</td><td class="lexph">argoument</td></tr>
+<tr class="lexrow" data-k="renvoyer (return) lehahzir"><td>renvoyer (return)</td><td dir="rtl" lang="he" class="lexhe">להחזיר</td><td class="lexph">lehahzir</td></tr>
+<tr class="lexrow" data-k="valeur renvoyée érekh mouhzar"><td>valeur renvoyée</td><td dir="rtl" lang="he" class="lexhe">ערך מוחזר</td><td class="lexph">érekh mouhzar</td></tr>
+<tr class="lexrow" data-k="appel de fonction kria le-founktsia"><td>appel de fonction</td><td dir="rtl" lang="he" class="lexhe">קריאה לפונקציה</td><td class="lexph">kria le-founktsia</td></tr>
+<tr class="lexrow" data-k="variable locale michtané mekomi"><td>variable locale</td><td dir="rtl" lang="he" class="lexhe">משתנה מקומי</td><td class="lexph">michtané mekomi</td></tr>
+<tr class="lexrow" data-k="sous-programme tat-tokhnit"><td>sous-programme</td><td dir="rtl" lang="he" class="lexhe">תת-תוכנית</td><td class="lexph">tat-tokhnit</td></tr>
+<tr class="lexgrp"><th colspan="3">Algorithmes et efficacité</th></tr>
+<tr class="lexrow" data-k="algorithme algoritm"><td>algorithme</td><td dir="rtl" lang="he" class="lexhe">אלגוריתם</td><td class="lexph">algoritm</td></tr>
+<tr class="lexrow" data-k="tri miyoun"><td>tri</td><td dir="rtl" lang="he" class="lexhe">מיון</td><td class="lexph">miyoun</td></tr>
+<tr class="lexrow" data-k="tri par sélection miyoun behira"><td>tri par sélection</td><td dir="rtl" lang="he" class="lexhe">מיון בחירה</td><td class="lexph">miyoun behira</td></tr>
+<tr class="lexrow" data-k="tri à bulles miyoun bouot"><td>tri à bulles</td><td dir="rtl" lang="he" class="lexhe">מיון בועות</td><td class="lexph">miyoun bouot</td></tr>
+<tr class="lexrow" data-k="recherche hipouss"><td>recherche</td><td dir="rtl" lang="he" class="lexhe">חיפוש</td><td class="lexph">hipouss</td></tr>
+<tr class="lexrow" data-k="recherche séquentielle hipouss sidrati"><td>recherche séquentielle</td><td dir="rtl" lang="he" class="lexhe">חיפוש סדרתי</td><td class="lexph">hipouss sidrati</td></tr>
+<tr class="lexrow" data-k="recherche binaire hipouss binari"><td>recherche binaire</td><td dir="rtl" lang="he" class="lexhe">חיפוש בינארי</td><td class="lexph">hipouss binari</td></tr>
+<tr class="lexrow" data-k="échanger lehahlif"><td>échanger</td><td dir="rtl" lang="he" class="lexhe">להחליף</td><td class="lexph">lehahlif</td></tr>
+<tr class="lexrow" data-k="efficacité yeïlout"><td>efficacité</td><td dir="rtl" lang="he" class="lexhe">יעילות</td><td class="lexph">yeïlout</td></tr>
+<tr class="lexrow" data-k="correction (d'un algorithme) nekhonout"><td>correction (d'un algorithme)</td><td dir="rtl" lang="he" class="lexhe">נכונות</td><td class="lexph">nekhonout</td></tr>
+<tr class="lexrow" data-k="comparaison hachvaa"><td>comparaison</td><td dir="rtl" lang="he" class="lexhe">השוואה</td><td class="lexph">hachvaa</td></tr>
+<tr class="lexrow" data-k="modèle de calcul model hichouvi"><td>modèle de calcul</td><td dir="rtl" lang="he" class="lexhe">מודל חישובי</td><td class="lexph">model hichouvi</td></tr>
+<tr class="lexgrp"><th colspan="3">Au-delà de la כיתה י'</th></tr>
+<tr class="lexrow" data-k="programmation orientée objet tikhnout mounhé atsamim"><td>programmation orientée objet</td><td dir="rtl" lang="he" class="lexhe">תכנות מונחה עצמים</td><td class="lexph">tikhnout mounhé atsamim</td></tr>
+<tr class="lexrow" data-k="classe mahlaka"><td>classe</td><td dir="rtl" lang="he" class="lexhe">מחלקה</td><td class="lexph">mahlaka</td></tr>
+<tr class="lexrow" data-k="objet étsem"><td>objet</td><td dir="rtl" lang="he" class="lexhe">עצם</td><td class="lexph">étsem</td></tr>
+<tr class="lexrow" data-k="méthode chita"><td>méthode</td><td dir="rtl" lang="he" class="lexhe">שיטה</td><td class="lexph">chita</td></tr>
+<tr class="lexrow" data-k="constructeur banaï"><td>constructeur</td><td dir="rtl" lang="he" class="lexhe">בנאי</td><td class="lexph">banaï</td></tr>
+<tr class="lexrow" data-k="récursivité rekoursia"><td>récursivité</td><td dir="rtl" lang="he" class="lexhe">רקורסיה</td><td class="lexph">rekoursia</td></tr>
+<tr class="lexrow" data-k="pile mahsanit"><td>pile</td><td dir="rtl" lang="he" class="lexhe">מחסנית</td><td class="lexph">mahsanit</td></tr>
+<tr class="lexrow" data-k="file tor"><td>file</td><td dir="rtl" lang="he" class="lexhe">תור</td><td class="lexph">tor</td></tr>
+<tr class="lexrow" data-k="liste chaînée rechima mekoucheret"><td>liste chaînée</td><td dir="rtl" lang="he" class="lexhe">רשימה מקושרת</td><td class="lexph">rechima mekoucheret</td></tr>
+<tr class="lexrow" data-k="arbre binaire ets binari"><td>arbre binaire</td><td dir="rtl" lang="he" class="lexhe">עץ בינארי</td><td class="lexph">ets binari</td></tr>
+<tr class="lexrow" data-k="base de données bassiss netounim"><td>base de données</td><td dir="rtl" lang="he" class="lexhe">בסיס נתונים</td><td class="lexph">bassiss netounim</td></tr>
+</tbody></table>
+<p class="hint" id="lexvide" style="display:none">Aucun mot ne correspond à cette recherche.</p>
 </template>
 
 <script>
@@ -1054,6 +1181,91 @@ const UNITS = [
  ]}
 ]}
 ];
+
+
+
+/* ===== Unité 11 — vocabulaire hébreu (ajoutée après la banque principale) ===== */
+UNITS.push({id:'u11',ic:'א',col:'#e0e7ff',name:'Vocabulaire hébreu',
+  desc:'90 termes de la filière · lexique + exercices',lessons:[
+ {name:'Les bases',qs:[
+  {t:'qcm',q:'Comment dit-on « variable » en hébreu ?',
+   c:['<span dir="rtl" lang="he">משתנה</span> — michtané','<span dir="rtl" lang="he">מערך</span> — maarakh','<span dir="rtl" lang="he">לולאה</span> — loula\'a','<span dir="rtl" lang="he">פונקציה</span> — founktsia'],a:0,
+   e:'<span dir="rtl" lang="he">משתנה</span> (michtané) vient de la racine « changer » — la boîte dont le contenu change.'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">קלט</span> (klat) ?',
+   c:['La sortie','L\'entrée — ce que l\'utilisateur fournit','Une erreur','Un tableau'],a:1,
+   e:'<span dir="rtl" lang="he">קלט</span> = entrée (input) et <span dir="rtl" lang="he">פלט</span> (pélet) = sortie (output). Les deux se ressemblent : ne pas les confondre.'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">פלט</span> (pélet) ?',
+   c:['L\'entrée','La sortie — ce que le programme affiche','Une variable','Une boucle'],a:1,
+   e:'<span dir="rtl" lang="he">פלט</span> = sortie. Moyen mnémotechnique : le P de pélet comme le P de « produit », ce qui sort.'},
+  {t:'qcm',q:'Comment dit-on « chaîne de caractères » ?',
+   c:['<span dir="rtl" lang="he">מחרוזת</span> — mahrozet','<span dir="rtl" lang="he">מספר שלם</span> — mispar chalem','<span dir="rtl" lang="he">תו</span> — tav','<span dir="rtl" lang="he">ערך</span> — érekh'],a:0,
+   e:'<span dir="rtl" lang="he">מחרוזת</span> (mahrozet) signifie littéralement « collier » — des caractères enfilés les uns après les autres. <span dir="rtl" lang="he">תו</span> (tav) est un seul caractère.'},
+  {t:'qcm',q:'Que veut dire <span dir="rtl" lang="he">השמה</span> (hassama) ?',
+   c:['Une comparaison','L\'affectation — ranger une valeur dans une variable','Une erreur','Une fonction'],a:1,
+   e:'C\'est le nom du signe = en informatique. Exactement la distinction vue au jour 1 : affecter n\'est pas comparer.'},
+  {t:'qcm',q:'Comment dit-on « nombre entier » ?',
+   c:['<span dir="rtl" lang="he">מספר שלם</span> — mispar chalem','<span dir="rtl" lang="he">מספר ממשי</span> — mispar mamachi','<span dir="rtl" lang="he">בוליאני</span> — boulyani','<span dir="rtl" lang="he">אמת</span> — émet'],a:0,
+   e:'<span dir="rtl" lang="he">שלם</span> (chalem) = entier, complet. <span dir="rtl" lang="he">ממשי</span> (mamachi) = réel, avec virgule.'}
+ ]},
+ {name:'Conditions, boucles, tableaux',qs:[
+  {t:'qcm',q:'Comment dit-on « boucle » ?',
+   c:['<span dir="rtl" lang="he">לולאה</span> — loula\'a','<span dir="rtl" lang="he">תנאי</span> — tnaï','<span dir="rtl" lang="he">מונה</span> — moné','<span dir="rtl" lang="he">מיון</span> — miyoun'],a:0,
+   e:'<span dir="rtl" lang="he">לולאה</span> (loula\'a) veut dire « boucle » au sens propre, comme une boucle de corde.'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">תנאי</span> (tnaï) ?',
+   c:['Une boucle','Une condition','Un tableau','Une note'],a:1,
+   e:'D\'où <span dir="rtl" lang="he">ביצוע מותנה</span> (bitsoua moutné) : l\'exécution conditionnelle, le chapitre 3 du programme officiel.'},
+  {t:'qcm',q:'Comment dit-on « tableau » (au sens de liste de valeurs) ?',
+   c:['<span dir="rtl" lang="he">מערך</span> — maarakh','<span dir="rtl" lang="he">מחרוזת</span> — mahrozet','<span dir="rtl" lang="he">תא</span> — ta','<span dir="rtl" lang="he">אורך</span> — orekh'],a:0,
+   e:'<span dir="rtl" lang="he">מערך</span> (maarakh) est LE mot central de la filière : le chapitre le plus long du programme y est consacré.'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">מונה</span> (moné) ?',
+   c:['Un compteur','Une somme','Un indice','Une condition'],a:0,
+   e:'Le compteur d\'une boucle. À distinguer de <span dir="rtl" lang="he">סוכם</span> (sokhem), l\'accumulateur qui additionne.'},
+  {t:'qcm',q:'Qu\'est-ce qu\'une <span dir="rtl" lang="he">טבלת מעקב</span> (tavlat maakav) ?',
+   c:['Une table de multiplication','Une table de suivi : on déroule un algorithme ligne par ligne','Un tableau à deux dimensions','Un bulletin de notes'],a:1,
+   e:'C\'est l\'outil exigé aux examens pour montrer qu\'on a suivi l\'exécution — une colonne par variable, une ligne par étape.'},
+  {t:'qcm',q:'Comment dit-on « exécution répétée » (le chapitre des boucles) ?',
+   c:['<span dir="rtl" lang="he">ביצוע חוזר</span> — bitsoua hozer','<span dir="rtl" lang="he">ביצוע מותנה</span> — bitsoua moutné','<span dir="rtl" lang="he">מבני נתונים</span> — mivné netounim','<span dir="rtl" lang="he">מושגי יסוד</span> — mouss\'gué yessod'],a:0,
+   e:'Ce sont les intitulés officiels des chapitres : <span dir="rtl" lang="he">ביצוע מותנה</span> pour les conditions, <span dir="rtl" lang="he">ביצוע חוזר</span> pour les boucles.'}
+ ]},
+ {name:'Algorithmes et vie scolaire',qs:[
+  {t:'qcm',q:'Comment dit-on « tri » ?',
+   c:['<span dir="rtl" lang="he">מיון</span> — miyoun','<span dir="rtl" lang="he">חיפוש</span> — hipouss','<span dir="rtl" lang="he">יעילות</span> — yeïlout','<span dir="rtl" lang="he">השוואה</span> — hachvaa'],a:0,
+   e:'<span dir="rtl" lang="he">מיון</span> (miyoun) = tri. Attention : <span dir="rtl" lang="he">מבחן מיון</span> (mivhan miyoun) veut dire « examen de sélection » — le même mot sert à trier des données et à trier des candidats.'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">חיפוש בינארי</span> (hipouss binari) ?',
+   c:['Recherche séquentielle','Recherche binaire','Tri à bulles','Comparaison'],a:1,
+   e:'<span dir="rtl" lang="he">חיפוש</span> = recherche. La version séquentielle se dit <span dir="rtl" lang="he">חיפוש סדרתי</span> (hipouss sidrati).'},
+  {t:'qcm',q:'Que signifie <span dir="rtl" lang="he">יעילות</span> (yeïlout) ?',
+   c:['La correction','L\'efficacité d\'un algorithme','La difficulté','La longueur du code'],a:1,
+   e:'Objectif explicite du programme : comparer deux algorithmes qui donnent le même résultat mais pas au même coût.'},
+  {t:'qcm',q:'Que veut dire <span dir="rtl" lang="he">מגמה</span> (megama) ?',
+   c:['Un examen','Une filière / spécialité du lycée','Une note','Un projet'],a:1,
+   e:'Le mot central de toute l\'orientation : <span dir="rtl" lang="he">מגמת מדעי המחשב</span> = la filière informatique.'},
+  {t:'qcm',q:'Que veut dire <span dir="rtl" lang="he">יחידות לימוד</span> (yehidot limoud), abrégé <span dir="rtl" lang="he">יח"ל</span> ?',
+   c:['Les heures de cours','Les unités de valeur du bac','Les élèves d\'une classe','Les exercices'],a:1,
+   e:'5 <span dir="rtl" lang="he">יח"ל</span> correspond au niveau le plus élevé. La filière informatique en demande 5, la voie technologique 10.'},
+  {t:'qcm',q:'Qu\'est-ce qu\'un <span dir="rtl" lang="he">פרויקט גמר</span> (proyekt gmar) ?',
+   c:['Un examen écrit','Un projet de fin d\'études, évalué par un examinateur externe','Un travail de laboratoire','Un contrôle continu'],a:1,
+   e:'Il compte pour la moitié de la note dans la voie technologique, à Mossinson par exemple.'}
+ ]}
+]});
+
+/* ================== LEXIQUE ================== */
+function filterLex(q){
+  q = (q||'').toLowerCase().trim();
+  let n = 0;
+  document.querySelectorAll('.lexrow').forEach(r=>{
+    const ok = !q || r.dataset.k.indexOf(q) > -1 || r.querySelector('.lexhe').textContent.indexOf(q) > -1;
+    r.style.display = ok ? '' : 'none';
+    if(ok) n++;
+  });
+  document.querySelectorAll('.lexgrp').forEach(g=>{
+    let vis = false, s = g.nextElementSibling;
+    while(s && s.classList.contains('lexrow')){ if(s.style.display !== 'none') vis = true; s = s.nextElementSibling; }
+    g.style.display = vis ? '' : 'none';
+  });
+  const c = document.getElementById('lexcount'); if(c) c.textContent = n + (n>1?' termes affichés':' terme affiché');
+  const v = document.getElementById('lexvide'); if(v) v.style.display = n ? 'none' : '';
+}
 
 /* ================== ÉTAT ================== */
 let S = {xp:0, done:{}, read:{}, wrong:[], theme:null};
