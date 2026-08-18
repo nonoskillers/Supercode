@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Cours et exercices interactifs d'informatique et de logique : Python de zéro, algorithmique, et préparation aux examens d'entrée en filière informatique.">
+
+<!-- Ajout à l'écran d'accueil iPhone / Android -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="CodeTrainer">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEtUlEQVR42u3dW1IdVRSH8T5dTkHIZAwXq3zNENRcIBDMYDQYJJhE5yFJnItV4WQQ+JAyUpBzziLQe6/d/fuqn3ig91799dr/vsHs3nf/dMDn+Ko7VwR8nl4JQA5cf1mZqQF0DpAD5IDMAZ0D5AA5IHNA5wA5AHIgnjk8sofOAXKAHCiROdQAOgfIgdtbVrrOwgKZA5YVkAPkgMwBnQPkwDiWFV/ZQ+aAZQXkADkgc0DnADlADsgc0DkAcoAckDkwpBzePsdiOTyyh8wBmQM6B8gBckDmgM4BcoAckDkAnQPkADmG4M+/7iiCzBHy4/tv309UDo/sV/LHRVG2JySKZeWKCqfWFHJA5rhFfth+P6lytdE5Xo+u1Tcxo76VOo7Jj1Zm1Dd0hhWoZuFdJPejn3WztNvV2r0+vTPoHpcXq8UZ3WTL2zlena5f6+dD8+P22chm1Oqysrxeaas5shm1ep+jLT9atPlj5uiybZFS3t8+K7zfm/zm+4El6dXperYDka5zvIyZ0dxZGBnzy2QNpmfGbR3a8fnRM0P/WJw5zrsMW6QiD7bOBh3DssBxe3t5sBXyI8NBSdE5fn+z3iFfTfpWqhA54Vo5GMG5VPejZ0YVmvCj5n2O4Mwfbp0VGEz5ATwM+zG5+xwnYTNGHCyCszup1D/6EdRuCn5MSI7IqVCyaidVl/bITKuMsELmiMzzUZGcEQkcXZEBPIr5MfLM8SJmRp7WWmwwkR29KNs/ema0JWJJP3pm8GMRhb5bOY7Np8pXIcvHlvNDlTKjSnQpuzP5tpGtDn2OC4JuZ2te71ZtulHtbM0TXELN+u68K7Gt7u1rhUZyrbFVGtLxm7UV9SoyjEL3OXY357ubK86G47drufpGpT52/HaFGbub87Hd5/ht1ZyrkHNUScZcTo6VnaPRQ1X+wEcq2d7VSlt+FDsGOc3oyj9beRzzY4KBI2LG41Jpo9r7HBE/jia2vhzFzCh/n6ObrB9JFMxpRpf8ZZ8p9I/Mc6z2Dule7FQ4GjJ/LGGvyOoeNGOvbNRI8a1s0I/nI+0fz8NmVHy20vGDGUkzRy0/KgrXhBldkr/PsR+rwmjeG42wXylnZPz7HBE/fi11ru8PecpGZrFfu2f8t6ycd0m2/Y2YHy0/qQ+ZsTFPckRy3ecI+fGu1XAaGXmkAtPKHBe3JzE/mnuqEjHjycY81bHIeIc04sfhzfrHYdn2cxgzI90d0kZbdMJSjma02eVYXs1Baz3QL684o/Fkjk/bwYJ6HdzGwlzlDsegMxooc6TVY3aw8eFKHT80/ZbPkDMa4tOE3Fys5tXKfhnP3n09shlNN5B+rGDyOo5yRrODu/NuYvyyuHP8NCIFp3spC3KAHDnWFFzC/5W9fBWL/+Xwv+w/8fSuNHpJjgkb8PPflhhyEOXLFtmn38xVAa5WQA6QA4MHUlf20DlADpADMgd0DpADjS0rHlNjcebwyB6WFZAD5ECJzKEG0DlADpADMgd0DpAD5IDMAZ0D5AAuLyu+sofMAcsKyAFyQOaAzoHWLmV9mgCdAzIHdA6QA+SAzAGdAyPpHB7ZQ+eAzAGdA+QAOSBzQOcAOUAOyByAzgFygBwYkH8BXOEN1F3VD5AAAAAASUVORK5CYII=">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEtUlEQVR42u3dW1IdVRSH8T5dTkHIZAwXq3zNENRcIBDMYDQYJJhE5yFJnItV4WQQ+JAyUpBzziLQe6/d/fuqn3ig91799dr/vsHs3nf/dMDn+Ko7VwR8nl4JQA5cf1mZqQF0DpAD5IDMAZ0D5AA5IHNA5wA5AHIgnjk8sofOAXKAHCiROdQAOgfIgdtbVrrOwgKZA5YVkAPkgMwBnQPkwDiWFV/ZQ+aAZQXkADkgc0DnADlADsgc0DkAcoAckDkwpBzePsdiOTyyh8wBmQM6B8gBckDmgM4BcoAckDkAnQPkADmG4M+/7iiCzBHy4/tv309UDo/sV/LHRVG2JySKZeWKCqfWFHJA5rhFfth+P6lytdE5Xo+u1Tcxo76VOo7Jj1Zm1Dd0hhWoZuFdJPejn3WztNvV2r0+vTPoHpcXq8UZ3WTL2zlena5f6+dD8+P22chm1Oqysrxeaas5shm1ep+jLT9atPlj5uiybZFS3t8+K7zfm/zm+4El6dXperYDka5zvIyZ0dxZGBnzy2QNpmfGbR3a8fnRM0P/WJw5zrsMW6QiD7bOBh3DssBxe3t5sBXyI8NBSdE5fn+z3iFfTfpWqhA54Vo5GMG5VPejZ0YVmvCj5n2O4Mwfbp0VGEz5ATwM+zG5+xwnYTNGHCyCszup1D/6EdRuCn5MSI7IqVCyaidVl/bITKuMsELmiMzzUZGcEQkcXZEBPIr5MfLM8SJmRp7WWmwwkR29KNs/ema0JWJJP3pm8GMRhb5bOY7Np8pXIcvHlvNDlTKjSnQpuzP5tpGtDn2OC4JuZ2te71ZtulHtbM0TXELN+u68K7Gt7u1rhUZyrbFVGtLxm7UV9SoyjEL3OXY357ubK86G47drufpGpT52/HaFGbub87Hd5/ht1ZyrkHNUScZcTo6VnaPRQ1X+wEcq2d7VSlt+FDsGOc3oyj9beRzzY4KBI2LG41Jpo9r7HBE/jia2vhzFzCh/n6ObrB9JFMxpRpf8ZZ8p9I/Mc6z2Dule7FQ4GjJ/LGGvyOoeNGOvbNRI8a1s0I/nI+0fz8NmVHy20vGDGUkzRy0/KgrXhBldkr/PsR+rwmjeG42wXylnZPz7HBE/fi11ru8PecpGZrFfu2f8t6ycd0m2/Y2YHy0/qQ+ZsTFPckRy3ecI+fGu1XAaGXmkAtPKHBe3JzE/mnuqEjHjycY81bHIeIc04sfhzfrHYdn2cxgzI90d0kZbdMJSjma02eVYXs1Baz3QL684o/Fkjk/bwYJ6HdzGwlzlDsegMxooc6TVY3aw8eFKHT80/ZbPkDMa4tOE3Fys5tXKfhnP3n09shlNN5B+rGDyOo5yRrODu/NuYvyyuHP8NCIFp3spC3KAHDnWFFzC/5W9fBWL/+Xwv+w/8fSuNHpJjgkb8PPflhhyEOXLFtmn38xVAa5WQA6QA4MHUlf20DlADpADMgd0DpADjS0rHlNjcebwyB6WFZAD5ECJzKEG0DlADpADMgd0DpAD5IDMAZ0D5AAuLyu+sofMAcsKyAFyQOaAzoHWLmV9mgCdAzIHdA6QA+SAzAGdAyPpHB7ZQ+eAzAGdA+QAOSBzQOcAOUAOyByAzgFygBwYkH8BXOEN1F3VD5AAAAAASUVORK5CYII=">
+<title>CodeTrainer — entraînement informatique</title>
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   Espacement sur base 4px · échelle typographique · élévations
+   Contrastes vérifiés AA (4.5:1 texte, 3:1 composants)
+   ============================================================ */
+:root{
+  /* espacement */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
+  /* rayons */
+  --r1:8px; --r2:12px; --r3:16px; --r4:20px; --r-full:999px;
+  /* typographie */
+  --fs-xs:12px; --fs-sm:14px; --fs-base:16px; --fs-md:17px; --fs-lg:20px;
+  --fs-xl:24px; --fs-2xl:30px;
+  /* couleurs — thème clair */
+  --bg:#f5f5f2; --surface:#ffffff; --surface-2:#faf9f7; --surface-3:#f0efec;
+  --ink:#16161a; --ink-2:#56565f; --ink-3:#7c7c86;
+  --line:#e3e2de; --line-strong:#cbcac5;
+  --p:#4f46e5; --p-ink:#3730a3; --p-soft:#eef1ff; --p-line:#c7cdfd;
+  --ok:#15803d; --ok-ink:#14532d; --ok-soft:#f0fdf5; --ok-line:#86efac;
+  --ko:#b91c1c; --ko-ink:#7f1d1d; --ko-soft:#fef3f2; --ko-line:#fca5a5;
+  --gold:#b45309; --gold-soft:#fffbeb; --gold-line:#fcd34d;
+  --code-bg:#1e2330; --code-ink:#e8eaf0;
+  --focus:#1d4ed8;
+  --sh1:0 1px 2px rgba(16,16,24,.06);
+  --sh2:0 2px 8px rgba(16,16,24,.07);
+  --sh3:0 8px 28px rgba(16,16,24,.10);
+  --depth:#c9c8c3;            /* épaisseur sous les boutons */
+  --p-depth:#3730a3;
+  --ok-depth:#166534;
+}
+[data-theme="dark"]{
+  --bg:#0e1014; --surface:#171a21; --surface-2:#1c2029; --surface-3:#242935;
+  --ink:#f2f3f5; --ink-2:#a7abb5; --ink-3:#868c98;
+  --line:#2a2f3a; --line-strong:#3a4150;
+  --p:#8b93f8; --p-ink:#c7cdfd; --p-soft:#1c1f3d; --p-line:#3d3f7a;
+  --ok:#4ade80; --ok-ink:#bbf7d0; --ok-soft:#0d2317; --ok-line:#166534;
+  --ko:#f87171; --ko-ink:#fecaca; --ko-soft:#2a1315; --ko-line:#7f1d1d;
+  --gold:#fbbf24; --gold-soft:#2a2010; --gold-line:#78350f;
+  --code-bg:#0b0d12; --code-ink:#e8eaf0;
+  --focus:#93c5fd;
+  --sh1:0 1px 2px rgba(0,0,0,.4); --sh2:0 2px 10px rgba(0,0,0,.45);
+  --sh3:0 10px 32px rgba(0,0,0,.55);
+  --depth:#0a0c10; --p-depth:#3f45a8; --ok-depth:#166534;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1014; --surface:#171a21; --surface-2:#1c2029; --surface-3:#242935;
+    --ink:#f2f3f5; --ink-2:#a7abb5; --ink-3:#868c98;
+    --line:#2a2f3a; --line-strong:#3a4150;
+    --p:#8b93f8; --p-ink:#c7cdfd; --p-soft:#1c1f3d; --p-line:#3d3f7a;
+    --ok:#4ade80; --ok-ink:#bbf7d0; --ok-soft:#0d2317; --ok-line:#166534;
+    --ko:#f87171; --ko-ink:#fecaca; --ko-soft:#2a1315; --ko-line:#7f1d1d;
+    --gold:#fbbf24; --gold-soft:#2a2010; --gold-line:#78350f;
+    --code-bg:#0b0d12; --focus:#93c5fd;
+    --sh1:0 1px 2px rgba(0,0,0,.4); --sh2:0 2px 10px rgba(0,0,0,.45);
+    --sh3:0 10px 32px rgba(0,0,0,.55);
+    --depth:#0a0c10; --p-depth:#3f45a8;
+  }
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:var(--fs-base);line-height:1.6;
+  transition:background .25s,color .25s;
+}
+#app{max-width:760px;margin:0 auto;padding:0 var(--s4) calc(var(--s8) + env(safe-area-inset-bottom))}
+
+/* focus visible — 3:1 minimum, jamais supprimé */
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:var(--r1)}
+:focus:not(:focus-visible){outline:none}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- barre supérieure ---------- */
+.topbar{
+  position:sticky;top:0;z-index:30;background:var(--bg);
+  padding:var(--s3) 0 var(--s3);display:flex;align-items:center;gap:var(--s3);
+  border-bottom:1px solid var(--line);margin-bottom:var(--s5);
+  transition:background .25s,border-color .25s;
+}
+.stat{display:flex;align-items:center;gap:6px;font-weight:700;font-size:var(--fs-sm);
+  color:var(--ink);white-space:nowrap}
+.stat .n{font-variant-numeric:tabular-nums}
+.stat small{font-weight:500;color:var(--ink-2);font-size:var(--fs-xs)}
+.spacer{flex:1}
+.iconbtn{
+  width:44px;height:44px;border-radius:var(--r2);border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);cursor:pointer;font-size:17px;
+  display:grid;place-items:center;flex-shrink:0;transition:background .15s,border-color .15s;
+}
+.iconbtn:hover{background:var(--surface-3);border-color:var(--line-strong)}
+
+/* ---------- boutons ---------- */
+.btn{
+  border:none;border-radius:var(--r2);padding:14px 22px;font-size:15px;font-weight:650;
+  cursor:pointer;font-family:inherit;min-height:48px;line-height:1.2;
+  transition:transform .08s ease,filter .15s,background .15s;
+}
+.btn:active:not(:disabled){transform:translateY(2px)}
+.btn-p{background:var(--p);color:#fff;box-shadow:0 3px 0 var(--p-depth)}
+.btn-p:active:not(:disabled){box-shadow:0 1px 0 var(--p-depth)}
+.btn-p:hover:not(:disabled){filter:brightness(1.08)}
+.btn-g{background:var(--ok);color:#fff;box-shadow:0 3px 0 var(--ok-depth)}
+[data-theme="dark"] .btn-g,[data-theme="dark"] .btn-p{color:#0e1014}
+.btn-g:active:not(:disabled){box-shadow:0 1px 0 var(--ok-depth)}
+.btn-sec{background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);box-shadow:var(--sh1)}
+.btn-sec:hover{background:var(--surface-3)}
+.btn-ghost{background:transparent;color:var(--ink-2);font-weight:550;padding:12px 14px}
+.btn-ghost:hover{color:var(--ink);background:var(--surface-3)}
+.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none}
+
+/* ---------- accueil ---------- */
+.hero{
+  background:linear-gradient(135deg,#4f46e5 0%,#6d28d9 55%,#7c3aed 100%);
+  color:#fff;border-radius:var(--r4);padding:var(--s5) var(--s5);
+  margin-bottom:var(--s5);display:flex;align-items:center;gap:var(--s5);
+  box-shadow:var(--sh2)
+}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#312e81 0%,#4c1d95 55%,#5b21b6 100%)}
+.hero-txt{flex:1;min-width:0}
+.hero h1{margin:0 0 2px;font-size:var(--fs-xl);letter-spacing:-.02em;line-height:1.2}
+.hero p{margin:0;opacity:.92;font-size:var(--fs-sm)}
+.ring{width:82px;height:82px;flex-shrink:0;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .lab{position:absolute;inset:0;display:grid;place-items:center;text-align:center;line-height:1.1}
+.ring .lab b{font-size:19px;display:block}
+.ring .lab small{font-size:10px;opacity:.85;letter-spacing:.05em;text-transform:uppercase}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);
+  padding:var(--s4) var(--s5);margin-bottom:var(--s4);box-shadow:var(--sh1)}
+.resume{display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap}
+.resume .txt{flex:1;min-width:180px}
+.resume .k{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--p);font-weight:700;margin-bottom:2px}
+.resume h3{margin:0;font-size:var(--fs-md)}
+.resume p{margin:2px 0 0;color:var(--ink-2);font-size:var(--fs-sm)}
+
+.unit{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);
+  padding:var(--s4) var(--s5) var(--s5);margin-bottom:var(--s4);box-shadow:var(--sh1);
+  transition:border-color .2s}
+.unit-head{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s3)}
+.badge{width:44px;height:44px;border-radius:var(--r2);display:grid;place-items:center;
+  font-size:20px;flex-shrink:0}
+.unit h3{margin:0;font-size:var(--fs-md);letter-spacing:-.01em}
+.unit .desc{margin:1px 0 0;font-size:var(--fs-sm);color:var(--ink-2)}
+.uprog{display:flex;align-items:center;gap:var(--s2);margin-left:auto;flex-shrink:0}
+.uprog .track{width:52px;height:6px;background:var(--line);border-radius:var(--r-full);overflow:hidden}
+.uprog .track>i{display:block;height:100%;background:var(--ok);border-radius:var(--r-full);
+  transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.uprog span{font-size:var(--fs-xs);color:var(--ink-2);font-variant-numeric:tabular-nums;font-weight:600}
+
+.nodes{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.node{
+  border:1.5px solid var(--line-strong);background:var(--surface);border-radius:var(--r2);
+  padding:11px 15px;cursor:pointer;font-size:var(--fs-sm);font-weight:600;color:var(--ink);
+  display:inline-flex;align-items:center;gap:8px;font-family:inherit;min-height:44px;
+  transition:transform .12s,border-color .12s,background .12s,box-shadow .12s;
+}
+.node:hover{border-color:var(--p);transform:translateY(-2px);box-shadow:var(--sh2)}
+.node .dot{width:9px;height:9px;border-radius:var(--r-full);background:var(--line-strong);flex-shrink:0}
+.node.done{background:var(--ok-soft);border-color:var(--ok-line);color:var(--ok-ink)}
+[data-theme="dark"] .node.done{color:var(--ok)}
+.node.done .dot{background:var(--ok)}
+.node.done .pc{font-weight:700;font-variant-numeric:tabular-nums;opacity:.8}
+.node.cours{background:var(--p-soft);border-color:var(--p-line);color:var(--p-ink)}
+.node.cours .dot{background:var(--p)}
+.node.cours.read{background:var(--surface);border-color:var(--line);color:var(--ink-2);font-weight:550}
+.node.cours.read .dot{background:var(--line-strong)}
+.node.next{position:relative;border-color:var(--p);box-shadow:0 0 0 3px var(--p-soft)}
+
+.review{background:var(--gold-soft);border-color:var(--gold-line)}
+
+/* ---------- vue cours ---------- */
+.readbar{position:fixed;top:0;left:0;height:3px;background:var(--p);z-index:40;
+  width:0;transition:width .1s linear}
+.course{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);
+  padding:var(--s6) var(--s5);box-shadow:var(--sh1)}
+.course h2{margin:0 0 var(--s1);font-size:var(--fs-2xl);letter-spacing:-.02em;line-height:1.2}
+.course .lead{color:var(--ink-2);margin:0 0 var(--s5);font-size:var(--fs-sm);max-width:62ch}
+.course h3{font-size:var(--fs-lg);margin:var(--s6) 0 var(--s3);padding-top:var(--s5);
+  border-top:1px solid var(--line);letter-spacing:-.01em}
+.course h3:first-of-type{border-top:none;padding-top:0;margin-top:var(--s5)}
+.course p{margin:var(--s3) 0;font-size:var(--fs-md);max-width:68ch;line-height:1.7}
+.course ul{padding-left:var(--s5);margin:var(--s3) 0;max-width:66ch}
+.course li{margin:var(--s2) 0;font-size:var(--fs-md);line-height:1.65}
+.course table{width:100%;border-collapse:collapse;margin:var(--s4) 0;font-size:var(--fs-sm)}
+.course th,.course td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.course th{background:var(--surface-3);font-weight:650}
+.course tr:last-child td{border-bottom:none}
+.callout{padding:var(--s3) var(--s4);border-radius:0 var(--r2) var(--r2) 0;
+  margin:var(--s4) 0;font-size:var(--fs-base);max-width:68ch;line-height:1.65;
+  display:flex;gap:var(--s3);align-items:flex-start}
+.callout .ci{font-size:16px;line-height:1.5;flex-shrink:0}
+.warn{background:var(--gold-soft);border-left:4px solid var(--gold)}
+.key{background:var(--ok-soft);border-left:4px solid var(--ok)}
+.heb{background:var(--p-soft);border-radius:var(--r2);padding:var(--s3) var(--s4);
+  margin:var(--s5) 0 0;font-size:var(--fs-sm);border-left:4px solid var(--p)}
+
+pre{background:var(--code-bg);color:var(--code-ink);padding:var(--s4) var(--s4);
+  border-radius:var(--r2);overflow-x:auto;font-size:13.5px;line-height:1.7;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:var(--s4) 0 var(--s2);
+  border:1px solid rgba(255,255,255,.06)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--surface-3);padding:2px 5px;border-radius:5px;font-size:.9em;color:var(--ink)}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+
+/* ---------- exercice ---------- */
+.pbar{height:14px;background:var(--line);border-radius:var(--r-full);overflow:hidden;flex:1;
+  min-width:60px}
+.pbar>i{display:block;height:100%;background:var(--ok);border-radius:var(--r-full);
+  transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.hearts{font-size:15px;letter-spacing:2px;white-space:nowrap}
+.hearts .h{display:inline-block;transition:transform .3s}
+.hearts .h.lost{animation:pop .45s}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.5) rotate(-12deg)}100%{transform:scale(1);opacity:.35}}
+
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r4);
+  padding:var(--s5) var(--s5);margin-bottom:var(--s4);box-shadow:var(--sh1);
+  animation:slidein .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes slidein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.qtype{font-size:var(--fs-xs);letter-spacing:.09em;text-transform:uppercase;color:var(--p);
+  font-weight:700;margin-bottom:var(--s2);display:flex;align-items:center;gap:var(--s2)}
+.qtext{font-size:var(--fs-lg);font-weight:650;margin:0;line-height:1.4;letter-spacing:-.01em}
+.seqbox{font-family:ui-monospace,monospace;font-size:21px;letter-spacing:.16em;
+  background:var(--surface-3);padding:var(--s4);border-radius:var(--r2);margin:var(--s4) 0 var(--s2);
+  text-align:center;border:1px solid var(--line)}
+.combo{background:var(--gold);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 9px;border-radius:var(--r-full);letter-spacing:.04em}
+[data-theme="dark"] .combo{color:#0e1014}
+
+.choices{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
+.choice{
+  border:2px solid var(--line-strong);background:var(--surface);border-radius:var(--r2);
+  padding:13px 15px;text-align:left;cursor:pointer;font-size:15.5px;font-family:inherit;
+  color:var(--ink);display:flex;align-items:center;gap:var(--s3);min-height:52px;
+  transition:border-color .12s,background .12s,transform .12s;line-height:1.45;
+}
+.choice:hover:not(:disabled){border-color:var(--p);background:var(--p-soft);transform:translateX(2px)}
+.choice .k{width:28px;height:28px;border:2px solid var(--line-strong);border-radius:var(--r1);
+  display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--ink-2);flex-shrink:0}
+.choice .mark{margin-left:auto;font-size:17px;flex-shrink:0}
+.choice.good{border-color:var(--ok);background:var(--ok-soft);animation:goodpop .35s}
+.choice.good .k{border-color:var(--ok);color:var(--ok)}
+.choice.bad{border-color:var(--ko);background:var(--ko-soft);animation:shake .4s}
+.choice.bad .k{border-color:var(--ko);color:var(--ko)}
+.choice:disabled{cursor:default}
+@keyframes goodpop{0%{transform:scale(1)}45%{transform:scale(1.025)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}
+  40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+
+.field{margin-top:var(--s5)}
+.field label{display:block;font-size:var(--fs-sm);font-weight:600;color:var(--ink-2);
+  margin-bottom:var(--s2)}
+input.answer{width:100%;border:2px solid var(--line-strong);border-radius:var(--r2);
+  padding:14px 16px;font-size:17px;font-family:ui-monospace,monospace;outline:none;
+  background:var(--surface);color:var(--ink);min-height:52px;transition:border-color .15s}
+input.answer::placeholder{color:var(--ink-3)}
+input.answer:focus{border-color:var(--p);box-shadow:0 0 0 3px var(--p-soft)}
+input.answer.good{border-color:var(--ok);background:var(--ok-soft)}
+input.answer.bad{border-color:var(--ko);background:var(--ko-soft);animation:shake .4s}
+.hint{font-size:var(--fs-xs);color:var(--ink-3);margin-top:var(--s2)}
+
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+.chip{border:2px solid var(--line-strong);background:var(--surface);border-radius:var(--r2);
+  padding:11px 14px;cursor:pointer;font-family:ui-monospace,monospace;font-size:13.5px;
+  color:var(--ink);transition:border-color .12s,transform .12s;text-align:left;
+  white-space:pre;min-height:44px}
+.chip:hover:not(:disabled){border-color:var(--p);transform:translateY(-2px)}
+.chip.used{opacity:.28;pointer-events:none}
+.slot{min-height:64px;border:2px dashed var(--line-strong);border-radius:var(--r2);
+  padding:var(--s2);margin-top:var(--s5);display:flex;flex-direction:column;gap:6px;
+  background:var(--surface-2)}
+.slot .line{background:var(--code-bg);color:var(--code-ink);border-radius:var(--r1);
+  padding:9px 12px;font-family:ui-monospace,monospace;font-size:13px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:var(--s3);
+  white-space:pre;min-height:40px;animation:slidein .18s}
+.slot .line .x{opacity:.55;font-size:11px;flex-shrink:0}
+.slot .line:hover .x{opacity:1}
+.slot .empty{color:var(--ink-3);font-size:var(--fs-sm);text-align:center;padding:var(--s3)}
+
+/* ---------- retour immédiat ---------- */
+.fb{position:sticky;bottom:0;margin:0 calc(var(--s4) * -1);
+  padding:var(--s5) var(--s4) calc(var(--s5) + env(safe-area-inset-bottom));
+  border-top:2px solid;animation:up .22s cubic-bezier(.2,.8,.2,1);z-index:20}
+@keyframes up{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+.fb.ok{background:var(--ok-soft);border-color:var(--ok-line)}
+.fb.ko{background:var(--ko-soft);border-color:var(--ko-line)}
+.fb-head{display:flex;align-items:center;gap:var(--s2);margin-bottom:var(--s1)}
+.fb-head .em{font-size:20px}
+.fb h4{margin:0;font-size:var(--fs-md);font-weight:750}
+.fb.ok h4{color:var(--ok-ink)} .fb.ko h4{color:var(--ko-ink)}
+[data-theme="dark"] .fb.ok h4{color:var(--ok)} [data-theme="dark"] .fb.ko h4{color:var(--ko)}
+.fb p{margin:0 0 var(--s4);font-size:15px;line-height:1.6;max-width:66ch}
+.fb .sol{font-family:ui-monospace,monospace;font-weight:700}
+.fb .row{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.xpgain{color:var(--ok);font-weight:750;font-size:var(--fs-sm);animation:floaty .6s}
+@keyframes floaty{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- résultat ---------- */
+.result{text-align:center;padding:var(--s7) var(--s4);position:relative;overflow:hidden}
+.result .big{font-size:60px;margin-bottom:var(--s2);animation:bounce .6s cubic-bezier(.2,1.4,.4,1)}
+@keyframes bounce{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+.result h2{margin:0 0 var(--s1);font-size:var(--fs-xl);letter-spacing:-.02em}
+.result>p{color:var(--ink-2);margin:0 auto var(--s6);max-width:44ch}
+.scores{display:flex;gap:var(--s3);justify-content:center;margin-bottom:var(--s6);flex-wrap:wrap}
+.score{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);
+  padding:var(--s4) var(--s5);min-width:104px;box-shadow:var(--sh1)}
+.score b{display:block;font-size:var(--fs-xl);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.score small{color:var(--ink-2);font-size:var(--fs-xs)}
+.actions{display:flex;gap:var(--s3);justify-content:center;flex-wrap:wrap}
+.conf{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(560px) rotate(680deg);opacity:0}}
+
+/* ---------- sauvegarde ---------- */
+.save h4{margin:0 0 var(--s1);font-size:var(--fs-sm)}
+.save p{margin:0 0 var(--s3);font-size:var(--fs-sm);color:var(--ink-2);max-width:60ch}
+.save textarea{width:100%;height:56px;border:1px solid var(--line);border-radius:var(--r1);
+  padding:var(--s2);font-family:ui-monospace,monospace;font-size:11px;resize:vertical;
+  outline:none;background:var(--surface-2);color:var(--ink-2)}
+.save .row{display:flex;gap:var(--s2);margin-top:var(--s2);flex-wrap:wrap}
+.save .btn{padding:10px 16px;font-size:13.5px;min-height:44px;box-shadow:none}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:var(--r-full);
+  font-size:14px;font-weight:600;z-index:60;box-shadow:var(--sh3);animation:up .25s;
+  max-width:calc(100% - 32px)}
+
+/* ---------- responsive ---------- */
+@media(max-width:560px){
+  :root{--fs-lg:18px;--fs-xl:22px;--fs-2xl:25px}
+  .hero{padding:var(--s5) var(--s4);gap:var(--s4)}
+  .ring{width:68px;height:68px}
+  .unit,.card{padding:var(--s4)}
+  .course{padding:var(--s5) var(--s4)}
+  .uprog{width:100%;margin:var(--s2) 0 0;order:3}
+  .unit-head{flex-wrap:wrap}
+  .node{flex:1 1 auto;justify-content:center}
+  .actions .btn,.fb .row .btn{width:100%}
+  .scores{gap:var(--s2)}
+  .score{padding:var(--s3) var(--s4);min-width:92px;flex:1}
+}
+
+/* ---------- mouvement réduit ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .conf{display:none}
+}
+
+
+/* ---------- confort mobile / iPhone ---------- */
+body{overscroll-behavior-y:contain;-webkit-font-smoothing:antialiased}
+#app{padding-left:max(var(--s4),env(safe-area-inset-left));
+     padding-right:max(var(--s4),env(safe-area-inset-right))}
+.topbar{padding-top:max(var(--s3),env(safe-area-inset-top))}
+button,.node,.choice,.chip{touch-action:manipulation}
+input,textarea{font-size:16px}   /* empêche le zoom automatique de Safari iOS */
+@media (display-mode:standalone){
+  .topbar{padding-top:max(var(--s5),env(safe-area-inset-top))}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- ============ CONTENU DES COURS ============ -->
+<template id="cours-u1">
+<h2>Variables et types</h2>
+<p class="lead">Ce qu'il faut savoir avant de faire les 3 leçons de cette unité · correspond aux jours 1 et 2</p>
+
+<h3>1. Afficher quelque chose</h3>
+<p>Un programme est une liste d'instructions exécutées dans l'ordre, de haut en bas. La première à connaître affiche du texte :</p>
+<pre><code>print("Bonjour")
+print("Je commence l'informatique")</code></pre>
+<p>Le texte entre guillemets est affiché tel quel. Les deux lignes s'affichent l'une après l'autre.</p>
+
+<h3>2. Les variables</h3>
+<p>Une variable est une <b>boîte étiquetée</b> qui garde une valeur en mémoire. On y range une valeur avec le signe <code>=</code> :</p>
+<pre><code>age = 15
+nom = "David"
+taille = 1.72
+
+print(nom)</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Le signe <code>=</code> n'est pas l'égalité mathématique.</b> Il signifie « range la valeur de droite dans la boîte de gauche ». C'est pourquoi <code>x = x + 1</code> est parfaitement normal : on prend le contenu de x, on ajoute 1, on remet le résultat dans x.</div></div>
+
+<h3>3. Les types de base</h3>
+<table>
+<tr><th>Type</th><th>Ce que c'est</th><th>Exemples</th></tr>
+<tr><td><code>int</code></td><td>nombre entier</td><td>15, −3, 0</td></tr>
+<tr><td><code>float</code></td><td>nombre à virgule</td><td>1.72, −0.5</td></tr>
+<tr><td><code>str</code></td><td>texte, toujours entre guillemets</td><td>"David", "15"</td></tr>
+</table>
+<p><code>15</code> et <code>"15"</code> ne sont pas la même chose : le premier est un nombre avec lequel on calcule, le second est du texte.</p>
+<pre><code>print(15 + 15)      # affiche 30
+print("15" + "15")  # affiche 1515 (collage de deux textes)</code></pre>
+<p>Le symbole <code>#</code> introduit un <b>commentaire</b> : tout ce qui suit sur la ligne est ignoré par la machine. C'est une note pour l'humain.</p>
+
+<h3>4. Demander une information</h3>
+<pre><code>nom = input("Comment tu t'appelles ? ")
+print("Bonjour " + nom)</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Le piège numéro 1 des débutants :</b> <code>input()</code> renvoie <b>toujours</b> du texte, même si l'utilisateur tape un nombre. Pour obtenir un nombre utilisable, il faut convertir :</div></div>
+<pre><code>age = int(input("Ton âge ? "))
+print("L'an prochain tu auras", age + 1, "ans")</code></pre>
+<p>Avec des virgules, <code>print</code> accepte plusieurs éléments de types différents et ajoute une espace entre eux — plus pratique que le <code>+</code>, qui exige que tout soit du texte.</p>
+
+<h3>5. Calculer</h3>
+<table>
+<tr><th>Opérateur</th><th>Rôle</th><th>Exemple</th><th>Résultat</th></tr>
+<tr><td><code>+ − *</code></td><td>opérations usuelles</td><td>7 * 3</td><td>21</td></tr>
+<tr><td><code>/</code></td><td>division (donne un float)</td><td>7 / 2</td><td>3.5</td></tr>
+<tr><td><code>//</code></td><td><b>division entière</b> : combien de fois ça rentre</td><td>7 // 2</td><td>3</td></tr>
+<tr><td><code>%</code></td><td><b>modulo</b> : le reste de la division</td><td>7 % 2</td><td>1</td></tr>
+<tr><td><code>**</code></td><td>puissance</td><td>2 ** 10</td><td>1024</td></tr>
+</table>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>Pourquoi <code>%</code> est si important.</b> Il répond à des questions qui reviennent sans arrêt : <code>n % 2 == 0</code> teste si n est pair ; <code>347 % 10</code> donne le chiffre des unités (7) ; <code>347 // 10</code> retire le dernier chiffre (34). Cette paire permet de démonter un nombre chiffre par chiffre — un grand classique des examens.</div></div>
+<p>Priorités identiques aux mathématiques : puissances, puis <code>* / // %</code>, puis <code>+ −</code>. Les parenthèses forcent l'ordre. Pour arrondir : <code>round(x, 2)</code>.</p>
+
+<h3>6. Lire une erreur</h3>
+<p>Un message d'erreur n'est pas une punition, c'est une indication. Toujours lire la dernière ligne et le numéro de ligne signalé. <code>TypeError: can only concatenate str…</code> signifie « tu essaies de coller un nombre à du texte ».</p>
+<div class="heb"><b>Vocabulaire :</b> variable = <span dir="rtl">משתנה</span> · type = <span dir="rtl">טיפוס</span> · chaîne de caractères = <span dir="rtl">מחרוזת</span></div>
+</template>
+
+<template id="cours-u2">
+<h2>Les conditions</h2>
+<p class="lead">Le premier vrai saut conceptuel : faire prendre des décisions au programme · jours 3 et 4</p>
+
+<h3>1. La structure if</h3>
+<pre><code>age = int(input("Ton âge ? "))
+
+if age >= 18:
+    print("Tu es majeur")
+else:
+    print("Tu es mineur")</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>L'indentation n'est pas décorative : elle fait partie du langage.</b> Les 4 espaces devant <code>print</code> indiquent que cette ligne appartient au <code>if</code>. Une indentation manquante provoque une <code>IndentationError</code>. Et ne jamais oublier les deux-points <code>:</code> en fin de ligne.</div></div>
+
+<h3>2. Comparer</h3>
+<table>
+<tr><th>Symbole</th><th>Sens</th></tr>
+<tr><td><code>==</code></td><td>est égal à — <b>double</b> signe égal ; un seul serait une affectation</td></tr>
+<tr><td><code>!=</code></td><td>est différent de</td></tr>
+<tr><td><code>&lt; &gt; &lt;= &gt;=</code></td><td>inférieur, supérieur, et leurs versions « ou égal »</td></tr>
+</table>
+<p>Une comparaison produit un <b>booléen</b> : <code>True</code> ou <code>False</code>. C'est un type à part entière, à côté de int, float et str.</p>
+<pre><code>note = 92
+reussi = note >= 60
+print(reussi)     # True</code></pre>
+
+<h3>3. Plusieurs cas : elif</h3>
+<pre><code>if note >= 90:
+    print("Excellent")
+elif note >= 75:
+    print("Bien")
+elif note >= 60:
+    print("Passable")
+else:
+    print("Échec")</code></pre>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Les conditions sont testées <b>dans l'ordre</b> et le programme s'arrête à la première qui est vraie. C'est pourquoi on écrit les seuils du plus haut au plus bas : en commençant par <code>note >= 60</code>, un 95 afficherait « Passable ». L'ordre n'est pas décoratif, il est logique.</div></div>
+
+<h3>4. Combiner des conditions</h3>
+<table>
+<tr><th>Opérateur</th><th>Vrai quand</th></tr>
+<tr><td><code>and</code></td><td>les <b>deux</b> conditions sont vraies</td></tr>
+<tr><td><code>or</code></td><td>au moins <b>une</b> des deux est vraie</td></tr>
+<tr><td><code>not</code></td><td>inverse le résultat</td></tr>
+</table>
+<pre><code>if age >= 15 and moyenne >= 85:
+    print("Éligible")</code></pre>
+<p>Attention : chaque condition doit être écrite entièrement. <code>if age and moyenne >= 85</code> ne veut pas dire ce qu'on croit.</p>
+
+<h3>5. La méthode, avant de coder</h3>
+<p>Avant d'écrire la moindre ligne, répondre par écrit à trois questions : <b>quelles sont les entrées ?</b> <b>quelle est la sortie ?</b> <b>quels sont tous les cas possibles ?</b> Cette étape sur papier est ce qui distingue un élève qui réussit d'un élève qui bloque — et les examinateurs évaluent la logique autant que le code.</p>
+<div class="heb"><b>Vocabulaire :</b> condition = <span dir="rtl">תנאי</span> · booléen = <span dir="rtl">בוליאני</span></div>
+</template>
+
+<template id="cours-u3">
+<h2>Les boucles</h2>
+<p class="lead">Le cœur de l'informatique : faire répéter des actions à la machine · jours 5 et 6</p>
+
+<h3>1. La boucle while</h3>
+<p><code>while</code> signifie « tant que ». Le bloc indenté se répète tant que la condition reste vraie :</p>
+<pre><code>i = 1
+while i <= 5:
+    print(i)
+    i = i + 1
+print("Terminé")</code></pre>
+<p>i vaut 1 → condition vraie → affiche 1 → i devient 2… jusqu'à i = 6, où la condition devient fausse.</p>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Le piège de la boucle infinie.</b> Si la variable testée n'est jamais modifiée dans la boucle, le programme tourne sans fin. Toute boucle <code>while</code> doit contenir quelque chose qui rapproche de la sortie. Pour arrêter un programme emballé : Ctrl + C.</div></div>
+
+<h3>2. Les trois schémas à connaître par cœur</h3>
+<p><b>Le compteur</b> — une variable qui avance d'un pas à chaque tour :</p>
+<pre><code>i = 1
+while i <= 10:
+    print(i)
+    i += 1        # raccourci de i = i + 1</code></pre>
+<p><b>L'accumulateur</b> — une variable qui grossit à chaque tour :</p>
+<pre><code>somme = 0
+i = 1
+while i <= 100:
+    somme += i
+    i += 1
+print(somme)   # 5050</code></pre>
+<p><b>La sentinelle</b> — on répète jusqu'à une valeur d'arrêt :</p>
+<pre><code>nombre = int(input("Un nombre (0 pour arrêter) : "))
+while nombre != 0:
+    total += nombre
+    nombre = int(input("Un nombre (0 pour arrêter) : "))</code></pre>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Noter la structure de la sentinelle : on lit une première fois <b>avant</b> la boucle, puis on relit <b>à la fin</b> de chaque tour. Sans cette première lecture, la variable testée n'existe pas encore.</div></div>
+
+<h3>3. La boucle for</h3>
+<pre><code>for i in range(5):
+    print(i)          # 0, 1, 2, 3, 4</code></pre>
+<table>
+<tr><th>Écriture</th><th>Valeurs parcourues</th></tr>
+<tr><td><code>range(5)</code></td><td>0, 1, 2, 3, 4 — <b>la borne finale est exclue</b></td></tr>
+<tr><td><code>range(2, 7)</code></td><td>2, 3, 4, 5, 6</td></tr>
+<tr><td><code>range(10, 0, -1)</code></td><td>10, 9, 8 … 1 (le 3ᵉ nombre est le pas)</td></tr>
+</table>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>for ou while ?</b> Nombre de répétitions connu à l'avance → <code>for</code>. Répétition qui dépend d'un événement (l'utilisateur tape 0, on a trouvé la réponse) → <code>while</code>.</div></div>
+
+<h3>4. Boucles imbriquées</h3>
+<p>Une boucle dans une autre : pour <b>chaque</b> tour de la boucle extérieure, la boucle intérieure fait un cycle complet.</p>
+<pre><code>for ligne in range(1, 4):
+    for colonne in range(1, 4):
+        print(ligne * colonne, end="  ")
+    print()</code></pre>
+<p>Affiche une grille de 3 lignes. <code>end="  "</code> remplace le saut de ligne automatique de <code>print</code>, ce qui permet de rester sur la même ligne. Et <code>"*" * 4</code> répète un texte — pratique pour dessiner des figures.</p>
+<div class="heb"><b>Vocabulaire :</b> boucle = <span dir="rtl">לולאה</span> · répétition = <span dir="rtl">ביצוע חוזר</span></div>
+</template>
+
+<template id="cours-u4">
+<h2>Les fonctions</h2>
+<p class="lead">Découper un programme en morceaux réutilisables · jour 8</p>
+
+<h3>1. Définir et appeler</h3>
+<pre><code>def dire_bonjour():
+    print("Bonjour !")
+
+dire_bonjour()      # appel : exécute le bloc</code></pre>
+
+<h3>2. Avec des paramètres</h3>
+<pre><code>def saluer(nom):
+    print("Bonjour", nom)
+
+saluer("David")
+saluer("Sarah")</code></pre>
+<p>Le paramètre <code>nom</code> est une boîte vide, remplie au moment de l'appel.</p>
+
+<h3>3. Avec return — la vraie puissance</h3>
+<pre><code>def carre(x):
+    return x * x
+
+resultat = carre(7)          # 49
+print(carre(3) + carre(4))   # 25</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Différence essentielle entre print et return.</b> <code>print</code> affiche à l'écran et le programme n'en garde rien. <code>return</code> <b>renvoie une valeur</b> qu'on peut stocker, réutiliser, combiner. Une fonction de calcul doit presque toujours utiliser <code>return</code> — utiliser <code>print</code> à sa place est une erreur classique aux examens : le résultat s'affiche mais devient inexploitable.</div></div>
+<p><code>return</code> met fin immédiatement à la fonction : les lignes situées après ne sont jamais exécutées. Une fonction sans <code>return</code> renvoie <code>None</code>, c'est-à-dire « rien ».</p>
+<pre><code>def maximum(a, b):
+    if a > b:
+        return a
+    else:
+        return b</code></pre>
+
+<h3>4. Variables locales</h3>
+<pre><code>def calcul():
+    x = 10        # x n'existe QUE dans la fonction
+    return x
+
+calcul()
+print(x)          # NameError : x n'existe pas ici</code></pre>
+<p>Une variable créée dans une fonction disparaît quand celle-ci se termine. C'est une bonne chose : cela évite que les parties d'un programme s'abîment mutuellement.</p>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Une fonction qui répond par oui ou non renvoie un <b>booléen</b> : <code>return True</code> / <code>return False</code>. On peut alors écrire directement <code>if est_premier(n):</code>.</div></div>
+<div class="heb"><b>Vocabulaire :</b> fonction = <span dir="rtl">פונקציה</span> · paramètre = <span dir="rtl">פרמטר</span></div>
+</template>
+
+<template id="cours-u5">
+<h2>Les listes</h2>
+<p class="lead">Stocker plusieurs valeurs dans une seule variable · jours 9 et 10 · en hébreu <span dir="rtl">מערך</span></p>
+
+<h3>1. Créer et accéder</h3>
+<pre><code>notes = [85, 92, 78, 95, 60]
+
+print(notes[0])     # 85  — le premier élément est à l'indice 0
+print(notes[-1])    # 60  — raccourci pour le dernier
+print(len(notes))   # 5   — nombre d'éléments</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Les indices commencent à 0.</b> Une liste de 5 éléments a donc des indices de 0 à 4, et <code>notes[5]</code> provoque une <code>IndexError</code>. C'est l'erreur la plus fréquente de tous les débutants — et elle existe à l'identique en Java. Retenir : dernier indice = <code>len(liste) − 1</code>.</div></div>
+
+<h3>2. Modifier</h3>
+<pre><code>notes[2] = 88          # remplace le 3ᵉ élément
+notes.append(100)      # ajoute à la fin
+notes.insert(0, 70)    # insère en première position
+notes.remove(60)       # retire la première occurrence de 60</code></pre>
+
+<h3>3. Parcourir — les deux façons</h3>
+<pre><code># Par valeur : simple, quand la position n'importe pas
+for note in notes:
+    print(note)
+
+# Par indice : indispensable pour modifier ou situer un élément
+for i in range(len(notes)):
+    print("Position", i, ":", notes[i])</code></pre>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Bien maîtriser <code>for i in range(len(liste))</code> : c'est la forme qui correspond exactement à la boucle sur tableau en Java, et celle qu'attendent les exercices de bagrut.</div></div>
+
+<h3>4. Les algorithmes de base</h3>
+<p><b>Le maximum</b> — on suppose que le premier est le plus grand, puis on corrige :</p>
+<pre><code>maxi = liste[0]
+for i in range(len(liste)):
+    if liste[i] > maxi:
+        maxi = liste[i]</code></pre>
+<p>Initialiser avec <code>liste[0]</code> et non avec 0 : sur une liste de nombres négatifs, 0 donnerait une réponse qui n'est même pas dans la liste.</p>
+<p><b>La recherche</b> — on renvoie la position, ou −1 si absent :</p>
+<pre><code>def recherche(liste, cible):
+    for i in range(len(liste)):
+        if liste[i] == cible:
+            return i
+    return -1</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><b>Où placer le return final ?</b> Après la boucle, jamais dans un <code>else</code> à l'intérieur. On ne peut conclure « aucun élément ne convient » qu'après avoir tout examiné. Erreur très courante.</div></div>
+<p>La convention −1 est universelle, car ce n'est jamais un indice valide. Elle s'utilise telle quelle en Java.</p>
+<div class="heb"><b>Vocabulaire :</b> tableau / liste = <span dir="rtl">מערך</span> · indice = <span dir="rtl">אינדקס</span> · recherche = <span dir="rtl">חיפוש</span></div>
+</template>
+
+<template id="cours-u6">
+<h2>Les chaînes de caractères</h2>
+<p class="lead">Traiter du texte · jour 11 · en hébreu <span dir="rtl">מחרוזת</span></p>
+
+<h3>1. Accéder aux caractères</h3>
+<p>Une chaîne se manipule presque comme une liste :</p>
+<pre><code>mot = "Israel"
+print(mot[0])       # I
+print(mot[-1])      # l
+print(len(mot))     # 6
+
+for c in mot:
+    print(c)</code></pre>
+
+<h3>2. Le découpage (slicing)</h3>
+<pre><code>texte = "informatique"
+print(texte[0:5])     # infor   (0 inclus à 5 exclu)
+print(texte[5:])      # matique
+print(texte[::-1])    # euqitamrofni  (à l'envers)</code></pre>
+
+<h3>3. Méthodes utiles</h3>
+<table>
+<tr><th>Méthode</th><th>Effet</th></tr>
+<tr><td><code>.upper()</code> / <code>.lower()</code></td><td>majuscules / minuscules</td></tr>
+<tr><td><code>.count("a")</code></td><td>compte les occurrences</td></tr>
+<tr><td><code>.replace("a","b")</code></td><td>remplace</td></tr>
+<tr><td><code>.split()</code></td><td>découpe en liste de mots</td></tr>
+<tr><td><code>.strip()</code></td><td>enlève les espaces au début et à la fin</td></tr>
+<tr><td><code>"x" in texte</code></td><td>True si présent</td></tr>
+</table>
+<p><code>.lower()</code> sert constamment : il permet d'accepter « Jerusalem » écrit avec ou sans majuscule.</p>
+
+<h3>4. Une chaîne est immuable</h3>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div><code>mot[0] = "A"</code> provoque une erreur. Pour transformer une chaîne, il faut en <b>construire une nouvelle</b>, caractère par caractère.</div></div>
+<pre><code>mot = "abc"
+r = ""
+for c in mot:
+    r = c + r        # ajoute DEVANT → inverse la chaîne
+print(r)             # cba</code></pre>
+<p>Ce petit schéma — accumuler dans une chaîne vide — est le pendant textuel de l'accumulateur numérique de l'unité 3.</p>
+</template>
+
+<template id="cours-u7">
+<h2>Trier et chercher</h2>
+<p class="lead">Les algorithmes que tout élève de la filière doit savoir écrire de mémoire · jour 12</p>
+
+<h3>1. Échanger deux éléments</h3>
+<pre><code>temp = liste[0]
+liste[0] = liste[1]
+liste[1] = temp</code></pre>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Sans la variable temporaire, la première affectation écraserait la valeur qu'on veut conserver. Python permet aussi <code>a, b = b, a</code>, mais <b>apprendre la version avec temp</b> : c'est celle qui sera exigée en Java, et elle montre qu'on a compris ce qui se passe en mémoire.</div></div>
+
+<h3>2. Le tri par sélection</h3>
+<p>Principe : chercher le plus petit élément du reste de la liste et l'amener à sa place.</p>
+<pre><code>for i in range(len(liste)):
+    indice_min = i
+    for j in range(i + 1, len(liste)):
+        if liste[j] < liste[indice_min]:
+            indice_min = j
+    temp = liste[i]
+    liste[i] = liste[indice_min]
+    liste[indice_min] = temp</code></pre>
+
+<h3>3. Le tri à bulles</h3>
+<p>Principe : comparer chaque paire voisine et échanger si elles sont dans le désordre ; répéter jusqu'à ce que plus rien ne bouge. Les grandes valeurs « remontent » vers la fin comme des bulles.</p>
+<pre><code>for i in range(n - 1):
+    for j in range(n - 1 - i):
+        if liste[j] > liste[j + 1]:
+            liste[j], liste[j + 1] = liste[j + 1], liste[j]</code></pre>
+<p>Optimisation à connaître : s'arrêter dès qu'un passage complet n'a produit aucun échange. Sur une liste déjà triée, on passe de n² à n opérations.</p>
+
+<h3>4. La recherche binaire</h3>
+<p>Sur une liste <b>déjà triée</b>, on compare avec l'élément du milieu et on élimine la moitié à chaque étape.</p>
+<pre><code>gauche = 0
+droite = len(liste) - 1
+while gauche <= droite:
+    milieu = (gauche + droite) // 2
+    if liste[milieu] == cible:
+        return milieu
+    elif liste[milieu] < cible:
+        gauche = milieu + 1
+    else:
+        droite = milieu - 1
+return -1</code></pre>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div>La liste <b>doit</b> être triée : sans cela, comparer avec l'élément du milieu ne renseigne sur rien. C'est la condition à ne jamais oublier.</div></div>
+
+<h3>5. L'efficacité</h3>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Chercher dans un million d'éléments demande jusqu'à un million de comparaisons en recherche linéaire, contre 20 en recherche binaire. Ordres de grandeur à retenir : <b>boucle simple = n</b>, <b>double boucle = n²</b>, <b>division par deux répétée = log n</b>. Cette intuition suffit pour la première année, et c'est un objectif explicite du programme israélien.</div></div>
+<div class="heb"><b>Vocabulaire :</b> tri = <span dir="rtl">מיון</span> · efficacité = <span dir="rtl">יעילות</span> · algorithme = <span dir="rtl">אלגוריתם</span></div>
+</template>
+
+<template id="cours-u8">
+<h2>Méthode : les suites</h2>
+<p class="lead">Le format le plus fréquent des examens d'entrée — et le seul qui progresse vraiment par l'entraînement</p>
+
+<h3>La méthode, dans l'ordre</h3>
+<p>Face à une suite, tester systématiquement, et dans cet ordre :</p>
+<ul>
+<li><b>Les différences</b> entre termes consécutifs. Constantes → suite arithmétique. Si les différences forment elles-mêmes une suite (8, 7, 6, 5…), c'est la piste.</li>
+<li><b>Les rapports</b> : chaque terme divisé par le précédent. Constant → suite géométrique (×2, ÷3…).</li>
+<li><b>Une règle mixte</b> : ×2 + 1, ×2 − 2, ×3 + 4. À chercher dès que ni les différences ni les rapports ne parlent.</li>
+<li><b>Une alternance</b> : +3, ×2, +3, ×2… ou bien deux suites entrelacées, une pour les termes pairs, une pour les impairs.</li>
+<li><b>Les suites à mémoire</b> : chaque terme dépend des <i>deux</i> précédents (Fibonacci : 1, 1, 2, 3, 5, 8).</li>
+</ul>
+
+<h3>Les formes à reconnaître d'un coup d'œil</h3>
+<table>
+<tr><th>Suite</th><th>Nom</th><th>Règle</th></tr>
+<tr><td>1, 4, 9, 16, 25</td><td>carrés</td><td>n²</td></tr>
+<tr><td>1, 3, 6, 10, 15</td><td>triangulaires</td><td>on ajoute 2, puis 3, puis 4…</td></tr>
+<tr><td>2, 6, 12, 20, 30</td><td>rectangulaires</td><td>n × (n+1)</td></tr>
+<tr><td>1, 2, 6, 24, 120</td><td>factorielles</td><td>×2, ×3, ×4, ×5</td></tr>
+<tr><td>1, 1, 2, 3, 5, 8</td><td>Fibonacci</td><td>somme des deux précédents</td></tr>
+<tr><td>3, 8, 15, 24, 35</td><td>n² − 1</td><td>4−1, 9−1, 16−1…</td></tr>
+</table>
+<p>Connaître ces six familles par cœur fait gagner un temps considérable : on les reconnaît au lieu de les chercher.</p>
+
+<h3>Les suites de lettres</h3>
+<p>Écrire l'alphabet en marge de la copie et <b>numéroter les lettres</b> (A=1, B=2…). La suite redevient alors numérique. A, C, E, G → 1, 3, 5, 7 → une lettre sur deux → I.</p>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>Discipline de temps.</b> Ces examens laissent environ une minute et demie par question. Si une suite résiste après une minute, la marquer et passer à la suivante — on y revient à la fin. Rester bloqué coûte plus cher que sauter.</div></div>
+</template>
+
+<template id="cours-u9">
+<h2>Méthode : logique et déduction</h2>
+<p class="lead">Classements, ensembles, énigmes, problèmes de mouvement — les quatre familles vues dans les sujets réels de Hod Hasharon</p>
+
+<h3>1. Classements sous contraintes</h3>
+<p><b>Ne jamais raisonner de tête.</b> Tracer une ligne et y placer les éléments au fur et à mesure. « David a fait mieux que Sarah, Yoni moins bien que Maya mais mieux que David » devient immédiatement : Maya &gt; Yoni &gt; David &gt; Sarah.</p>
+<p>Pour les problèmes d'ordre plus complexes (le sujet authentique de Hadarim sur quatre manuels empilés), <b>énumérer tous les arrangements possibles</b> et éliminer ceux qui violent une contrainte. Cinq lignes de tableau valent mieux qu'un quart d'heure de réflexion silencieuse.</p>
+
+<h3>2. Ensembles et diagrammes</h3>
+<p>Une seule formule à connaître, et elle sert dans tous les énoncés du type « combien font l'un ou l'autre » :</p>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>|A ∪ B| = |A| + |B| − |A ∩ B|</b><br>Le total de ceux qui font au moins l'une des deux choses = ceux qui font A, plus ceux qui font B, moins ceux qui ont été comptés deux fois.</div></div>
+<p>Et pour « combien n'en font aucune » : total général − |A ∪ B|. Dessiner deux cercles qui se croisent et remplir les trois zones en commençant <b>par le milieu</b>.</p>
+
+<h3>3. Énigmes de vérité</h3>
+<p>Type « certains disent toujours la vérité, d'autres mentent toujours ». Méthode : <b>faire une hypothèse et la pousser jusqu'à la contradiction</b>. « Si A dit vrai, alors… alors A ment — impossible, donc A ment. » On appelle cela un raisonnement par l'absurde, et c'est exactement la même logique que le <code>not</code> de l'unité 2.</p>
+
+<h3>4. Mouvement, vitesse, travail</h3>
+<p>Trois pièges reviennent systématiquement :</p>
+<ul>
+<li><b>La vitesse moyenne n'est pas la moyenne des vitesses.</b> 60 km/h puis 40 km/h ne donnent pas 50 mais 48 : il faut calculer distance totale ÷ temps total.</li>
+<li><b>Vitesse deux fois moindre = durée deux fois plus longue.</b> C'est le sujet authentique de HaShikmim : aller en 3 h, retour à vitesse moitié → 6 h.</li>
+<li><b>Les problèmes de travail se raisonnent en « fraction par heure ».</b> Un robinet remplit en 6 h (1/6 par heure), l'autre en 3 h (1/3). Ensemble : 1/2 par heure, donc 2 h.</li>
+</ul>
+<p>Pour les rencontres de deux mobiles : additionner leurs vitesses de rapprochement, puis diviser la distance par cette somme.</p>
+</template>
+
+<template id="cours-u10">
+<h2>Méthode : algorithmique sur papier</h2>
+<p class="lead">Le type d'épreuve le plus prédictif de réussite dans la filière — et celui qui s'entraîne le mieux</p>
+
+<h3>1. La table de suivi</h3>
+<p>C'est l'outil numéro un, et il porte un nom en hébreu : <span dir="rtl">טבלת מעקב</span>. Pour dérouler un algorithme, tracer <b>une colonne par variable et une ligne par étape</b>. On ne garde rien en tête, on écrit tout.</p>
+<pre><code>X ← 5 ; S ← 0
+tant que X > 0 :
+    S ← S + X
+    X ← X − 2</code></pre>
+<table>
+<tr><th>Étape</th><th>X</th><th>S</th></tr>
+<tr><td>départ</td><td>5</td><td>0</td></tr>
+<tr><td>1</td><td>3</td><td>5</td></tr>
+<tr><td>2</td><td>1</td><td>8</td></tr>
+<tr><td>3</td><td>−1</td><td>9</td></tr>
+</table>
+<p>La même technique sert pour les problèmes de récipients : une colonne par récipient, une ligne par opération.</p>
+
+<h3>2. Raisonner à l'envers</h3>
+<p>Pour les problèmes du type « atteindre 100 à partir de 10 avec +1 et ×2 en un minimum d'opérations », partir <b>de la cible</b> : si le nombre est pair, on divise par 2 ; s'il est impair, on retire 1. On obtient le chemin optimal directement, au lieu d'explorer à l'aveugle.</p>
+
+<h3>3. Vérifier le dernier pas</h3>
+<div class="callout warn"><span class="ci" aria-hidden="true">⚠️</span><div>L'escargot du puits monte 3 m le jour et glisse 2 m la nuit. La progression nette est d'1 m par jour — mais le dernier jour, il sort <b>avant</b> de glisser. Presque tous les candidats répondent 10 au lieu de 8. Dès qu'un problème comporte une répétition avec une sortie, <b>vérifier séparément ce qui se passe au dernier tour</b>.</div></div>
+
+<h3>4. Chercher l'invariant</h3>
+<p>Dans les problèmes de pesées, de traversées ou de jetons, se demander : <b>qu'est-ce qui ne change jamais ?</b> Huit boules dont une plus lourde se résolvent en 2 pesées parce que chaque pesée divise le problème par 3, pas par 2 — une balance a trois issues possibles : gauche, droite, équilibre.</p>
+
+<h3>5. Ce qui est réellement évalué</h3>
+<div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Les lycées le disent eux-mêmes. Hadarim publie une « question de ténacité » et son corrigé précise : <i>celui qui arrive à expliquer jusque-là est en bonne position</i>. Autrement dit, <b>repérer le motif expérimentalement suffit souvent</b> — la démonstration complète est un bonus. Un candidat qui remplit sa copie d'essais organisés vaut mieux qu'un candidat qui rend une feuille blanche parce qu'il n'était pas certain.</div></div>
+<p>Conséquence pratique : sur une question ouverte, toujours écrire ses tentatives, ses tableaux, ses cas particuliers. C'est du raisonnement visible, et c'est ce qui est noté.</p>
+</template>
+
+<script>
+/* =========================================================
+   BANQUE DE QUESTIONS
+   types : qcm | in (saisie) | ord (remise en ordre)
+   champs : q question · code bloc de code · seq suite affichée
+            c choix · a réponse(s) · e explication
+   ========================================================= */
+const UNITS = [
+{id:'u1',ic:'📦',col:'#eef2ff',name:'Variables et types',desc:'Jours 1 et 2 du cours',lessons:[
+ {name:'Premiers pas',qs:[
+  {t:'qcm',q:'Que fait cette ligne ?',code:'print("Bonjour")',c:['Elle affiche le mot Bonjour à l\'écran','Elle crée une variable nommée Bonjour','Elle demande son nom à l\'utilisateur','Elle ne fait rien'],a:0,e:'print sert à afficher. Le texte entre guillemets est affiché tel quel.'},
+  {t:'in',q:'Que vaut x à la fin ?',code:'x = 5\nx = x + 3',a:['8'],e:'Le signe = n\'est pas l\'égalité mathématique : il range la valeur de droite dans la boîte de gauche. On prend 5, on ajoute 3, on remet 8 dans x.'},
+  {t:'qcm',q:'Quelle ligne crée une variable contenant du texte ?',c:['nom = David','nom = "David"','nom = (David)','"nom" = David'],a:1,e:'Le texte doit toujours être entouré de guillemets. Sans eux, Python cherche une variable appelée David.'},
+  {t:'in',q:'Qu\'affiche ce programme ?',code:'a = 2\nb = 3\nprint(a * b)',a:['6'],e:'a vaut 2, b vaut 3, donc a * b vaut 6.'},
+  {t:'qcm',q:'À quoi sert le symbole # ?',c:['À multiplier','À écrire un commentaire ignoré par la machine','À définir une variable','À terminer une ligne'],a:1,e:'Tout ce qui suit # sur la ligne est une note pour l\'humain. La machine l\'ignore.'},
+  {t:'in',q:'Qu\'affiche cette ligne ?',code:'print("15" + "15")',a:['1515'],e:'Ce sont deux textes, pas deux nombres : le + les colle bout à bout. Avec des nombres, 15 + 15 donnerait 30.'}
+ ]},
+ {name:'Types et saisie',qs:[
+  {t:'qcm',q:'Que renvoie toujours input() ?',c:['Un nombre entier','Un nombre décimal','Une chaîne de caractères (du texte)','Cela dépend de ce que tape l\'utilisateur'],a:2,e:'C\'est le piège numéro 1 des débutants : input renvoie TOUJOURS du texte, même si l\'utilisateur tape 42. Il faut convertir avec int() ou float().'},
+  {t:'in',q:'Que vaut cette expression ?',code:'int("7") + 1',a:['8'],e:'int("7") convertit le texte "7" en nombre 7, auquel on ajoute 1.'},
+  {t:'qcm',q:'Ce code provoque une erreur. Pourquoi ?',code:'age = input("Ton âge ? ")\nprint(age + 1)',c:['input n\'existe pas','age est du texte, on ne peut pas y ajouter le nombre 1','Il manque des parenthèses','print ne peut pas afficher de calcul'],a:1,e:'TypeError : on ne peut pas coller un nombre à du texte. Il fallait écrire age = int(input(...)).'},
+  {t:'in',q:'Complétez pour obtenir un nombre utilisable. Que faut-il écrire à la place de ___ ?',code:'age = ___(input("Ton âge ? "))',a:['int'],e:'int() convertit le texte en entier. Pour un nombre à virgule, on utiliserait float().'},
+  {t:'qcm',q:'Quel est le type de la valeur 3.5 ?',c:['int','float','str','bool'],a:1,e:'float = nombre à virgule. int = entier. str = texte.'},
+  {t:'in',q:'Qu\'affiche cette ligne ?',code:'print(str(7) + "3")',a:['73'],e:'str(7) transforme le nombre 7 en texte "7", que l\'on colle ensuite à "3".'}
+ ]},
+ {name:'Calculs et modulo',qs:[
+  {t:'in',q:'Que vaut cette expression ?',code:'17 // 5',a:['3'],e:'// est la division entière : combien de fois 5 rentre dans 17 → 3 fois.'},
+  {t:'in',q:'Que vaut cette expression ?',code:'17 % 5',a:['2'],e:'% est le modulo : le reste de la division. 17 = 5×3 + 2, donc le reste est 2.'},
+  {t:'in',q:'Que vaut 2 ** 5 ?',a:['32'],e:'** est la puissance : 2 à la puissance 5 = 32.'},
+  {t:'qcm',q:'Comment tester si un nombre n est pair ?',c:['n / 2 == 0','n % 2 == 0','n // 2 == 0','n ** 2 == 0'],a:1,e:'Un nombre est pair si le reste de sa division par 2 vaut zéro. Le modulo est l\'outil universel pour la divisibilité.'},
+  {t:'in',q:'Que vaut 347 % 10 ?',a:['7'],e:'Le modulo 10 donne le chiffre des unités. Un grand classique des examens.'},
+  {t:'in',q:'Que vaut 347 // 10 ?',a:['34'],e:'La division entière par 10 retire le dernier chiffre. Avec % 10 et // 10, on peut démonter un nombre chiffre par chiffre.'},
+  {t:'in',q:'Que vaut 2 + 3 * 4 ?',a:['14'],e:'La multiplication passe avant l\'addition, comme en mathématiques : 3×4 = 12, puis +2 = 14.'}
+ ]}
+]},
+
+{id:'u2',ic:'🔀',col:'#fef3c7',name:'Les conditions',desc:'Jours 3 et 4 du cours',lessons:[
+ {name:'Comparaisons',qs:[
+  {t:'qcm',q:'Quelle est la différence entre = et == ?',c:['Aucune, les deux sont équivalents','= range une valeur dans une variable, == compare deux valeurs','= compare, == range une valeur','== s\'utilise seulement avec du texte'],a:1,e:'Confondre les deux est l\'erreur la plus fréquente. x = 5 range 5 dans x. x == 5 demande « x vaut-il 5 ? ».'},
+  {t:'in',q:'Que vaut 5 > 3 ? (écrivez True ou False)',a:['true'],e:'Une comparaison produit un booléen : True ou False. C\'est un type à part entière.'},
+  {t:'qcm',q:'Que vaut 5 == "5" ?',c:['True','False','Cela provoque une erreur','Cela dépend'],a:1,e:'Le nombre 5 et le texte "5" sont de types différents, donc ils ne sont pas égaux.'},
+  {t:'in',q:'Que vaut 10 >= 10 ? (True ou False)',a:['true'],e:'>= signifie « supérieur OU ÉGAL ». 10 est bien égal à 10.'},
+  {t:'qcm',q:'Quel opérateur signifie « est différent de » ?',c:['<>','!=','=/=','not='],a:1,e:'!= se lit « n\'est pas égal à ».'},
+  {t:'in',q:'Pour tester si la note atteint 60, que met-on à la place de ___ ?',code:'if note ___ 60:',a:['>=','&gt;='],e:'>= couvre le cas « exactement 60 », qui doit compter comme réussi.'}
+ ]},
+ {name:'if, elif, else',qs:[
+  {t:'in',q:'Qu\'affiche ce programme si note vaut 85 ?',code:'if note >= 90:\n    print("Excellent")\nelif note >= 75:\n    print("Bien")\nelif note >= 60:\n    print("Passable")\nelse:\n    print("Échec")',a:['bien'],e:'Les conditions sont testées dans l\'ordre. 85 n\'atteint pas 90, mais atteint 75 → « Bien ». Le programme s\'arrête à la première condition vraie.'},
+  {t:'qcm',q:'Pourquoi écrit-on les seuils du plus haut au plus bas ?',c:['Par convention esthétique','Parce que sinon une note de 95 déclencherait « Passable »','Parce que Python trie automatiquement','Cela n\'a aucune importance'],a:1,e:'Si le premier test était note >= 60, un 95 le vérifierait aussi et s\'arrêterait là. L\'ordre n\'est pas décoratif : il est logique.'},
+  {t:'qcm',q:'Ce code provoque une IndentationError. Pourquoi ?',code:'if x > 5:\nprint("grand")',c:['Il manque les parenthèses autour de x > 5','La ligne print n\'est pas décalée vers la droite','print doit être en majuscules','Il manque un point-virgule'],a:1,e:'En Python, l\'indentation fait partie du langage. Les 4 espaces indiquent que la ligne appartient au if.'},
+  {t:'ord',q:'Remettez ce programme dans le bon ordre.',items:['age = int(input("Âge ? "))','if age >= 18:','    print("Majeur")','else:','    print("Mineur")'],e:'On lit la donnée, puis on teste, puis on traite chaque cas. Le else vient toujours après le bloc du if.'},
+  {t:'in',q:'Qu\'affiche ce programme ?',code:'x = 7\nif x > 10:\n    print("A")\nelif x > 5:\n    print("B")\nelse:\n    print("C")',a:['b'],e:'7 n\'est pas supérieur à 10, mais il est supérieur à 5 → B.'},
+  {t:'qcm',q:'Qu\'oublie-t-on le plus souvent en écrivant un if ?',c:['Le mot-clé then','Les deux-points en fin de ligne','Le point-virgule','Les accolades'],a:1,e:'if condition: — les deux-points sont obligatoires. Les accolades, elles, existent en Java, pas en Python.'}
+ ]},
+ {name:'and, or, not',qs:[
+  {t:'in',q:'Que vaut True and False ? (True ou False)',a:['false'],e:'and exige que LES DEUX conditions soient vraies.'},
+  {t:'in',q:'Que vaut True or False ? (True ou False)',a:['true'],e:'or se contente d\'UNE seule condition vraie.'},
+  {t:'in',q:'Que vaut not (5 > 3) ? (True ou False)',a:['false'],e:'5 > 3 vaut True, et not inverse le résultat.'},
+  {t:'qcm',q:'« Admis si la moyenne atteint 90 ET les maths atteignent 90 ». Quelle écriture ?',c:['if moyenne >= 90 or maths >= 90:','if moyenne >= 90 and maths >= 90:','if moyenne and maths >= 90:','if moyenne >= 90 not maths >= 90:'],a:1,e:'Attention au piège de la 3e réponse : chaque condition doit être écrite en entier, on ne peut pas factoriser.'},
+  {t:'in',q:'Qu\'affiche ce programme ?',code:'x = 7\nif x > 5 and x < 10:\n    print("ok")\nelse:\n    print("non")',a:['ok'],e:'7 est bien à la fois supérieur à 5 et inférieur à 10.'},
+  {t:'qcm',q:'À quoi équivaut not (age >= 18) ?',c:['age > 18','age <= 18','age < 18','age == 18'],a:2,e:'L\'inverse de « au moins 18 » est « strictement moins de 18 ».'}
+ ]}
+]},
+
+{id:'u3',ic:'🔁',col:'#dcfce7',name:'Les boucles',desc:'Jours 5 et 6 du cours',lessons:[
+ {name:'La boucle while',qs:[
+  {t:'in',q:'Qu\'affiche ce programme ? (les nombres séparés par des espaces)',code:'i = 1\nwhile i <= 3:\n    print(i)\n    i = i + 1',a:['1 2 3','123'],e:'i vaut 1, 2, puis 3. Quand i atteint 4, la condition devient fausse et la boucle s\'arrête.'},
+  {t:'in',q:'Combien de fois cette boucle s\'exécute-t-elle ?',code:'i = 0\nwhile i < 5:\n    i = i + 1',a:['5'],e:'i prend les valeurs 0, 1, 2, 3, 4 → 5 tours. Elle s\'arrête quand i vaut 5.'},
+  {t:'qcm',q:'Qu\'est-ce qui provoque une boucle infinie ?',c:['Utiliser while au lieu de for','Oublier de modifier la variable testée par la condition','Mettre trop d\'instructions dans la boucle','Utiliser une condition avec >='],a:1,e:'Toute boucle while doit contenir quelque chose qui rapproche de la sortie. Sinon le programme tourne sans fin — Ctrl+C pour l\'arrêter.'},
+  {t:'in',q:'Quel raccourci remplace i = i + 1 ? Écrivez la ligne complète.',a:['i += 1','i+=1'],e:'+= ajoute à la variable existante. On trouve aussi -=, *= et /=.'},
+  {t:'in',q:'Que vaut somme à la fin ?',code:'somme = 0\ni = 1\nwhile i <= 5:\n    somme = somme + i\n    i = i + 1',a:['15'],e:'1+2+3+4+5 = 15. C\'est le schéma de l\'accumulateur : une variable qui grossit à chaque tour.'},
+  {t:'qcm',q:'Dans une saisie « jusqu\'à ce que l\'utilisateur tape 0 », pourquoi lit-on une première fois AVANT la boucle ?',c:['Par habitude','Parce que la condition du while doit pouvoir être testée dès le premier passage','Parce que input ne fonctionne pas dans une boucle','Ce n\'est pas nécessaire'],a:1,e:'Sans cette première lecture, la variable testée n\'existe pas encore. On lit avant, puis on relit à la fin de chaque tour.'}
+ ]},
+ {name:'La boucle for',qs:[
+  {t:'in',q:'Quel est le dernier nombre affiché ?',code:'for i in range(5):\n    print(i)',a:['4'],e:'range(5) parcourt 0, 1, 2, 3, 4. La borne finale est TOUJOURS exclue — erreur classique.'},
+  {t:'in',q:'Combien de tours fait range(2, 7) ?',a:['5'],e:'Il parcourt 2, 3, 4, 5, 6 → 5 valeurs. La borne de fin est exclue.'},
+  {t:'in',q:'Que vaut somme à la fin ?',code:'somme = 0\nfor i in range(1, 11):\n    somme += i',a:['55'],e:'La somme de 1 à 10 vaut 55. En trois lignes au lieu de cinq avec while.'},
+  {t:'qcm',q:'Quand choisit-on for plutôt que while ?',c:['for est toujours meilleur','Quand on connaît à l\'avance le nombre de répétitions','Quand on veut afficher quelque chose','Quand la boucle contient une condition'],a:1,e:'Nombre de tours connu à l\'avance → for. Répétition qui dépend d\'un événement (l\'utilisateur tape 0, on a trouvé) → while.'},
+  {t:'in',q:'Qu\'affiche ce programme ? (séparez par des espaces)',code:'for i in range(3):\n    print(i * 2)',a:['0 2 4','024'],e:'i vaut 0, 1, 2 → on affiche 0, 2, 4.'},
+  {t:'in',q:'Pour compter de 10 à 1, que met-on à la place de ___ ?',code:'for i in range(10, 0, ___):',a:['-1'],e:'Le troisième nombre est le pas. Négatif, il fait reculer. La borne 0 reste exclue, donc on s\'arrête à 1.'}
+ ]},
+ {name:'Boucles imbriquées',qs:[
+  {t:'in',q:'Combien de lignes ce programme affiche-t-il au total ?',code:'for i in range(4):\n    for j in range(3):\n        print(i, j)',a:['12'],e:'Pour CHAQUE tour de la boucle extérieure (4), la boucle intérieure fait un cycle complet (3) → 4 × 3 = 12.'},
+  {t:'in',q:'Qu\'affiche print("*" * 4) ?',a:['****'],e:'Multiplier un texte par un nombre le répète. Très pratique pour dessiner des figures.'},
+  {t:'qcm',q:'À quoi sert end="" dans print ?',c:['À effacer la ligne','À empêcher le saut de ligne automatique','À terminer le programme','À afficher un espace'],a:1,e:'Par défaut print saute une ligne. Avec end="" ou end=" ", on reste sur la même ligne — indispensable pour les grilles.'},
+  {t:'ord',q:'Remettez dans l\'ordre le programme qui affiche un triangle croissant d\'étoiles.',items:['n = 5','for i in range(1, n + 1):','    print("*" * i)'],e:'On fixe la hauteur, on parcourt les lignes de 1 à n, et on affiche i étoiles à la ligne i.'},
+  {t:'in',q:'Que vaut c à la fin ?',code:'c = 0\nfor i in range(3):\n    for j in range(3):\n        if i == j:\n            c += 1',a:['3'],e:'i == j uniquement pour (0,0), (1,1) et (2,2) : c\'est la diagonale.'},
+  {t:'in',q:'Qu\'affiche la dernière ligne de ce programme ?',code:'for ligne in range(1, 4):\n    for col in range(1, 4):\n        print(ligne * col, end=" ")\n    print()',a:['3 6 9'],e:'C\'est une table de multiplication. La 3e ligne donne 3×1, 3×2, 3×3.'}
+ ]}
+]},
+
+{id:'u4',ic:'⚙️',col:'#fce7f3',name:'Les fonctions',desc:'Jour 8 du cours',lessons:[
+ {name:'Définir et appeler',qs:[
+  {t:'in',q:'Quel mot-clé permet de définir une fonction ? (3 lettres)',a:['def'],e:'def, abréviation de « define ». En Java, on écrirait public static.'},
+  {t:'in',q:'Qu\'affiche ce programme ?',code:'def carre(x):\n    return x * x\n\nprint(carre(5))',a:['25'],e:'On appelle carre avec 5, la fonction renvoie 25, et print l\'affiche.'},
+  {t:'in',q:'Que vaut cette expression, avec la fonction carre définie plus haut ?',code:'carre(3) + carre(4)',a:['25'],e:'9 + 16 = 25. Parce que la fonction RENVOIE une valeur, on peut la réutiliser dans un calcul.'},
+  {t:'qcm',q:'Dans def saluer(nom):, que représente nom ?',c:['Une variable globale','Un paramètre : il prendra la valeur donnée lors de l\'appel','Le nom de la fonction','Du texte fixe'],a:1,e:'Le paramètre est une boîte vide, remplie au moment de l\'appel. saluer("David") met "David" dedans.'},
+  {t:'ord',q:'Remettez dans l\'ordre une fonction qui renvoie le plus grand de deux nombres.',items:['def maximum(a, b):','    if a > b:','        return a','    else:','        return b'],e:'La signature d\'abord, puis le test, puis les deux sorties possibles.'},
+  {t:'qcm',q:'Pourquoi découper un programme en fonctions ?',c:['Pour que le fichier soit plus long','Pour réutiliser du code et le tester morceau par morceau','Parce que Python l\'exige','Pour aller plus vite à l\'exécution'],a:1,e:'Une fonction se réutilise, se teste isolément et se comprend d\'un coup d\'œil. C\'est le premier vrai outil d\'organisation.'}
+ ]},
+ {name:'return contre print',qs:[
+  {t:'qcm',q:'Quelle est la différence entre print et return ?',c:['Aucune','print affiche et ne garde rien ; return renvoie une valeur réutilisable','return affiche, print calcule','print est plus rapide'],a:1,e:'Une fonction de calcul doit presque toujours utiliser return. Utiliser print à sa place est une erreur classique aux examens : le résultat s\'affiche mais devient inexploitable.'},
+  {t:'qcm',q:'Que renvoie une fonction qui n\'a pas de return ?',c:['0','Une chaîne vide','None','Une erreur'],a:2,e:'None signifie « rien ». C\'est ce qu\'on obtient en essayant de récupérer le résultat d\'une fonction qui se contente d\'afficher.'},
+  {t:'in',q:'Qu\'affiche ce programme ?',code:'def test(x):\n    return x + 1\n    return x + 100\n\nprint(test(5))',a:['6'],e:'return met fin immédiatement à la fonction. La seconde ligne n\'est jamais atteinte.'},
+  {t:'qcm',q:'Ce code provoque une NameError. Pourquoi ?',code:'def calcul():\n    x = 10\n    return x\n\ncalcul()\nprint(x)',c:['x n\'a pas été initialisé','x est une variable locale : elle n\'existe que dans la fonction','Il manque des parenthèses','calcul() doit être appelé deux fois'],a:1,e:'Une variable créée dans une fonction disparaît quand celle-ci se termine. C\'est une protection : les parties du programme ne peuvent pas s\'abîmer entre elles.'},
+  {t:'in',q:'Que vaut ce programme ?',code:'def double(n):\n    return n * 2\n\nprint(double(double(3)))',a:['12'],e:'L\'appel intérieur donne 6, l\'appel extérieur le double → 12. On peut imbriquer les appels.'},
+  {t:'qcm',q:'Dans une fonction est_premier(n), que doit-on renvoyer ?',c:['Le nombre n','Le texte "premier" ou "pas premier"','True ou False','Rien, il faut afficher'],a:2,e:'Une fonction qui répond à une question par oui ou non renvoie un booléen. On peut alors écrire if est_premier(n):'}
+ ]}
+]},
+
+{id:'u5',ic:'📋',col:'#e0f2fe',name:'Les listes',desc:'Jours 9 et 10 · מערך',lessons:[
+ {name:'Indices et accès',qs:[
+  {t:'in',q:'Que vaut notes[0] ?',code:'notes = [85, 92, 78]',a:['85'],e:'Les indices commencent à 0 : le premier élément est à la position 0, pas 1.'},
+  {t:'in',q:'Que vaut notes[-1] ?',code:'notes = [85, 92, 78]',a:['78'],e:'L\'indice -1 est un raccourci pour le dernier élément.'},
+  {t:'in',q:'Que vaut len(notes) ?',code:'notes = [85, 92, 78]',a:['3'],e:'len donne le nombre d\'éléments, pas le dernier indice.'},
+  {t:'qcm',q:'Que provoque notes[3] sur cette liste ?',code:'notes = [85, 92, 78]',c:['Il renvoie 0','Il renvoie None','Une IndexError','Il ajoute un élément'],a:2,e:'Une liste de 3 éléments a des indices de 0 à 2. L\'IndexError est l\'erreur la plus fréquente de tous les débutants — et elle existe à l\'identique en Java.'},
+  {t:'in',q:'Quel est le plus grand indice valide dans une liste de 5 éléments ?',a:['4'],e:'De 0 à 4. Retenir : dernier indice = len(liste) - 1.'},
+  {t:'in',q:'Pour ajouter 100 à la fin de la liste, que met-on à la place de ___ ?',code:'notes.___(100)',a:['append'],e:'append ajoute à la fin. insert(0, x) ajoute au début, remove(x) retire une valeur.'}
+ ]},
+ {name:'Parcourir une liste',qs:[
+  {t:'in',q:'Pour parcourir par indice, que met-on à la place de ___ ?',code:'for i in ___(len(notes)):\n    print(notes[i])',a:['range'],e:'range(len(liste)) génère tous les indices valides. C\'est la forme exacte de la boucle sur tableau en Java, et celle qu\'attendent les exercices de bagrut.'},
+  {t:'qcm',q:'Quand faut-il parcourir par indice plutôt que par valeur ?',c:['Toujours','Quand on veut modifier des éléments ou connaître leur position','Jamais, c\'est démodé','Quand la liste est longue'],a:1,e:'for x in liste donne les valeurs mais pas leur position. Pour modifier ou repérer où se trouve un élément, il faut l\'indice.'},
+  {t:'in',q:'Que vaut s à la fin ?',code:'liste = [4, 7, 2]\ns = 0\nfor x in liste:\n    s += x',a:['13'],e:'4 + 7 + 2 = 13. C\'est l\'accumulateur appliqué à une liste.'},
+  {t:'in',q:'Quelle est la liste finale ?',code:'t = [1, 2, 3]\nt[1] = 9\nprint(t)',a:['[1, 9, 3]','[1,9,3]'],e:'t[1] désigne le DEUXIÈME élément, puisqu\'on compte à partir de 0.'},
+  {t:'in',q:'Combien d\'éléments contient la liste à la fin ?',code:'t = [1, 2, 3]\nt.append(4)\nt.insert(0, 0)',a:['5'],e:'3 au départ, +1 avec append, +1 avec insert.'},
+  {t:'ord',q:'Remettez dans l\'ordre le programme qui construit une liste à partir de saisies.',items:['notes = []','n = int(input("Combien ? "))','for i in range(n):','    note = int(input("Note : "))','    notes.append(note)'],e:'On crée une liste vide, on demande combien de valeurs, puis on boucle en ajoutant chaque saisie.'}
+ ]},
+ {name:'Algorithmes sur listes',qs:[
+  {t:'ord',q:'Remettez dans l\'ordre l\'algorithme qui trouve le maximum.',items:['maxi = liste[0]','for i in range(len(liste)):','    if liste[i] > maxi:','        maxi = liste[i]','print(maxi)'],e:'On suppose que le premier est le plus grand, puis on corrige à chaque fois qu\'on trouve mieux.'},
+  {t:'qcm',q:'Pourquoi initialiser maxi avec liste[0] plutôt qu\'avec 0 ?',c:['Pour aller plus vite','Parce qu\'avec 0, une liste de nombres négatifs donnerait un résultat faux','Parce que 0 n\'est pas un nombre valide','Aucune raison, les deux marchent'],a:1,e:'Avec liste = [-5, -2, -9], initialiser à 0 renverrait 0 — une valeur qui n\'est même pas dans la liste.'},
+  {t:'in',q:'Que vaut c à la fin ?',code:'liste = [12, 5, 8, 20, 3]\nc = 0\nfor x in liste:\n    if x > 7:\n        c += 1',a:['3'],e:'12, 8 et 20 dépassent 7 → 3. C\'est le schéma du compteur.'},
+  {t:'qcm',q:'Dans une fonction de recherche, que renvoie-t-on si l\'élément est absent ?',c:['0','None','-1 par convention','La longueur de la liste'],a:2,e:'-1 est la convention universelle, car ce n\'est jamais un indice valide. Elle s\'utilise telle quelle en Java.'},
+  {t:'in',q:'Quelle est la moyenne de [80, 90, 100] ?',a:['90'],e:'270 / 3 = 90. En code : somme accumulée puis division par len(liste).'},
+  {t:'qcm',q:'Où placer return False dans une fonction « contient un négatif ? »',c:['Dans un else à l\'intérieur de la boucle','Après la boucle, une fois tous les éléments testés','Avant la boucle','Peu importe'],a:1,e:'Erreur très courante : placé dans la boucle, il sortirait dès le premier élément positif. On ne peut conclure « aucun » qu\'après avoir tout vu.'}
+ ]}
+]},
+
+{id:'u6',ic:'🔤',col:'#f3e8ff',name:'Les chaînes',desc:'Jour 11 · מחרוזת',lessons:[
+ {name:'Accès et découpage',qs:[
+  {t:'in',q:'Que vaut "Israel"[0] ?',a:['i'],e:'Une chaîne se manipule comme une liste de caractères, indices à partir de 0.'},
+  {t:'in',q:'Que vaut "Israel"[-1] ?',a:['l'],e:'-1 désigne le dernier caractère.'},
+  {t:'in',q:'Que vaut len("Israel") ?',a:['6'],e:'6 caractères. Les espaces comptent aussi, dans une phrase.'},
+  {t:'in',q:'Que vaut "informatique"[0:5] ?',a:['infor'],e:'Du caractère 0 INCLUS au caractère 5 EXCLU → 5 caractères.'},
+  {t:'in',q:'Que vaut "abc"[::-1] ?',a:['cba'],e:'Le pas -1 parcourt la chaîne à l\'envers.'},
+  {t:'qcm',q:'Pourquoi mot[0] = "A" provoque-t-il une erreur ?',c:['Il faut utiliser des guillemets simples','Une chaîne est immuable : on ne peut pas la modifier en place','Il faut écrire mot(0)','L\'indice 0 n\'existe pas'],a:1,e:'Pour transformer une chaîne, il faut en construire une nouvelle, caractère par caractère.'}
+ ]},
+ {name:'Parcours et méthodes',qs:[
+  {t:'in',q:'Que vaut "Bonjour".upper() ?',a:['bonjour'],e:'upper() met tout en majuscules — la comparaison est faite sans tenir compte de la casse ici. lower() fait l\'inverse, et sert à accepter « Jerusalem » comme « jerusalem ».'},
+  {t:'in',q:'Que vaut "banane".count("a") ?',a:['3'],e:'count compte les occurrences : b-A-n-A-n-A.'},
+  {t:'qcm',q:'Que renvoie "le chat dort".split() ?',c:['Le nombre de mots','La liste ["le", "chat", "dort"]','La phrase en majuscules','La première lettre'],a:1,e:'split découpe sur les espaces et renvoie une liste. len() sur cette liste donne le nombre de mots.'},
+  {t:'in',q:'Que vaut c à la fin ?',code:'mot = "informatique"\nc = 0\nfor lettre in mot:\n    if lettre in "aeiou":\n        c += 1',a:['5'],e:'i, o, a, i, u → 5 voyelles.'},
+  {t:'in',q:'Que vaut "a" in "chat" ? (True ou False)',a:['true'],e:'L\'opérateur in teste la présence d\'un caractère ou d\'un morceau de texte.'},
+  {t:'in',q:'Que vaut r à la fin ?',code:'mot = "abc"\nr = ""\nfor c in mot:\n    r = c + r',a:['cba'],e:'Chaque caractère est ajouté DEVANT le résultat, ce qui inverse la chaîne sans utiliser [::-1].'}
+ ]}
+]},
+
+{id:'u7',ic:'🔍',col:'#ffedd5',name:'Trier et chercher',desc:'Jour 12 · au programme du bagrut',lessons:[
+ {name:'Échange et tri',qs:[
+  {t:'ord',q:'Remettez dans l\'ordre l\'échange de deux éléments (version universelle, celle de Java).',items:['temp = liste[0]','liste[0] = liste[1]','liste[1] = temp'],e:'Sans la variable temporaire, la première affectation écraserait la valeur qu\'on veut conserver.'},
+  {t:'qcm',q:'Pourquoi a-t-on besoin d\'une variable temp pour échanger ?',c:['Pour aller plus vite','Parce que sans elle, la première valeur serait écrasée et perdue','Parce que Python l\'exige','Pour rendre le code plus lisible'],a:1,e:'Si on écrit liste[0] = liste[1] d\'abord, l\'ancienne valeur de liste[0] n\'existe plus nulle part.'},
+  {t:'qcm',q:'Quel est le principe du tri par sélection ?',c:['Comparer chaque paire voisine et échanger','Chercher le plus petit du reste et l\'amener à sa place','Couper la liste en deux','Mélanger jusqu\'à ce que ce soit trié'],a:1,e:'Le tri à bulles, lui, compare les paires voisines. Ce sont les deux tris à connaître par cœur.'},
+  {t:'in',q:'Combien de comparaisons fait le premier passage du tri à bulles sur une liste de 5 éléments ?',a:['4'],e:'On compare les paires (0,1), (1,2), (2,3), (3,4) → 4 comparaisons.'},
+  {t:'in',q:'Quelle est la liste après le premier passage complet du tri à bulles ?',code:'[5, 3, 8, 1]',a:['[3, 5, 1, 8]','[3,5,1,8]'],e:'5>3 échange → [3,5,8,1] ; 5<8 rien ; 8>1 échange → [3,5,1,8]. Le plus grand a « remonté » à la fin, comme une bulle.'},
+  {t:'qcm',q:'Comment optimiser le tri à bulles ?',c:['En le lançant deux fois','En s\'arrêtant dès qu\'un passage complet n\'a produit aucun échange','En triant à l\'envers','En utilisant une liste plus courte'],a:1,e:'Sur une liste déjà triée, cette optimisation fait passer de n² à n opérations.'}
+ ]},
+ {name:'Recherche et efficacité',qs:[
+  {t:'qcm',q:'Quelle condition la recherche binaire exige-t-elle ?',c:['Que la liste soit courte','Que la liste soit déjà triée','Que les éléments soient des nombres','Aucune'],a:1,e:'Sans tri, comparer avec l\'élément du milieu ne renseigne sur rien. C\'est LA condition à ne jamais oublier.'},
+  {t:'in',q:'Que vaut milieu ?',code:'gauche = 0\ndroite = 7\nmilieu = (gauche + droite) // 2',a:['3'],e:'7 // 2 = 3. On utilise la division ENTIÈRE, car un indice ne peut pas valoir 3.5.'},
+  {t:'in',q:'Combien d\'étapes au maximum pour une recherche binaire dans une liste de 1000 éléments ?',a:['10'],e:'On divise par 2 à chaque fois : 1000 → 500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1. Une recherche linéaire en demanderait 1000.'},
+  {t:'qcm',q:'Combien d\'opérations fait une double boucle sur n éléments ?',c:['n','2n','n²','n/2'],a:2,e:'C\'est pourquoi les tris à double boucle deviennent lents sur de grandes données. Retenir : boucle simple = n, double boucle = n², division par 2 répétée = log n.'},
+  {t:'in',q:'Dans le pire des cas, combien de comparaisons fait une recherche linéaire dans 100 éléments ?',a:['100'],e:'Si l\'élément est absent ou en dernière position, il faut tout parcourir.'},
+  {t:'ord',q:'Remettez dans l\'ordre la recherche binaire.',items:['gauche = 0','droite = len(liste) - 1','while gauche <= droite:','    milieu = (gauche + droite) // 2','    if liste[milieu] == cible:','        return milieu'],e:'On encadre la zone de recherche, on regarde le milieu, et on réduit l\'encadrement de moitié à chaque tour.'}
+ ]}
+]},
+
+{id:'u8',ic:'🔢',col:'#fef9c3',name:'Logique : les suites',desc:'Examens d\'entrée · מבחן מיון',lessons:[
+ {name:'Suites numériques 1',qs:[
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'3 · 6 · 12 · 24 · ?',a:['48'],e:'Chaque terme est le double du précédent.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'1 · 4 · 9 · 16 · ?',a:['25'],e:'Ce sont les carrés : 1², 2², 3², 4², 5².'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'2 · 5 · 11 · 23 · ?',a:['47'],e:'Règle mixte : ×2 + 1. À chercher systématiquement quand ni les différences ni les rapports ne parlent.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'1 · 1 · 2 · 3 · 5 · ?',a:['8'],e:'Suite de Fibonacci : chaque terme est la somme des deux précédents.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'100 · 92 · 85 · 79 · ?',a:['74'],e:'On retire 8, puis 7, puis 6, puis 5. Les différences forment elles-mêmes une suite.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'81 · 27 · 9 · ?',a:['3'],e:'On divise par 3 à chaque fois.'}
+ ]},
+ {name:'Suites numériques 2',qs:[
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'2 · 6 · 12 · 20 · ?',a:['30'],e:'n × (n+1) : 1×2, 2×3, 3×4, 4×5, 5×6.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'1 · 2 · 6 · 24 · ?',a:['120'],e:'Les factorielles : on multiplie par 2, puis par 3, puis par 4, puis par 5.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'5 · 8 · 14 · 26 · ?',a:['50'],e:'Règle ×2 − 2.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'1 · 3 · 6 · 10 · ?',a:['15'],e:'Nombres triangulaires : on ajoute 2, puis 3, puis 4, puis 5.'},
+  {t:'in',q:'Quel nombre continue la suite ?',seq:'3 · 8 · 15 · 24 · ?',a:['35'],e:'n² − 1 : 4−1, 9−1, 16−1, 25−1, 36−1.'},
+  {t:'in',q:'Quelle lettre continue la suite ? (une seule lettre)',seq:'A · C · E · G · ?',a:['i'],e:'Une lettre sur deux dans l\'alphabet.'}
+ ]}
+]},
+
+{id:'u9',ic:'🧩',col:'#e0e7ff',name:'Logique : déduction',desc:'Examens d\'entrée · type Hadarim',lessons:[
+ {name:'Classements et ensembles',qs:[
+  {t:'qcm',q:'David a fait mieux que Sarah. Yoni a fait moins bien que Maya mais mieux que David. Noa est dernière. Qui est premier ?',c:['David','Yoni','Maya','Sarah'],a:2,e:'Maya > Yoni > David > Sarah > Noa. Toujours dessiner une ligne plutôt que raisonner de tête.'},
+  {t:'in',q:'Dans une classe de 30 élèves, 18 font des maths renforcées, 15 de la physique, 8 font les deux. Combien n\'en font aucune ?',a:['5'],e:'18 + 15 − 8 = 25 font au moins une des deux → 30 − 25 = 5. Formule : |A ∪ B| = |A| + |B| − |A ∩ B|.'},
+  {t:'in',q:'Sur 40 élèves, 25 parlent français, 30 parlent hébreu, et tous parlent au moins une des deux langues. Combien parlent les deux ?',a:['15'],e:'25 + 30 − 40 = 15.'},
+  {t:'qcm',q:'« Les musiciens qui sont délégués mais ne sont pas sportifs » se traduit par :',c:['musicien or délégué or not sportif','musicien and délégué and not sportif','musicien and (délégué or sportif)','not (musicien and délégué)'],a:1,e:'Chaque mot de l\'énoncé devient une contrainte. C\'est exactement la compétence du jour 3, testée sans code.'},
+  {t:'in',q:'Sur 100 personnes, 60 aiment le café, 50 le thé, 20 n\'aiment ni l\'un ni l\'autre. Combien aiment les deux ?',a:['30'],e:'100 − 20 = 80 aiment au moins l\'un → 60 + 50 − 80 = 30.'},
+  {t:'qcm',q:'Un train part de A à 13h et arrive en B à 16h. Il repart aussitôt vers A à une vitesse deux fois plus lente. Heure d\'arrivée ?',c:['19h00','20h00','22h00','21h30'],a:2,e:'Question authentique de תיכון השקמים. L\'aller dure 3h ; à vitesse deux fois moindre, le retour dure 6h. 16h + 6h = 22h.'}
+ ]},
+ {name:'Énigmes et mouvement',qs:[
+  {t:'qcm',q:'Sur une île, les chevaliers disent toujours la vérité et les valets mentent toujours. A dit : « Nous sommes tous les deux des valets. » Que sont A et B ?',c:['Tous deux valets','A valet, B chevalier','A chevalier, B valet','Tous deux chevaliers'],a:1,e:'Si A était chevalier, il dirait vrai, donc il serait valet — contradiction. A est donc valet, et son affirmation est fausse : ils ne sont pas tous les deux valets. Donc B est chevalier.'},
+  {t:'qcm',q:'Si aujourd\'hui est mardi, quel jour sera-t-il dans 100 jours ?',c:['Mardi','Mercredi','Jeudi','Vendredi'],a:2,e:'100 % 7 = 2 (14 semaines et 2 jours). Mardi + 2 = jeudi. Le modulo, exactement comme au jour 2 du cours.'},
+  {t:'qcm',q:'Un train A→B part à 16h et arrive à 17h. Au même moment, un train B→A part et arrive à 17h30. À quelle heure se croisent-ils ?',c:['16h30','16h36','16h45','17h00'],a:1,e:'Question authentique de תיכון אילן רמון. Ils se rapprochent à D + D/1,5 = 5D/3 par heure → D ÷ (5D/3) = 3/5 h = 36 min.'},
+  {t:'in',q:'Une voiture parcourt la première moitié d\'un trajet à 60 km/h et la seconde à 40 km/h. Quelle est sa vitesse moyenne, en km/h ?',a:['48'],e:'Ce n\'est PAS 50. Sur 120 km : 1h puis 1,5h = 2,5h pour 120 km → 48 km/h. La moyenne des vitesses n\'est pas la vitesse moyenne.'},
+  {t:'in',q:'Un robinet remplit un bassin en 6 h, un autre en 3 h. En combien d\'heures le remplissent-ils ensemble ?',a:['2'],e:'En 1 h : 1/6 + 1/3 = 1/2 du bassin. Donc 2 h. Raisonner en « fraction du travail par heure ».'},
+  {t:'in',q:'Quatre ouvriers font un travail en 6 jours. Combien de jours pour trois ouvriers au même rythme ?',a:['8'],e:'Le travail vaut 4 × 6 = 24 journées-ouvrier → 24 ÷ 3 = 8.'}
+ ]}
+]},
+
+{id:'u10',ic:'🎯',col:'#ffe4e6',name:'Algorithmique papier',desc:'Le type le plus prédictif de réussite',lessons:[
+ {name:'Énigmes algorithmiques',qs:[
+  {t:'in',q:'Avec seulement les opérations +1 et ×2, combien d\'opérations au minimum pour passer de 1 à 27 ?',a:['7'],e:'1 →+1→ 2 →+1→ 3 →×2→ 6 →×2→ 12 →+1→ 13 →×2→ 26 →+1→ 27. Astuce : raisonner à l\'envers depuis la cible — pair, on divise ; impair, on retire 1.'},
+  {t:'in',q:'Question authentique de תיכון השקמים : avec +1 et ×2, combien d\'opérations minimum pour passer de 10 à 100 ?',a:['6'],e:'100 ← 50 ← 25 ← 24 ← 12 ← 11 ← 10. Dans le bon sens : +1, +1, ×2, +1, ×2, ×2.'},
+  {t:'in',q:'Tours de Hanoï : combien de mouvements au minimum pour déplacer 3 disques ?',a:['7'],e:'Formule générale : 2ⁿ − 1. Pour 4 disques, 15 mouvements. Chaque disque supplémentaire double presque le travail — première rencontre avec la croissance exponentielle.'},
+  {t:'in',q:'Et pour 5 disques ?',a:['31'],e:'2⁵ − 1 = 31.'},
+  {t:'qcm',q:'Le passeur, le loup, la chèvre et le chou. Quelle est la 4ᵉ traversée ?',c:['Passer le loup','Ramener la chèvre sur la rive de départ','Passer le chou','Revenir seul'],a:1,e:'Chèvre → retour seul → chou → RAMENER la chèvre → loup → retour seul → chèvre. Le retour en arrière est la clé, et c\'est ce qui bloque la plupart des candidats.'},
+  {t:'in',q:'Huit boules identiques, dont une plus lourde. Combien de pesées suffisent avec une balance à deux plateaux ?',a:['2'],e:'Pesée 1 : 3 contre 3. Si équilibre, la lourde est parmi les 2 restantes. Sinon, elle est dans le groupe le plus lourd. Pesée 2 : une contre une.'}
+ ]},
+ {name:'Traces et ténacité',qs:[
+  {t:'in',q:'Suivez cet algorithme pas à pas. Que vaut S à la fin ?',code:'X ← 5 ; S ← 0\ntant que X > 0 :\n    S ← S + X\n    X ← X − 2',a:['9'],e:'X=5 S=5 → X=3 S=8 → X=1 S=9 → X=−1, arrêt. Tenir une table de suivi (טבלת מעקב) : une colonne par variable, une ligne par étape.'},
+  {t:'in',q:'Un escargot est au fond d\'un puits de 10 m. Chaque jour il monte de 3 m, chaque nuit il glisse de 2 m. En combien de jours atteint-il le sommet ?',a:['8'],e:'Piège classique : la progression nette est d\'1 m/jour, mais le 8ᵉ jour il part de 7 m, monte de 3 m et SORT avant de glisser. Toujours vérifier le dernier pas.'},
+  {t:'in',q:'Combien de fois le chiffre 7 apparaît-il en écrivant tous les nombres de 1 à 100 ?',a:['20'],e:'10 fois comme unité (7, 17... 97) et 10 fois comme dizaine (70 à 79). 77 compte bien deux fois.'},
+  {t:'in',q:'Question de ténacité (הדרים) : trouvez le nombre de 10 chiffres dont le 1ᵉʳ chiffre indique combien de 0 il contient, le 2ᵉ combien de 1, etc.',a:['6210001000'],e:'6210001000 : six 0, deux 1, un 2, un 6. Ce qui est évalué ici n\'est pas la réponse mais la persévérance — écrire ses essais sur la copie rapporte des points.'},
+  {t:'in',q:'Récipients de 3 L et 5 L, sans graduation. Combien de litres reste-t-il dans le grand après : remplir le 5, verser dans le 3, vider le 3, y verser le reste, remplir le 5, compléter le 3 ?',a:['4'],e:'C\'est la solution classique pour obtenir exactement 4 L. Méthode : tenir une table à deux colonnes, une ligne par opération.'},
+  {t:'in',q:'Un livre a ses pages numérotées de 1 à n. 1392 chiffres ont été utilisés. Combien de pages ?',a:['500'],e:'Pages 1-9 : 9 chiffres. Pages 10-99 : 180 chiffres (cumul 189). Reste 1203 ÷ 3 = 401 pages à 3 chiffres. Total 99 + 401 = 500.'}
+ ]}
+]}
+];
+
+/* ================== ÉTAT ================== */
+let S = {xp:0, done:{}, read:{}, wrong:[], theme:null};
+let L = null;
+
+const $ = h => { const d=document.createElement('div'); d.innerHTML=h; return d.firstElementChild; };
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const norm = s => String(s).toLowerCase().trim().replace(/\s+/g,' ').replace(/[.,;!]$/,'');
+const app = () => document.getElementById('app');
+const lvl = () => Math.floor(S.xp/100)+1;
+const totalLessons = () => UNITS.reduce((n,u)=>n+u.lessons.length,0);
+const doneCount = () => Object.keys(S.done).length;
+
+/* ================== THÈME ================== */
+function applyTheme(){
+  if(S.theme) document.documentElement.setAttribute('data-theme',S.theme);
+  else document.documentElement.removeAttribute('data-theme');
+}
+function toggleTheme(){
+  const dark = S.theme ? S.theme==='dark'
+    : window.matchMedia('(prefers-color-scheme:dark)').matches;
+  S.theme = dark ? 'light' : 'dark';
+  applyTheme();
+  const v = document.querySelector('#app').getAttribute('data-view');
+  if(v==='home') home(); else if(v==='course') openCourse(lastCourse[0],lastCourse[1]);
+  toast(S.theme==='dark' ? 'Mode sombre activé' : 'Mode clair activé');
+}
+function themeBtn(){
+  const dark = S.theme ? S.theme==='dark'
+    : (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches);
+  return `<button class="iconbtn" onclick="toggleTheme()"
+    aria-label="${dark?'Passer en mode clair':'Passer en mode sombre'}">${dark?'☀️':'🌙'}</button>`;
+}
+
+/* ================== UTILITAIRES ================== */
+let toastT = null;
+function toast(msg){
+  const old = document.querySelector('.toast'); if(old) old.remove();
+  const t = $(`<div class="toast" role="status">${msg}</div>`);
+  document.body.appendChild(t);
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>t.remove(), 2600);
+}
+function ring(pct,size){
+  const r = size/2 - 5, c = 2*Math.PI*r;
+  return `<svg width="${size}" height="${size}" aria-hidden="true">
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="7"/>
+    <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#fff" stroke-width="7"
+      stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct/100)}"/>
+  </svg>`;
+}
+function nextStep(){
+  for(let ui=0; ui<UNITS.length; ui++){
+    const u = UNITS[ui];
+    if(!S.read[u.id]) return {type:'cours', ui, label:'Cours — '+u.name};
+    for(let li=0; li<u.lessons.length; li++)
+      if(!S.done[ui+'-'+li]) return {type:'lecon', ui, li, label:u.name+' · '+u.lessons[li].name};
+  }
+  return null;
+}
+
+/* ================== ACCUEIL ================== */
+function home(){
+  const pct = S.xp % 100;
+  const globalPct = Math.round(doneCount()/totalLessons()*100);
+  const nx = nextStep();
+
+  let h = `<header class="topbar">
+    <div class="stat"><span aria-hidden="true">⚡</span><span class="n">${S.xp}</span><small>XP</small></div>
+    <div class="stat"><span aria-hidden="true">🏅</span><span class="n">${lvl()}</span><small>niveau</small></div>
+    <div class="stat"><span aria-hidden="true">✅</span><span class="n">${doneCount()}/${totalLessons()}</span></div>
+    <div class="spacer"></div>${themeBtn()}
+  </header>
+  <main>
+  <section class="hero">
+    <div class="hero-txt">
+      <h1>CodeTrainer</h1>
+      <p>Cours et exercices — informatique et logique, préparation à l'entrée en filière</p>
+    </div>
+    <div class="ring">${ring(pct,82)}
+      <div class="lab"><b>${lvl()}</b><small>niveau</small></div>
+    </div>
+    <p class="sr">Progression globale : ${globalPct} %, ${doneCount()} leçons terminées sur ${totalLessons()}. ${pct} XP sur 100 avant le niveau suivant.</p>
+  </section>`;
+
+  if(nx){
+    h += `<section class="card resume">
+      <div class="txt">
+        <div class="k">${doneCount()||Object.keys(S.read).length ? 'Reprendre' : 'Commencer ici'}</div>
+        <h3>${nx.label}</h3>
+        <p>${nx.type==='cours' ? 'Lisez la leçon avant les exercices de l\'unité.' : 'Six questions, environ cinq minutes.'}</p>
+      </div>
+      <button class="btn btn-p" onclick="${nx.type==='cours' ? `openCourse('${UNITS[nx.ui].id}',${nx.ui})` : `start(${nx.ui},${nx.li})`}">
+        ${nx.type==='cours' ? 'Lire le cours' : 'Continuer'}</button>
+    </section>`;
+  } else {
+    h += `<section class="card resume">
+      <div class="txt"><div class="k">Parcours terminé</div>
+        <h3>Les 24 leçons sont validées</h3>
+        <p>Reprenez les unités où le score est inférieur à 100 %, ou passez aux gros exercices du document de cours.</p></div>
+    </section>`;
+  }
+
+  if(S.wrong.length){
+    h += `<section class="card review">
+      <div class="unit-head">
+        <div class="badge" style="background:var(--gold-soft)" aria-hidden="true">🔁</div>
+        <div><h3>Réviser mes erreurs</h3>
+          <p class="desc">${S.wrong.length} question${S.wrong.length>1?'s':''} mise${S.wrong.length>1?'s':''} de côté</p></div>
+      </div>
+      <div class="nodes"><button class="node" onclick="startReview()">
+        <span class="dot" aria-hidden="true"></span>Lancer la révision</button></div>
+    </section>`;
+  }
+
+  UNITS.forEach((u,ui)=>{
+    const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
+    const up = Math.round(dn/u.lessons.length*100);
+    const isNext = nx && nx.ui===ui;
+    h += `<section class="unit" aria-labelledby="u${ui}t">
+      <div class="unit-head">
+        <div class="badge" style="background:${u.col}" aria-hidden="true">${u.ic}</div>
+        <div><h3 id="u${ui}t">${u.name}</h3><p class="desc">${u.desc}</p></div>
+        <div class="uprog"><div class="track"><i style="width:${up}%"></i></div>
+          <span>${dn}/${u.lessons.length}</span></div>
+      </div>
+      <div class="nodes">
+        <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
+          onclick="openCourse('${u.id}',${ui})">
+          <span class="dot" aria-hidden="true"></span>📖 Cours${S.read[u.id]?' · lu':''}</button>`;
+    u.lessons.forEach((ls,li)=>{
+      const d = S.done[ui+'-'+li];
+      const nxt = isNext && nx.type==='lecon' && nx.li===li;
+      h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
+        aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
+        <span class="dot" aria-hidden="true"></span>${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
+    });
+    h += `</div></section>`;
+  });
+
+  h += `<section class="card save">
+    <h4>Sauvegarder ma progression</h4>
+    <p>La progression n'est conservée que le temps de la session. Copiez ce code et collez-le à la prochaine ouverture pour la retrouver.</p>
+    <label class="sr" for="code">Code de progression</label>
+    <textarea id="code" readonly>${btoa(unescape(encodeURIComponent(JSON.stringify(S))))}</textarea>
+    <div class="row">
+      <button class="btn btn-sec" onclick="copyCode()">Copier le code</button>
+      <button class="btn btn-ghost" onclick="loadCode()">Charger un code…</button>
+    </div>
+  </section></main>`;
+
+  app().setAttribute('data-view','home');
+  app().innerHTML = h;
+  window.scrollTo(0,0);
+}
+
+function copyCode(){
+  const t = document.getElementById('code'); t.select(); t.setSelectionRange(0,99999);
+  try{ document.execCommand('copy'); toast('Code copié — conservez-le pour reprendre plus tard'); }
+  catch(e){ toast('Sélectionnez le texte et copiez-le manuellement'); }
+}
+function loadCode(){
+  const v = prompt('Collez votre code de progression :');
+  if(!v) return;
+  try{
+    const o = JSON.parse(decodeURIComponent(escape(atob(v.trim()))));
+    if(typeof o.xp === 'number'){
+      S = Object.assign({xp:0,done:{},read:{},wrong:[],theme:null}, o);
+      applyTheme(); home(); toast('Progression restaurée');
+    } else toast('Code non reconnu');
+  }catch(e){ toast('Code non reconnu'); }
+}
+
+/* ================== VUE COURS ================== */
+let lastCourse = [null,0];
+function openCourse(id, ui){
+  const tpl = document.getElementById('cours-'+id);
+  if(!tpl) return;
+  S.read[id] = 1; lastCourse = [id,ui];
+  const u = UNITS[ui];
+  const prev = UNITS[ui-1], next = UNITS[ui+1];
+
+  app().setAttribute('data-view','course');
+  app().innerHTML = `<div class="readbar" id="rb"></div>
+    <header class="topbar">
+      <button class="btn btn-ghost" onclick="home()">← Parcours</button>
+      <div class="spacer"></div>
+      <div class="stat"><span aria-hidden="true">📖</span><small>Unité ${ui+1} sur ${UNITS.length}</small></div>
+      ${themeBtn()}
+    </header>
+    <main><article class="course">${tpl.innerHTML}</article>
+    <div class="actions" style="justify-content:flex-start;margin:var(--s5) 0 var(--s3)">
+      <button class="btn btn-p" onclick="start(${ui},0)">Passer aux exercices</button>
+      <button class="btn btn-ghost" onclick="home()">Retour au parcours</button>
+    </div>
+    <p style="color:var(--ink-2);font-size:14px;margin:0 0 var(--s5)">
+      ${u.lessons.length} série${u.lessons.length>1?'s':''} d'exercices sur cette unité — le cours reste accessible à tout moment.</p>
+    <nav class="nodes" aria-label="Navigation entre unités">
+      ${prev?`<button class="node" onclick="openCourse('${prev.id}',${ui-1})">← ${prev.name}</button>`:''}
+      ${next?`<button class="node" onclick="openCourse('${next.id}',${ui+1})">${next.name} →</button>`:''}
+    </nav></main>`;
+
+  window.scrollTo(0,0);
+  window.onscroll = ()=>{
+    const rb = document.getElementById('rb'); if(!rb) return;
+    const max = document.body.scrollHeight - window.innerHeight;
+    rb.style.width = (max>0 ? Math.min(100, window.scrollY/max*100) : 0) + '%';
+  };
+}
+
+/* ================== LEÇON ================== */
+function start(ui,li){
+  window.onscroll = null;
+  const ls = UNITS[ui].lessons[li];
+  L = {qs:ls.qs.slice(), i:0, hearts:3, ok:0, combo:0, key:ui+'-'+li,
+       title:ls.name, unit:UNITS[ui].name, ui:ui, li:li, review:false};
+  render();
+}
+function startReview(){
+  window.onscroll = null;
+  L = {qs:S.wrong.slice(0,10), i:0, hearts:3, ok:0, combo:0, key:null,
+       title:'Révision', unit:'Mes erreurs', review:true};
+  S.wrong = S.wrong.slice(10);
+  render();
+}
+
+function hearts(){
+  let s = '';
+  for(let i=0;i<3;i++) s += `<span class="h" aria-hidden="true">${i<L.hearts?'❤️':'🤍'}</span>`;
+  return s;
+}
+
+function render(){
+  const q = L.qs[L.i];
+  const pct = (L.i / L.qs.length) * 100;
+  const labels = {qcm:'Choix multiple', in:'Réponse à saisir', ord:'Remise en ordre'};
+
+  let h = `<header class="topbar">
+    <button class="iconbtn" onclick="quit()" aria-label="Quitter la leçon">✕</button>
+    <div class="pbar" role="progressbar" aria-valuenow="${Math.round(pct)}"
+      aria-valuemin="0" aria-valuemax="100" aria-label="Progression dans la leçon">
+      <i style="width:${pct}%"></i></div>
+    <div class="hearts" id="hz">${hearts()}</div>
+    <span class="sr" id="hlab">${L.hearts} vie${L.hearts>1?'s':''} restante${L.hearts>1?'s':''}</span>
+  </header>
+  <main>
+  <section class="qcard">
+    <p class="qtype">${labels[q.t]} · question ${L.i+1} sur ${L.qs.length}
+      ${L.combo>=3?'<span class="combo">série ×'+L.combo+'</span>':''}</p>
+    <h2 class="qtext">${q.q}</h2>`;
+  if(q.code) h += `<pre><code>${esc(q.code)}</code></pre>`;
+  if(q.seq)  h += `<div class="seqbox">${q.seq}</div>`;
+
+  if(q.t==='qcm'){
+    if(!q._order) q._order = q.c.map((_,i)=>i).sort(()=>Math.random()-.5);
+    h += `<div class="choices" id="ch">`;
+    q._order.forEach((oi,pos)=>{
+      h += `<button class="choice" onclick="answerQcm(${oi},this)">
+        <span class="k" aria-hidden="true">${'ABCD'[pos]}</span><span>${q.c[oi]}</span></button>`;
+    });
+    h += `</div><p class="hint">Astuce clavier : touches 1 à ${q.c.length} pour répondre.</p>`;
+  } else if(q.t==='in'){
+    h += `<div class="field">
+      <label for="inp">Votre réponse</label>
+      <input class="answer" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false"
+        inputmode="text" placeholder="Tapez ici…" onkeydown="if(event.key==='Enter')answerIn()">
+      <p class="hint">Validez avec la touche Entrée.</p>
+    </div>
+    <div style="margin-top:var(--s4)"><button class="btn btn-p" id="valid" onclick="answerIn()">Valider</button></div>`;
+  } else if(q.t==='ord'){
+    if(!q._shuf) q._shuf = q.items.map((v,i)=>i).sort(()=>Math.random()-.5);
+    L.built = [];
+    h += `<div class="slot" id="slot" aria-live="polite">
+        <div class="empty">Cliquez les lignes dans le bon ordre</div></div>
+      <div class="chips" id="chips">`;
+    q._shuf.forEach(i=>{ h += `<button class="chip" data-i="${i}" onclick="pick(${i},this)">${esc(q.items[i])}</button>`; });
+    h += `</div><div style="margin-top:var(--s4)">
+      <button class="btn btn-p" id="valid" onclick="answerOrd()" disabled>Valider</button></div>`;
+  }
+  h += `</section></main><div id="fbz" aria-live="polite"></div>`;
+
+  app().setAttribute('data-view','lesson');
+  app().innerHTML = h;
+  const inp = document.getElementById('inp'); if(inp) inp.focus();
+
+  document.onkeydown = e=>{
+    if(q.t==='qcm' && /^[1-9]$/.test(e.key)){
+      const b = document.querySelectorAll('#ch .choice')[+e.key-1];
+      if(b && !b.disabled) b.click();
+    }
+  };
+}
+
+function pick(i,el){
+  L.built.push(i); el.classList.add('used');
+  paintSlot();
+  document.getElementById('valid').disabled = L.built.length !== L.qs[L.i].items.length;
+}
+function unpick(pos){
+  const i = L.built.splice(pos,1)[0];
+  const c = document.querySelector('.chip[data-i="'+i+'"]'); if(c) c.classList.remove('used');
+  paintSlot();
+  document.getElementById('valid').disabled = true;
+}
+function paintSlot(){
+  const q = L.qs[L.i], slot = document.getElementById('slot');
+  slot.innerHTML = L.built.length
+    ? L.built.map((b,p)=>`<div class="line" onclick="unpick(${p})" role="button" tabindex="0"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();unpick(${p})}"
+        >${esc(q.items[b])}<span class="x">retirer</span></div>`).join('')
+    : '<div class="empty">Cliquez les lignes dans le bon ordre</div>';
+}
+
+function answerQcm(i,el){
+  const q = L.qs[L.i], good = i===q.a;
+  document.querySelectorAll('#ch .choice').forEach(b=>b.disabled=true);
+  el.classList.add(good?'good':'bad');
+  el.insertAdjacentHTML('beforeend',`<span class="mark" aria-hidden="true">${good?'✓':'✕'}</span>`);
+  if(!good){
+    const c = document.querySelectorAll('#ch .choice')[q._order.indexOf(q.a)];
+    c.classList.add('good');
+    c.insertAdjacentHTML('beforeend','<span class="mark" aria-hidden="true">✓</span>');
+  }
+  judge(good, q.c[q.a]);
+}
+function answerIn(){
+  const q = L.qs[L.i], inp = document.getElementById('inp');
+  if(!inp || inp.disabled || !inp.value.trim()) return;
+  const good = q.a.some(x=>norm(x)===norm(inp.value));
+  inp.disabled = true; inp.classList.add(good?'good':'bad');
+  document.getElementById('valid').disabled = true;
+  judge(good, q.a[0]);
+}
+function answerOrd(){
+  const q = L.qs[L.i], good = L.built.every((v,i)=>v===i);
+  document.querySelectorAll('.chip').forEach(c=>c.disabled=true);
+  document.querySelectorAll('.slot .line').forEach(l=>l.onclick=null);
+  document.getElementById('valid').disabled = true;
+  judge(good, q.items.join('  →  '));
+}
+
+function judge(good, sol){
+  const q = L.qs[L.i];
+  let gain = 0;
+  if(good){
+    L.ok++; L.combo++;
+    gain = 10 + (L.combo>=5 ? 5 : 0);
+    S.xp += gain;
+  } else {
+    L.combo = 0; L.hearts--;
+    if(!S.wrong.some(w=>w.q===q.q)) S.wrong.push(q);
+    const hz = document.getElementById('hz');
+    if(hz){
+      const h = hz.querySelectorAll('.h')[L.hearts];
+      if(h){ h.classList.add('lost'); setTimeout(()=>{h.textContent='🤍';},220); }
+      const lab = document.getElementById('hlab');
+      if(lab) lab.textContent = L.hearts + ' vie' + (L.hearts>1?'s':'') + ' restante' + (L.hearts>1?'s':'');
+    }
+  }
+  const fb = $(`<div class="fb ${good?'ok':'ko'}" role="status">
+    <div class="fb-head"><span class="em" aria-hidden="true">${good?'✅':'❌'}</span>
+      <h4>${good ? (L.combo>=5 ? 'Excellent — série de '+L.combo : 'Bonne réponse') : 'Réponse incorrecte'}</h4></div>
+    <p>${good?'':'<b>La bonne réponse était : <span class="sol">'+esc(sol)+'</span></b><br>'}${q.e}</p>
+    <div class="row">
+      <button class="btn ${good?'btn-g':'btn-p'}" id="cont" onclick="next()">Continuer</button>
+      ${gain?'<span class="xpgain">+'+gain+' XP</span>':''}
+    </div>
+  </div>`);
+  document.getElementById('fbz').appendChild(fb);
+  fb.scrollIntoView({behavior:'smooth',block:'end'});
+  document.getElementById('cont').focus({preventScroll:true});
+  document.onkeydown = e => { if(e.key==='Enter'){ e.preventDefault(); next(); } };
+}
+
+function next(){
+  document.onkeydown = null;
+  if(L.hearts<=0) return result(false);
+  L.i++;
+  if(L.i >= L.qs.length) return result(true);
+  render(); window.scrollTo(0,0);
+}
+function quit(){ document.onkeydown=null; window.onscroll=null; L=null; home(); }
+
+function result(win){
+  const pct = Math.round(L.ok/L.qs.length*100);
+  let bonus = 0;
+  if(win && L.key){
+    if(pct > (S.done[L.key]||0)) S.done[L.key] = pct;
+    if(pct===100){ bonus = 20; S.xp += 20; }
+  }
+  const perfect = win && pct===100;
+  const conf = perfect ? Array.from({length:16},(_,i)=>
+    `<span class="conf" style="left:${6+i*6}%;background:${['#4f46e5','#16a34a','#f59e0b','#ec4899'][i%4]};animation-delay:${i*.09}s"></span>`).join('') : '';
+
+  app().setAttribute('data-view','result');
+  app().innerHTML = `<main class="result">${conf}
+    <div class="big" aria-hidden="true">${perfect?'🏆':win?'🎉':'💪'}</div>
+    <h2>${perfect?'Sans faute':win?'Leçon terminée':'Plus de vies'}</h2>
+    <p>${perfect ? 'Aucune erreur sur cette série. Bonus de 20 XP.'
+        : win ? 'Les questions ratées ont été mises de côté dans « Réviser mes erreurs ».'
+        : 'Reprenez la leçon — les questions ratées reviendront en révision.'}</p>
+    <div class="scores">
+      <div class="score"><b>${L.ok}/${L.qs.length}</b><small>bonnes réponses</small></div>
+      <div class="score"><b>${pct}%</b><small>réussite</small></div>
+      <div class="score"><b>${S.xp}</b><small>XP total</small></div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-p" onclick="home()">Retour au parcours</button>
+      ${L.key!==null&&L.key!==undefined ? `<button class="btn btn-sec" onclick="start(${L.ui},${L.li})">Refaire la leçon</button>` : ''}
+    </div></main>`;
+  window.scrollTo(0,0);
+}
+
+applyTheme();
+home();
+
+</script>
+<script>
+/* Mode hors ligne — actif uniquement en https (GitHub Pages).
+   En ouvrant le fichier depuis le disque, l'application marche déjà sans connexion. */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

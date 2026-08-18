@@ -1,0 +1,16 @@
+{
+  "name": "Supercode — CodeTrainer",
+  "short_name": "Supercode",
+  "description": "Cours et exercices interactifs d'informatique et de logique.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f5f2",
+  "theme_color": "#4f46e5",
+  "lang": "fr",
+  "icons": [
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
