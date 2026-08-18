@@ -455,6 +455,76 @@ details.save p{margin:0 0 var(--s3);font-size:var(--fs-sm);color:var(--ink-2);ma
 .secttl b{font-weight:600;color:var(--ink-2);font-size:14px;margin-left:4px}
 .secttl em{font-style:normal;font-size:13px;color:var(--ink-2);
   font-variant-numeric:tabular-nums;font-weight:600}
+
+/* ---------- onglets de matière ---------- */
+.tabs{display:flex;gap:var(--s1);background:var(--surface-3);border-radius:var(--r2);
+  padding:4px;margin-bottom:var(--s4);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:max-content;border:none;background:transparent;color:var(--ink-2);
+  font-family:inherit;font-size:14px;font-weight:600;padding:10px 14px;border-radius:var(--r1);
+  cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:center;gap:7px;
+  transition:background .15s,color .15s;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab em{font-style:normal;font-size:11.5px;font-weight:700;opacity:.6;
+  font-variant-numeric:tabular-nums}
+.tab.on{background:var(--surface);color:var(--ink);box-shadow:var(--sh1)}
+.tab.on em{color:var(--p);opacity:1}
+.hero h1 span{font-size:15px;font-weight:600;color:var(--ink-2);margin-left:4px}
+.ring .lab b small{font-size:11px;font-weight:600;opacity:.7}
+
+/* ============================================================
+   DENSITÉ — liste compacte, moins d'air entre les unités
+   (cibles tactiles maintenues au-dessus du minimum WCAG 2.5.8)
+   ============================================================ */
+.tabs{margin-bottom:var(--s3);padding:3px}
+.tab{padding:8px 12px;min-height:40px;font-size:13.5px}
+.hero{padding:var(--s3) var(--s4);gap:var(--s3);margin-bottom:var(--s3);border-radius:var(--r2)}
+.hero h1{font-size:var(--fs-md)}
+.hero p{font-size:13px}
+.hero h1 span{font-size:13px}
+.ring{width:54px;height:54px}
+.ring .lab b{font-size:15px}
+.ring .lab b small{font-size:9px}
+
+.unit{padding:var(--s3) var(--s4);margin-bottom:var(--s2);border-radius:var(--r2);box-shadow:none}
+.unit-head{margin-bottom:var(--s2);gap:var(--s3)}
+.badge{width:32px;height:32px;border-radius:var(--r1);font-size:14px}
+.unit h3{font-size:14.5px}
+.unit .desc{font-size:12.5px;line-height:1.4;margin-top:0}
+.uprog .track{display:none}
+.uprog span{font-size:12px;color:var(--ink-3)}
+.nodes{gap:6px}
+.node{padding:8px 12px;font-size:13px;min-height:38px;border-width:1px;border-radius:var(--r1)}
+.node .pc{font-size:11px}
+.revcard{padding:var(--s3) var(--s4);margin-bottom:var(--s2);border-radius:var(--r2)}
+.revcard h3{font-size:14.5px}
+.revcard p{font-size:12.5px}
+details.save>summary{font-size:13px;padding:var(--s2) 0;min-height:40px}
+
+@media(max-width:560px){
+  .unit .desc{display:none}          /* sur téléphone, le titre suffit */
+  .node{flex:0 1 auto}
+}
+
+/* titre et description sur une seule ligne */
+.ut{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;min-width:0}
+.ut h3{white-space:nowrap}
+.unit .desc{margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.unit{padding:var(--s3) var(--s4) var(--s3)}
+.unit-head{margin-bottom:6px}
+@media(max-width:560px){ .unit .desc{display:none} }
+
+/* corrections mobile : compteur sur la ligne du titre, onglets tous visibles */
+@media(max-width:560px){
+  .uprog{width:auto;margin:0;order:0;flex-shrink:0}
+  .unit-head{flex-wrap:nowrap;margin-bottom:8px}
+  .ut h3{white-space:normal}
+  .tab{font-size:12.5px;padding:8px 9px;gap:5px}
+  .tab em{font-size:10.5px}
+  .hero{padding:var(--s3)}
+  .hero .btn{padding:11px 18px;min-height:44px;width:auto;margin-left:auto}
+  .badge{width:29px;height:29px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -834,6 +904,7 @@ return -1</code></pre>
 <h3>Les suites de lettres</h3>
 <p>Écrire l'alphabet en marge de la copie et <b>numéroter les lettres</b> (A=1, B=2…). La suite redevient alors numérique. A, C, E, G → 1, 3, 5, 7 → une lettre sur deux → I.</p>
 <div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div><b>Discipline de temps.</b> Ces examens laissent environ une minute et demie par question. Si une suite résiste après une minute, la marquer et passer à la suivante — on y revient à la fin. Rester bloqué coûte plus cher que sauter.</div><br><span style="opacity:.8">Les 90 termes sont dans l'unité <b>Vocabulaire hébreu</b>, en bas du parcours.</span></div>
+<div class="heb"><b>Vocabulaire :</b> suite = <span dir="rtl" lang="he">סדרה</span> <i>sidra</i> · nombre = <span dir="rtl" lang="he">מספר</span> <i>mispar</i> · différence = <span dir="rtl" lang="he">הפרש</span> <i>hefrech</i> · règle = <span dir="rtl" lang="he">חוקיות</span> <i>houkiyout</i> · carré = <span dir="rtl" lang="he">ריבוע</span> <i>riboua</i></div>
 </template>
 
 <template id="cours-u9">
@@ -860,6 +931,7 @@ return -1</code></pre>
 <li><b>Les problèmes de travail se raisonnent en « fraction par heure ».</b> Un robinet remplit en 6 h (1/6 par heure), l'autre en 3 h (1/3). Ensemble : 1/2 par heure, donc 2 h.</li>
 </ul>
 <p>Pour les rencontres de deux mobiles : additionner leurs vitesses de rapprochement, puis diviser la distance par cette somme.</p>
+<div class="heb"><b>Vocabulaire :</b> logique = <span dir="rtl" lang="he">היגיון</span> <i>higayon</i> · question = <span dir="rtl" lang="he">שאלה</span> <i>chééla</i> · solution = <span dir="rtl" lang="he">פתרון</span> <i>pitaron</i> · vitesse = <span dir="rtl" lang="he">מהירות</span> <i>mehirout</i> · ensemble = <span dir="rtl" lang="he">קבוצה</span> <i>kvoutsa</i></div>
 </template>
 
 <template id="cours-u10">
@@ -893,6 +965,7 @@ tant que X > 0 :
 <h3>5. Ce qui est réellement évalué</h3>
 <div class="callout key"><span class="ci" aria-hidden="true">🔑</span><div>Les lycées le disent eux-mêmes. Hadarim publie une « question de ténacité » et son corrigé précise : <i>celui qui arrive à expliquer jusque-là est en bonne position</i>. Autrement dit, <b>repérer le motif expérimentalement suffit souvent</b> — la démonstration complète est un bonus. Un candidat qui remplit sa copie d'essais organisés vaut mieux qu'un candidat qui rend une feuille blanche parce qu'il n'était pas certain.</div></div>
 <p>Conséquence pratique : sur une question ouverte, toujours écrire ses tentatives, ses tableaux, ses cas particuliers. C'est du raisonnement visible, et c'est ce qui est noté.</p>
+<div class="heb"><b>Vocabulaire :</b> table de suivi = <span dir="rtl" lang="he">טבלת מעקב</span> <i>tavlat maakav</i> · étape = <span dir="rtl" lang="he">שלב</span> <i>chlav</i> · examen de sélection = <span dir="rtl" lang="he">מבחן מיון</span> <i>mivhan miyoun</i> · brouillon = <span dir="rtl" lang="he">טיוטה</span> <i>tioutta</i> · réponse = <span dir="rtl" lang="he">תשובה</span> <i>tchouva</i></div>
 </template>
 
 
@@ -1690,11 +1763,82 @@ const RANG = {info:0, math:1, phys:2, heb:3};
 UNITS.sort((a,b)=> RANG[a.sub] - RANG[b.sub]);
 (function(){ const c={}; UNITS.forEach(u=>{ c[u.sub]=(c[u.sub]||0)+1; u.num=c[u.sub]; }); })();
 const MATIERES = [
-  {k:'info', nom:'Informatique',        he:'מדעי המחשב'},
-  {k:'math', nom:'Mathématiques',       he:'מתמטיקה'},
-  {k:'phys', nom:'Physique',            he:'פיזיקה'},
-  {k:'heb',  nom:'Vocabulaire hébreu',  he:''}
+  {k:'info', court:'Informatique', nom:'Informatique',       he:'מדעי המחשב'},
+  {k:'math', court:'Maths',        nom:'Mathématiques',      he:'מתמטיקה'},
+  {k:'phys', court:'Physique',     nom:'Physique',           he:'פיזיקה'},
+  {k:'heb',  court:'Hébreu',       nom:'Vocabulaire hébreu', he:''}
 ];
+
+
+/* ===== Vocabulaire hébreu rattaché à chaque unité ===== */
+const VOC = {
+ u1:[["variable","משתנה","michtané"],["valeur","ערך","érekh"],["type","טיפוס","tipouss"],["entrée","קלט","klat"],["sortie","פלט","pélet"],["chaîne de caractères","מחרוזת","mahrozet"]],
+ u2:[["condition","תנאי","tnaï"],["vrai","אמת","émet"],["faux","שקר","chéker"],["exécution conditionnelle","ביצוע מותנה","bitsoua moutné"],["comparaison","השוואה","hachvaa"]],
+ u3:[["boucle","לולאה","loula'a"],["exécution répétée","ביצוע חוזר","bitsoua hozer"],["compteur","מונה","moné"],["condition d'arrêt","תנאי עצירה","tnaï atsira"],["accumulateur","סוכם","sokhem"]],
+ u4:[["fonction","פונקציה","founktsia"],["paramètre","פרמטר","parametr"],["renvoyer","להחזיר","lehahzir"],["variable locale","משתנה מקומי","michtané mekomi"]],
+ u5:[["tableau","מערך","maarakh"],["indice","אינדקס","indeks"],["longueur","אורך","orekh"],["élément","איבר","évèr"],["structures de données","מבני נתונים","mivné netounim"]],
+ u6:[["chaîne de caractères","מחרוזת","mahrozet"],["caractère","תו","tav"],["longueur","אורך","orekh"]],
+ u7:[["tri","מיון","miyoun"],["recherche","חיפוש","hipouss"],["efficacité","יעילות","yeïlout"],["échanger","להחליף","lehahlif"],["algorithme","אלגוריתם","algoritm"]],
+ u8:[["suite","סדרה","sidra"],["nombre","מספר","mispar"],["différence","הפרש","hefrech"],["règle","חוקיות","houkiyout"],["carré","ריבוע","riboua"]],
+ u9:[["logique","היגיון","higayon"],["solution","פתרון","pitaron"],["vitesse","מהירות","mehirout"],["ensemble","קבוצה","kvoutsa"]],
+ u10:[["table de suivi","טבלת מעקב","tavlat maakav"],["étape","שלב","chlav"],["examen de sélection","מבחן מיון","mivhan miyoun"],["réponse","תשובה","tchouva"]],
+ m1:[["géométrie analytique","הנדסה אנליטית","handassa analitit"],["pente","שיפוע","chipoua"],["droite","ישר","yachar"],["point","נקודה","nekouda"]],
+ m2:[["fonction","פונקציה","founktsia"],["domaine de définition","תחום הגדרה","tehoum hagdara"],["parabole","פרבולה","parabola"],["sommet","קודקוד","kodkod"],["croissante","עולה","ola"]],
+ m3:[["dérivée","נגזרת","nigzéret"],["tangente","משיק","machik"],["point extremum","נקודת קיצון","nekoudat kitson"],["maximum","מקסימום","maximoum"]],
+ m4:[["cercle","מעגל","maagal"],["rayon","רדיוס","radious"],["corde","מיתר","meïtar"],["semblables","דומים","domim"],["triangle","משולש","mechoulach"]],
+ m5:[["trigonométrie","טריגונומטריה","trigonométria"],["angle","זווית","zavit"],["hypoténuse","יתר","yéter"],["côté","צלע","tséla"]],
+ p1:[["vitesse","מהירות","mehirout"],["accélération","תאוצה","teoutsa"],["chute libre","נפילה חופשית","nefila hofchit"],["mécanique","מכניקה","mekhanika"]],
+ p2:[["force","כוח","koah"],["masse","מסה","massa"],["poids","משקל","michkal"],["frottement","חיכוך","hikoukh"],["inertie","התמד","hetméd"]],
+ p3:[["travail","עבודה","avoda"],["énergie","אנרגיה","energia"],["conservation","שימור","chimour"],["puissance","הספק","hesspek"]]
+};
+
+/* Deux questions de vocabulaire ajoutées à la fin de chaque série d'exercices,
+   construites à partir des termes de l'unité concernée. */
+(function(){
+  const pool = [];
+  Object.keys(VOC).forEach(k => VOC[k].forEach(t => pool.push(t)));
+  const he = t => `<span dir="rtl" lang="he">${t[1]}</span> — <i>${t[2]}</i>`;
+
+  function leurres(bon, champ){
+    const out = [], vus = new Set([bon[champ]]);
+    const melange = pool.slice().sort(()=>Math.random()-.5);
+    for(const t of melange){
+      if(vus.has(t[champ])) continue;
+      vus.add(t[champ]); out.push(t);
+      if(out.length === 3) break;
+    }
+    return out;
+  }
+
+  UNITS.forEach(u=>{
+    const termes = VOC[u.id];
+    if(!termes || !termes.length) return;
+    u.lessons.forEach((lec, li)=>{
+      for(let n=0; n<2; n++){
+        const t = termes[(li*2 + n) % termes.length];
+        if(n === 0){
+          const faux = leurres(t, 1);
+          const choix = [he(t), ...faux.map(he)];
+          const ordre = choix.map((c,i)=>i).sort(()=>Math.random()-.5);
+          lec.qs.push({t:'qcm', voc:true,
+            q:`Comment dit-on « ${t[0]} » en hébreu ?`,
+            c: ordre.map(i=>choix[i]),
+            a: ordre.indexOf(0),
+            e:`<span dir="rtl" lang="he">${t[1]}</span> se prononce « ${t[2]} » et signifie « ${t[0]} ».`});
+        } else {
+          const faux = leurres(t, 0);
+          const choix = [t[0], ...faux.map(f=>f[0])];
+          const ordre = choix.map((c,i)=>i).sort(()=>Math.random()-.5);
+          lec.qs.push({t:'qcm', voc:true,
+            q:`Que signifie <span dir="rtl" lang="he">${t[1]}</span> (${t[2]}) ?`,
+            c: ordre.map(i=>choix[i]),
+            a: ordre.indexOf(0),
+            e:`<span dir="rtl" lang="he">${t[1]}</span> « ${t[2]} » = ${t[0]}.`});
+        }
+      }
+    });
+  });
+})();
 
 /* ================== LEXIQUE ================== */
 function filterLex(q){
@@ -1715,7 +1859,7 @@ function filterLex(q){
 }
 
 /* ================== ÉTAT ================== */
-let S = {xp:0, done:{}, read:{}, wrong:[], theme:null};
+let S = {xp:0, done:{}, read:{}, wrong:[], theme:null, tab:'info'};
 let L = null;
 
 const $ = h => { const d=document.createElement('div'); d.innerHTML=h; return d.firstElementChild; };
@@ -1764,81 +1908,92 @@ function ring(pct,size){
       stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct/100)}"/>
   </svg>`;
 }
-function nextStep(){
+function nextStep(sub){
   for(let ui=0; ui<UNITS.length; ui++){
     const u = UNITS[ui];
+    if(sub && u.sub !== sub) continue;
     if(!S.read[u.id]) return {type:'cours', ui, label:'Cours — '+u.name};
     for(let li=0; li<u.lessons.length; li++)
       if(!S.done[ui+'-'+li]) return {type:'lecon', ui, li, label:u.name+' · '+u.lessons[li].name};
   }
   return null;
 }
+function setTab(k){ S.tab = k; home(); }
 
 /* ================== ACCUEIL ================== */
 function home(){
   const pct = S.xp % 100;
-  const globalPct = Math.round(doneCount()/totalLessons()*100);
-  const nx = nextStep();
+  const mat = MATIERES.find(m=>m.k===S.tab) || MATIERES[0];
+  const nx  = nextStep(S.tab);
   const action = nx ? (nx.type==='cours'
       ? `openCourse('${UNITS[nx.ui].id}',${nx.ui})` : `start(${nx.ui},${nx.li})`) : '';
+
+  const stats = {};
+  MATIERES.forEach(m=>{
+    const us = UNITS.map((u,i)=>[u,i]).filter(p=>p[0].sub===m.k);
+    stats[m.k] = {
+      tot: us.reduce((n,p)=>n+p[0].lessons.length,0),
+      fait: us.reduce((n,p)=>n+p[0].lessons.filter((_,li)=>S.done[p[1]+'-'+li]).length,0),
+      units: us
+    };
+  });
+  const st = stats[mat.k];
+  const matPct = st.tot ? Math.round(st.fait/st.tot*100) : 0;
 
   let h = `<header class="topbar">
     <span class="brand">Supercode</span>
     <div class="spacer"></div>
-    <span class="gstat">${doneCount()} / ${totalLessons()} leçons</span>
+    <span class="gstat">niveau ${lvl()} · ${S.xp} XP</span>
     ${themeBtn()}
   </header>
   <main>
+  <nav class="tabs" role="tablist" aria-label="Matières">`;
+  MATIERES.forEach(m=>{
+    const s = stats[m.k];
+    h += `<button class="tab ${m.k===S.tab?'on':''}" role="tab" aria-selected="${m.k===S.tab}"
+      onclick="setTab('${m.k}')">${m.court}<em>${s.fait}/${s.tot}</em></button>`;
+  });
+  h += `</nav>
+
   <section class="hero">
-    <div class="ring">${ring(pct,68)}<div class="lab"><b>${lvl()}</b></div></div>
+    <div class="ring">${ring(matPct,54)}<div class="lab"><b>${matPct}<small>%</small></b></div></div>
     <div class="hero-txt">
-      <h1>CodeTrainer</h1>
-      <p>${nx ? nx.label : 'Parcours terminé — reprenez les leçons sous 100 %'}</p>
+      <h1>${mat.nom}${mat.he?` <span dir="rtl" lang="he">${mat.he}</span>`:''}</h1>
+      <p>${nx ? nx.label : 'Matière terminée — reprenez les leçons sous 100 %'}</p>
     </div>
     ${nx ? `<button class="btn btn-p" onclick="${action}">${nx.type==='cours'?'Lire le cours':'Continuer'}</button>` : ''}
-  </section>
-  <div class="gbar" role="progressbar" aria-valuenow="${globalPct}" aria-valuemin="0"
-    aria-valuemax="100" aria-label="Progression globale"><i style="width:${globalPct}%"></i></div>`;
+  </section>`;
 
   if(S.wrong.length){
     h += `<section class="card revcard">
       <div class="txt"><h3>Réviser mes erreurs</h3>
-        <p>${S.wrong.length} question${S.wrong.length>1?'s':''} mise${S.wrong.length>1?'s':''} de côté</p></div>
+        <p>${S.wrong.length} question${S.wrong.length>1?'s':''} de côté, toutes matières</p></div>
       <button class="btn btn-sec" onclick="startReview()">Réviser</button>
     </section>`;
   }
 
-  MATIERES.forEach(mat=>{
-    const idx = UNITS.map((u,i)=>[u,i]).filter(p=>p[0].sub===mat.k);
-    if(!idx.length) return;
-    const tot = idx.reduce((n,p)=>n+p[0].lessons.length,0);
-    const fait = idx.reduce((n,p)=>n+p[0].lessons.filter((_,li)=>S.done[p[1]+'-'+li]).length,0);
-    h += `<h2 class="secttl"><span>${mat.nom}${mat.he?' <b dir="rtl" lang="he">'+mat.he+'</b>':''}</span>
-      <em>${fait}/${tot}</em></h2>`;
-
-    idx.forEach(([u,ui])=>{
-      const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
-      const up = Math.round(dn/u.lessons.length*100);
-      const isNext = nx && nx.ui===ui;
-      h += `<section class="unit" aria-labelledby="u${ui}t">
-        <div class="unit-head">
-          <div class="badge" style="background:${u.col}" aria-hidden="true">${u.num}</div>
-          <div class="ut"><h3 id="u${ui}t">${u.name}</h3><p class="desc">${u.desc}</p></div>
-          <div class="uprog"><div class="track"><i style="width:${up}%"></i></div>
-            <span>${dn}/${u.lessons.length}</span></div>
-        </div>
-        <div class="nodes">
-          <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
-            onclick="openCourse('${u.id}',${ui})">Cours</button>`;
-      u.lessons.forEach((ls,li)=>{
-        const d = S.done[ui+'-'+li];
-        const nxt = isNext && nx.type==='lecon' && nx.li===li;
-        h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
-          aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
-          ${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
-      });
-      h += `</div></section>`;
+  st.units.forEach(([u,ui])=>{
+    const dn = u.lessons.filter((_,li)=>S.done[ui+'-'+li]).length;
+    const up = Math.round(dn/u.lessons.length*100);
+    const isNext = nx && nx.ui===ui;
+    h += `<section class="unit" aria-labelledby="u${ui}t">
+      <div class="unit-head">
+        <div class="badge" style="background:${u.col}" aria-hidden="true">${u.num}</div>
+        <div class="ut"><h3 id="u${ui}t">${u.name}</h3><p class="desc">${u.desc}</p></div>
+        <div class="uprog"><div class="track"><i style="width:${up}%"></i></div>
+          <span>${dn}/${u.lessons.length}</span></div>
+      </div>
+      <div class="nodes">
+        <button class="node cours ${S.read[u.id]?'read':''} ${isNext&&nx.type==='cours'?'next':''}"
+          onclick="openCourse('${u.id}',${ui})">Cours</button>`;
+    u.lessons.forEach((ls,li)=>{
+      const d = S.done[ui+'-'+li];
+      const nxt = isNext && nx.type==='lecon' && nx.li===li;
+      h += `<button class="node ${d?'done':''} ${nxt?'next':''}" onclick="start(${ui},${li})"
+        aria-label="${ls.name}${d?', terminée à '+d+' pour cent':', non commencée'}">
+        ${ls.name}${d?'<span class="pc">'+d+'%</span>':''}</button>`;
     });
+    h += `</div></section>`;
   });
 
   h += `<details class="save">
@@ -1868,7 +2023,7 @@ function loadCode(){
   try{
     const o = JSON.parse(decodeURIComponent(escape(atob(v.trim()))));
     if(typeof o.xp === 'number'){
-      S = Object.assign({xp:0,done:{},read:{},wrong:[],theme:null}, o);
+      S = Object.assign({xp:0,done:{},read:{},wrong:[],theme:null,tab:'info'}, o);
       applyTheme(); home(); toast('Progression restaurée');
     } else toast('Code non reconnu');
   }catch(e){ toast('Code non reconnu'); }
@@ -1948,7 +2103,7 @@ function render(){
   </header>
   <main>
   <section class="qcard">
-    <p class="qtype">${labels[q.t]} · question ${L.i+1} sur ${L.qs.length}
+    <p class="qtype">${q.voc?'Vocabulaire hébreu':labels[q.t]} · question ${L.i+1} sur ${L.qs.length}
       ${L.combo>=3?'<span class="combo">série ×'+L.combo+'</span>':''}</p>
     <h2 class="qtext">${q.q}</h2>`;
   if(q.code) h += `<pre><code>${esc(q.code)}</code></pre>`;
@@ -2063,7 +2218,7 @@ function judge(good, sol){
   const fb = $(`<div class="fb ${good?'ok':'ko'}" role="status">
     <div class="fb-head"><span class="em" aria-hidden="true">${good?'✓':'✕'}</span>
       <h4>${good ? (L.combo>=5 ? 'Excellent — série de '+L.combo : 'Bonne réponse') : 'Réponse incorrecte'}</h4></div>
-    <p>${good?'':'<b>La bonne réponse était : <span class="sol">'+esc(sol)+'</span></b><br>'}${q.e}</p>
+    <p>${good?'':'<b>La bonne réponse était : <span class="sol">'+(q.t==='qcm'?sol:esc(sol))+'</span></b><br>'}${q.e}</p>
     <div class="row">
       <button class="btn ${good?'btn-g':'btn-p'}" id="cont" onclick="next()">Continuer</button>
       ${gain?'<span class="xpgain">+'+gain+' XP</span>':''}
@@ -2082,7 +2237,9 @@ function next(){
   if(L.i >= L.qs.length) return result(true);
   render(); window.scrollTo(0,0);
 }
-function quit(){ document.onkeydown=null; window.onscroll=null; L=null; home(); }
+function quit(){ document.onkeydown=null; window.onscroll=null;
+  if(L && UNITS[L.ui]) S.tab = UNITS[L.ui].sub;
+  L=null; home(); }
 
 function result(win){
   const pct = Math.round(L.ok/L.qs.length*100);
